@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import modelo.Usuario;
 import modelo.UsuarioDao;
 
@@ -19,9 +18,9 @@ import modelo.UsuarioDao;
  */
 public class Login extends HttpServlet {
 
-       UsuarioDao edao = new UsuarioDao();
+    UsuarioDao edao = new UsuarioDao();
     Usuario em = new Usuario();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -53,22 +52,22 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                
+
         String accion = request.getParameter("accion");
 
         if (accion.equalsIgnoreCase("Ingresar")) {
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
-            em=edao.login(user, pass);
-
-            if (em.getEmail()!=null) {
+            em = edao.login(user, pass);
+         
+            if (em.getUsuarioDocumento()!= null) {
                 request.setAttribute("usuario", em);
                 request.getRequestDispatcher("ControladorA?menu=Principal").forward(request, response);
-            }else{
+            } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        }else{
-           request.getRequestDispatcher("index.jsp").forward(request, response); 
+        } else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 

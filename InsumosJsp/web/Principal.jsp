@@ -44,10 +44,10 @@
                         <a class="dropdown-item" href="#">
                             <img src="images/iot.jpg" alt="60" width="60"/>
                         </a>
-                        <a class="dropdown-item" href="#">${usuario.getNom()}</a>
-                        <a class="dropdown-item" href="#">${usuario.getDni()}</a>
+                        <a class="dropdown-item" href="#">${usuario.getUsuarioNombre()}</a>
+                        <a class="dropdown-item" href="#">${usuario.getUsuarioDocumento()}</a>
                         <div class="dropdown-divider"></div>
-                        <form action="Validar" method="POST">
+                        <form action="Login" method="POST">
                             <button  name="accion" value="Salir" class="dropdown-item" href="#">Salir</button>
                         </form>
                     </div>
