@@ -14,16 +14,14 @@ public class Usuario {
     private String usuarioDocumento;
     private String usuarioNombre;
     private String email;
-    //TINYTEXT para password ?
     private String password;
     private String usuarioCelular;
-    //TINYTEXT para usuarioPrivilegio ?
-    private String usuarioPrivilegio;
+    private int usuarioPrivilegio;
 
     public Usuario() {
     }
 
-    public Usuario(int usuarioTipoIdenFK, String usuarioDocumento, String usuarioNombre, String email, String password, String usuarioCelular, String usuarioPrivilegio) {
+    public Usuario(int usuarioTipoIdenFK, String usuarioDocumento, String usuarioNombre, String email, String password, String usuarioCelular, int usuarioPrivilegio) {
         this.usuarioTipoIdenFK = usuarioTipoIdenFK;
         this.usuarioDocumento = usuarioDocumento;
         this.usuarioNombre = usuarioNombre;
@@ -81,11 +79,11 @@ public class Usuario {
         this.usuarioCelular = usuarioCelular;
     }
 
-    public String getUsuarioPrivilegio() {
+    public int getUsuarioPrivilegio() {
         return usuarioPrivilegio;
     }
 
-    public void setUsuarioPrivilegio(String usuarioPrivilegio) {
+    public void setUsuarioPrivilegio(int usuarioPrivilegio) {
         this.usuarioPrivilegio = usuarioPrivilegio;
     }
 
