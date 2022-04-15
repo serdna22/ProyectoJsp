@@ -31,7 +31,7 @@ public class Proveedor {
         this.proveedorTelefono = proveedorTelefono;
         this.proveedorCelular = proveedorCelular;
         this.proveedorFecha = proveedorFecha;
-        this.proveedorCiudad = proveedorCiudad;
+        this.proveedorCiudad = proveedorCiudad; 
         this.proveedorCorreo = proveedorCorreo;
     }
 

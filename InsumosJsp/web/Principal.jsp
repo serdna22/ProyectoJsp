@@ -49,7 +49,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#" target="myFrame">Elementos</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Categorias</a></li>
+                                <li><a class="dropdown-item" href="CategoriaControl?menu=Categoria&accion=Listar" target="myFrame">Categorias</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

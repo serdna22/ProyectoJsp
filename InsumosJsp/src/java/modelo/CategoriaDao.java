@@ -65,7 +65,7 @@ public class CategoriaDao {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                // ca.setIdCategoria(rs.getInt(1));
+                ca.setIdCategoria(rs.getInt(1));
                 ca.setCategoriaNombre(rs.getString(2));
             }
         } catch (Exception e) {
