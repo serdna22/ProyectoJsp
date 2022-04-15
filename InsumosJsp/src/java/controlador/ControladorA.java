@@ -62,24 +62,28 @@ public class ControladorA extends HttpServlet {
                     request.getRequestDispatcher("ControladorA?menu=Usuario&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-//                    String dni1 = request.getParameter("txtDni");
-//                    String nom1 = request.getParameter("txtNombres");
-//                    String tel2 = request.getParameter("txtTelefono");
-//                    String est1 = request.getParameter("txtEstado");
-//                    String user1 = request.getParameter("txtUsuario");
-//                    em.setDni(dni1);
-//                    em.setNom(nom1);
-//                    em.setTel(tel2);
-//                    em.setEstado(est1);
-//                    em.setUser(user1);
-//                    em.setId(idempleado);
-//                    edao.actualizar(em);
-//                    request.getRequestDispatcher("ControladorE?menu=Empleado&accion=Listar").forward(request, response);
+                    String tipoD2 = request.getParameter("txtTipoD");
+                    String documento2 = request.getParameter("txtDocumento");
+                    String nombres2 = request.getParameter("txtNombres");
+                    String correo2 = request.getParameter("txtCorreo");
+                    String contraseña2 = request.getParameter("txtContraseña");
+                    String celular2 = request.getParameter("txtCelular");
+                    String privilegio2 = request.getParameter("txtPrivilegio");
+                    em.setUsuarioTipoIdenFK(Integer.parseInt(tipoD2));
+                    em.setUsuarioDocumento(documento2);
+                    em.setUsuarioNombre(nombres2);
+                    em.setEmail(correo2);
+                    em.setPassword(contraseña2);
+                    em.setUsuarioCelular(celular2);
+                    em.setUsuarioPrivilegio(Integer.parseInt(privilegio2));
+                    em.setUsuarioDocumento(idUsuario);
+                    edao.actualizar(em);
+                    request.getRequestDispatcher("ControladorA?menu=Usuario&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-//                    idempleado = Integer.parseInt(request.getParameter("id"));
-//                    edao.eliminar(idempleado);
-//                    request.getRequestDispatcher("ControladorE?menu=Empleado&accion=Listar").forward(request, response);
+                    idUsuario = request.getParameter("id");
+                    edao.eliminar(idUsuario);
+                    request.getRequestDispatcher("ControladorA?menu=Usuario&accion=Listar").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();

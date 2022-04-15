@@ -134,7 +134,7 @@ public class UsuarioDao {
         return res;
     }
     
-    public void eliminar(int id) {
+    public void eliminar(String id) {
         String sql = "delete from usuarios where usuarioDocumento=" + id;
         try {
             con = cn.Conexion();
