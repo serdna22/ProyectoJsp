@@ -8,6 +8,8 @@ import config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -23,7 +25,7 @@ public class UsuarioDao {
 
     public Usuario login(String usuario, String password) {
         Usuario em = new Usuario();
-        String sql = "select usuarioDocumento,usuarioNombre,usuarioPrivilegio from usuarios where email =? and password=?";
+        String sql = "select usuarioDocumento,usuarioNombre,usuarioPrivilegio,email from usuarios where email =? and password=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -35,6 +37,7 @@ public class UsuarioDao {
                 em.setUsuarioDocumento(rs.getString("usuarioDocumento"));
                 em.setUsuarioNombre(rs.getString("usuarioNombre"));
                 em.setUsuarioPrivilegio(rs.getInt("usuarioPrivilegio"));
+                em.setEmail(rs.getString("email"));
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -42,4 +45,103 @@ public class UsuarioDao {
         return em;
     }
 //    operaciones Crud
+
+    public List listar() {
+        String sql = "select * from usuarios";
+        List<Usuario> lista = new ArrayList<>();
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Usuario em = new Usuario();
+                em.setUsuarioTipoIdenFK(rs.getInt(1));
+                em.setUsuarioDocumento(rs.getString(2));
+                em.setUsuarioNombre(rs.getString(3));
+                em.setEmail(rs.getString(4));
+                em.setPassword(rs.getString(5));
+                em.setUsuarioCelular(rs.getString(6));
+                em.setUsuarioPrivilegio(rs.getInt(7));
+                lista.add(em);
+
+            }
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+        return lista;
+    }
+
+    public int agregar(Usuario em) {
+        String sql = "insert into usuarios (usuarioTipoIdenFK,usuarioDocumento,usuarioNombre,email,password,usuarioCelular,"
+                + "usuarioPrivilegio) values (?,?,?,?,?,?,?)";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, em.getUsuarioTipoIdenFK());
+            ps.setString(2, em.getUsuarioDocumento());
+            ps.setString(3, em.getUsuarioNombre());
+            ps.setString(4, em.getEmail());
+            ps.setString(5, em.getPassword());
+            ps.setString(6, em.getUsuarioCelular());
+            ps.setInt(7, em.getUsuarioPrivilegio());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+        return res;
+    }
+
+    public Usuario listarId(String id) {
+        Usuario emp = new Usuario();
+        String sql = "select * from usuarios where usuarioDocumento=" + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                emp.setUsuarioTipoIdenFK(rs.getInt(1));
+                emp.setUsuarioDocumento(rs.getString(2));
+                emp.setUsuarioNombre(rs.getString(3));
+                emp.setEmail(rs.getString(4));
+                emp.setPassword(rs.getString(5));
+                emp.setUsuarioCelular(rs.getString(6));
+                emp.setUsuarioPrivilegio(rs.getInt(7));
+            }
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+        return emp;
+    }
+
+    public int actualizar(Usuario em) {
+        String sql = "update usuarios set usuarioTipoIdenFK=?, usuarioDocumento=?, usuarioNombre=?,"
+                + " email=?, password=?, usuarioCelular=?, usuarioPrivilegio=? where usuarioDocumento=? ";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, em.getUsuarioPrivilegio());
+            ps.setString(2, em.getUsuarioDocumento());
+            ps.setString(3, em.getUsuarioNombre());
+            ps.setString(4, em.getEmail());
+            ps.setString(5, em.getPassword());
+            ps.setString(6, em.getUsuarioCelular());
+            ps.setInt(7, em.getUsuarioPrivilegio());
+            ps.setString(8, em.getUsuarioDocumento());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+        return res;
+    }
+    
+    public void eliminar(int id) {
+        String sql = "delete from usuarios where usuarioDocumento=" + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+    }
 }

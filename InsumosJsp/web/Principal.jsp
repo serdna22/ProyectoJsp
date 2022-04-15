@@ -17,7 +17,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Inicio</a>
+                <a class="navbar-brand" href="#" target="myFrame">Inicio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -28,19 +28,19 @@
                                 Insumos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Insumo</a></li>
-                                <li><a class="dropdown-item" href="#">Medicamento</a></li>
-                                <li><a class="dropdown-item" href="#">Marca</a></li>
-                                <li><a class="dropdown-item" href="#">Riesgo</a></li>
-                                <li><a class="dropdown-item" href="#">Presentacion</a></li>
-                                <li><a class="dropdown-item" href="#">Principio Activo</a></li>
-                                <li><a class="dropdown-item" href="#">Forma Farmaceutica</a></li>
-                                <li><a class="dropdown-item" href="#">Concentracion</a></li>
-                                <li><a class="dropdown-item" href="#">Unidad de Medidada</a></li>
-                                <li><a class="dropdown-item" href="#">Temperatura</a></li>
-                                <li><a class="dropdown-item" href="#">Alerta</a></li>
-                                <li><a class="dropdown-item" href="#">StockExcel</a></li>
-                                <li><a class="dropdown-item" href="#">StockPdf</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Insumo</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Medicamento</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Marca</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Riesgo</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Presentacion</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Principio Activo</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Forma Farmaceutica</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Concentracion</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Unidad de Medidada</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Temperatura</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Alerta</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">StockExcel</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">StockPdf</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -48,8 +48,8 @@
                                 Elementos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Elementos</a></li>
-                                <li><a class="dropdown-item" href="#">Categorias</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Elementos</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Categorias</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -57,20 +57,35 @@
                                 Personas
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Usuarios</a></li>
-                                <li><a class="dropdown-item" href="#">Proveedores</a></li>
-                                <li><a class="dropdown-item" href="#">Consultorios</a></li>
-                                <li><a class="dropdown-item" href="#">Procedimientos</a></li>
+                                <li><a class="dropdown-item" href="ControladorA?menu=Usuario&accion=Listar" target="myFrame">Usuarios</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Proveedores</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Consultorios</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Procedimientos</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Factura</a>
+                            <a class="nav-link" href="#" target="myFrame">Factura</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Salida</a>
+                            <a class="nav-link" href="#" target="myFrame">Salida</a>
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div>
+                <a class="btn btn-outline-light dropdown-toggle"
+                   href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Perfil
+                </a>
+                <ul class="dropdown-menu"aria-labelledby="dropdownMenuLink" style="margin-left: 84%">
+                    <li><a class="dropdown-item" href="#">${usuario.getEmail()}</a></li>
+                    <li><a class="dropdown-item" href="#">${usuario.getUsuarioNombre()}</a></li>
+                    <div class="dropdown-divider"></div>
+                    <form action="Login" method="POST">
+                        <button  name="accion" value="Salir" class="dropdown-item" href="#">Salir</button>
+                    </form>
+
+                </ul>
             </div>
         </nav>
         <div class="mt-4" style="height: 600px; margin-left: 10px">
