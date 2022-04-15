@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Proveedor {
 
-    private int nitProveedor;
+    private String nitProveedor;
     private String proveedorNombre;
     private String proveedorDireccion;
     private String proveedorTelefono;
@@ -24,7 +24,7 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int nitProveedor, String proveedorNombre, String proveedorDireccion, String proveedorTelefono, String proveedorCelular, Date proveedorFecha, String proveedorCiudad, String proveedorCorreo) {
+    public Proveedor(String nitProveedor, String proveedorNombre, String proveedorDireccion, String proveedorTelefono, String proveedorCelular, Date proveedorFecha, String proveedorCiudad, String proveedorCorreo) {
         this.nitProveedor = nitProveedor;
         this.proveedorNombre = proveedorNombre;
         this.proveedorDireccion = proveedorDireccion;
@@ -35,11 +35,11 @@ public class Proveedor {
         this.proveedorCorreo = proveedorCorreo;
     }
 
-    public int getNitProveedor() {
+    public String getNitProveedor() {
         return nitProveedor;
     }
 
-    public void setNitProveedor(int nitProveedor) {
+    public void setNitProveedor(String nitProveedor) {
         this.nitProveedor = nitProveedor;
     }
 
