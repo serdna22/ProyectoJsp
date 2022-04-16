@@ -18,12 +18,14 @@
             <div class="card col-sm-3">
                 <div class="card-body"> 
                     <form action="ControladorA?menu=Usuario" method="POST">
+                        <label>Tipo Documento</label>
                         <select class="form-control form-select" name="txtTipoD">
-                            <option selected>Tipo Documento</option>
-                            <c:forEach var="em" items="${usuariosLista}">
-                                <option value="${em.getUsuarioTipoIdenFK()}">${em.getUsuarioDocumento()}</option>
+                            <option value="${usuario.getUsuarioTipoIdenFK()}">Seleccionar</option>
+                            <c:forEach var="tip" items="${tipoDocumentoLista}">
+                                <option value="${tip.getIdTipoDoc()}">${tip.getTipoDocNombre()}</option>
                             </c:forEach>
                         </select>
+                        <br>
                         <div class="form-group">
                             <label>Documento</label>
                             <input type="number" value="${usuario.getUsuarioDocumento()}" name="txtDocumento" class="form-control">
@@ -44,12 +46,15 @@
                             <label>Celular</label>
                             <input type="number" value="${usuario.getUsuarioCelular()}" name="txtCelular" class="form-control">
                         </div>
-                        <select class="form-select form-control" name="txtPrivilegio">
-                            <option selected>Tipo Privilegio</option>        
-                            <option value="${usuario.getUsuarioPrivilegio()}">Administrador</option>
-                            <option value="2">Usuario</option>
-                            <option value="3">Supervisor</option>
-                        </select>
+                        <div class="form-group">
+                            <label>Privilegio</label>
+                            <select class="form-control form-select" name="txtPrivilegio">
+                                <option value="${usuario.getUsuarioPrivilegio()}">Seleccionar</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Usuario</option>
+                            </select>                
+                        </div>
+                        <br>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>

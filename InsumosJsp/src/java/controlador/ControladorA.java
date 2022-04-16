@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import modelo.TipoDocumento;
+import modelo.TipoDocumentoDao;
 import modelo.Usuario;
 import modelo.UsuarioDao;
 
@@ -21,6 +23,8 @@ public class ControladorA extends HttpServlet {
 
     UsuarioDao edao = new UsuarioDao();
     Usuario em = new Usuario();
+    TipoDocumentoDao tipdao = new TipoDocumentoDao();
+    TipoDocumento tip = new TipoDocumento();
     String idUsuario;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +39,9 @@ public class ControladorA extends HttpServlet {
             switch (accion) {
                 case "Listar":
                     List lista = edao.listar();
+                    List listaTipo = tipdao.listar();
                     request.setAttribute("usuariosLista", lista);
+                    request.setAttribute("tipoDocumentoLista", listaTipo);
                     break;
                 case "Agregar":
                     String tipoD = request.getParameter("txtTipoD");

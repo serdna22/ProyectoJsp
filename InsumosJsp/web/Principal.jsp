@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <title>JSP Page</title>
+        <title>Insumos</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -88,7 +88,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="mt-4" style="height: 600px; margin-left: 10px">
+        <div class="mt-4" style="height: 900px; margin-left: 10px">
             <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>
         </div>
         <!-- JavaScript Bundle with Popper -->

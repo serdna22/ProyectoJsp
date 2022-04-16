@@ -119,7 +119,7 @@ public class UsuarioDao {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, em.getUsuarioPrivilegio());
+            ps.setInt(1, em.getUsuarioTipoIdenFK());
             ps.setString(2, em.getUsuarioDocumento());
             ps.setString(3, em.getUsuarioNombre());
             ps.setString(4, em.getEmail());
