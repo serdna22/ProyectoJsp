@@ -17,11 +17,13 @@ public class Usuario {
     private String password;
     private String usuarioCelular;
     private int usuarioPrivilegio;
+    private String tipoDocNombre;
 
     public Usuario() {
     }
 
-    public Usuario(int usuarioTipoIdenFK, String usuarioDocumento, String usuarioNombre, String email, String password, String usuarioCelular, int usuarioPrivilegio) {
+    public Usuario(int usuarioTipoIdenFK, String usuarioDocumento, String usuarioNombre, String email, String password,
+            String usuarioCelular, int usuarioPrivilegio) {
         this.usuarioTipoIdenFK = usuarioTipoIdenFK;
         this.usuarioDocumento = usuarioDocumento;
         this.usuarioNombre = usuarioNombre;
@@ -85,6 +87,14 @@ public class Usuario {
 
     public void setUsuarioPrivilegio(int usuarioPrivilegio) {
         this.usuarioPrivilegio = usuarioPrivilegio;
+    }
+
+    public String getTipoDocNombre() {
+        return tipoDocNombre;
+    }
+
+    public void setTipoDocNombre(String tipoDocNombre) {
+        this.tipoDocNombre = tipoDocNombre;
     }
 
 }

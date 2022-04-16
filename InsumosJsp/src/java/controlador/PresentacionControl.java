@@ -10,62 +10,62 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import modelo.Categoria;
-import modelo.CategoriaDao;
+import modelo.Presentacion;
+import modelo.PresentacionDao;
 
 /**
  *
  * @author serdn
  */
-public class CategoriaControl extends HttpServlet {
+public class PresentacionControl extends HttpServlet {
 
-    CategoriaDao cadao = new CategoriaDao();
-    Categoria ca = new Categoria();
-    String idCate;
+    PresentacionDao cadao = new PresentacionDao();
+    Presentacion ca = new Presentacion();
+    String idPre;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-                if (menu.equals("Categoria")) {
+        if (menu.equals("Presentacion")) {
             switch (accion) {
                 case "Listar":
                     List lista = cadao.listar();
-                    request.setAttribute("categoriaLista", lista);
+                    request.setAttribute("presentacionLista", lista);
                     break;
                 case "Agregar":
-                    String idCategoria = request.getParameter("txtIdCategoria");
-                    String categoriaNombre = request.getParameter("txtCategoriaNombre");
-                    ca.setIdCategoria(Integer.parseInt(idCategoria));
-                    ca.setCategoriaNombre(categoriaNombre);
- 
+                    String idPresentacion = request.getParameter("txtIdPresentacion");
+                    String PresentacionNombre = request.getParameter("txtPresentacionNombre");
+                    ca.setIdPresentacion(Integer.parseInt(idPresentacion));
+                    ca.setPresentacionNombre(PresentacionNombre);
+
                     cadao.agregar(ca);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("PresentacionControl?menu=Presentacion&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    idCate = request.getParameter("idEd");
-                    Categoria cate = cadao.listarId(Integer.parseInt(idCate));
-                    request.setAttribute("categoriaEditar", cate);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    idPre = request.getParameter("idEd");
+                    Presentacion cate = cadao.listarId(Integer.parseInt(idPre));
+                    request.setAttribute("PresentacionEditar", cate);
+                    request.getRequestDispatcher("PresentacionControl?menu=Presentacion&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String idCategoria2 = request.getParameter("txtIdCategoria");
-                    String categoriaNombre2 = request.getParameter("txtCategoriaNombre");
-                    ca.setIdCategoria(Integer.parseInt(idCategoria2));
-                    ca.setCategoriaNombre(categoriaNombre2);
-                    ca.setIdCategoria(Integer.parseInt(idCate));
+                    String idPresentacion2 = request.getParameter("txtIdPresentacion");
+                    String PresentacionNombre2 = request.getParameter("txtPresentacionNombre");
+                    ca.setIdPresentacion(Integer.parseInt(idPresentacion2));
+                    ca.setPresentacionNombre(PresentacionNombre2);
+                    ca.setIdPresentacion(Integer.parseInt(idPre));
                     cadao.actualizar(ca);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("PresentacionControl?menu=Presentacion&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    idCate = request.getParameter("idEli");
-                    cadao.eliminar(Integer.parseInt(idCate));
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    idPre = request.getParameter("idEli");
+                    cadao.eliminar(Integer.parseInt(idPre));
+                    request.getRequestDispatcher("PresentacionControl?menu=Presentacion&accion=Listar").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();
             }
-            request.getRequestDispatcher("Categoria.jsp").forward(request, response);
+            request.getRequestDispatcher("Presentacion.jsp").forward(request, response);
         }
 
     }

@@ -65,6 +65,7 @@ public class PresentacionDao {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                pre.setIdPresentacion(rs.getInt(1));
                 pre.setPresentacionNombre(rs.getString(2));
             }
         } catch (Exception e) {

@@ -47,7 +47,9 @@ public class UsuarioDao {
 //    operaciones Crud
 
     public List listar() {
-        String sql = "select * from usuarios";
+        String sql = "select usuarioTipoIdenFK,usuarioDocumento,usuarioNombre,email,password,usuarioCelular,"
+                + "usuarioPrivilegio,tipoDocNombre from usuarios inner join tipodocumento "
+                + "on tipodocumento.idTipoDoc=usuarios.usuarioTipoIdenFK";
         List<Usuario> lista = new ArrayList<>();
         try {
             con = cn.Conexion();
@@ -62,6 +64,7 @@ public class UsuarioDao {
                 em.setPassword(rs.getString(5));
                 em.setUsuarioCelular(rs.getString(6));
                 em.setUsuarioPrivilegio(rs.getInt(7));
+                em.setTipoDocNombre(rs.getString(8));
                 lista.add(em);
 
             }
@@ -93,7 +96,9 @@ public class UsuarioDao {
 
     public Usuario listarId(String id) {
         Usuario emp = new Usuario();
-        String sql = "select * from usuarios where usuarioDocumento=" + id;
+                String sql = "select usuarioTipoIdenFK,usuarioDocumento,usuarioNombre,email,password,usuarioCelular,"
+                + "usuarioPrivilegio,tipoDocNombre from usuarios inner join tipodocumento "
+                + "on tipodocumento.idTipoDoc=usuarios.usuarioTipoIdenFK where usuarioDocumento=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -106,6 +111,7 @@ public class UsuarioDao {
                 emp.setPassword(rs.getString(5));
                 emp.setUsuarioCelular(rs.getString(6));
                 emp.setUsuarioPrivilegio(rs.getInt(7));
+                emp.setTipoDocNombre(rs.getString(8));
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -133,7 +139,7 @@ public class UsuarioDao {
         }
         return res;
     }
-    
+
     public void eliminar(String id) {
         String sql = "delete from usuarios where usuarioDocumento=" + id;
         try {

@@ -20,7 +20,7 @@
                     <form action="ControladorA?menu=Usuario" method="POST">
                         <label>Tipo Documento</label>
                         <select class="form-control form-select" name="txtTipoD">
-                            <option value="${usuario.getUsuarioTipoIdenFK()}">Seleccionar</option>
+                            <option value="${usuario.getUsuarioTipoIdenFK()}">${usuario.getTipoDocNombre()}</option>
                             <c:forEach var="tip" items="${tipoDocumentoLista}">
                                 <option value="${tip.getIdTipoDoc()}">${tip.getTipoDocNombre()}</option>
                             </c:forEach>
@@ -80,13 +80,18 @@
                     <tbody>
                         <c:forEach var="em" items="${usuariosLista}">
                             <tr>
-                                <td>${em.getUsuarioTipoIdenFK()}</td>
+                                <td>${em.getTipoDocNombre()}</td>
                                 <td>${em.getUsuarioDocumento()}</td>
                                 <td>${em.getUsuarioNombre()}</td>
                                 <td>${em.getEmail()}</td>
                                 <td>${em.getPassword()}</td>
                                 <td>${em.getUsuarioCelular()}</td>
-                                <td>${em.getUsuarioPrivilegio()}</td>
+                                <td> <c:if test="${em.getUsuarioPrivilegio()==1}">
+                                        Administrador
+                                    </c:if>
+                                    <c:if test="${em.getUsuarioPrivilegio()==2}">
+                                        Usuario
+                                    </c:if></td> 
                                 <td>
                                     <a class="btn btn-warning" href="ControladorA?menu=Usuario&accion=Editar&id=${em.getUsuarioDocumento()}">Editar</a>
                                 </td>

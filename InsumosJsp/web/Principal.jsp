@@ -32,7 +32,7 @@
                                 <li><a class="dropdown-item" href="#" target="myFrame">Medicamento</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Marca</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Riesgo</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Presentacion</a></li>
+                                <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Principio Activo</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Forma Farmaceutica</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Concentracion</a></li>
@@ -49,6 +49,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#" target="myFrame">Elementos</a></li>
+                                <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
                                 <li><a class="dropdown-item" href="CategoriaControl?menu=Categoria&accion=Listar" target="myFrame">Categorias</a></li>
                             </ul>
                         </li>
