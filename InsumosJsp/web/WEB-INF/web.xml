@@ -12,13 +12,21 @@
         <servlet-name>CategoriaControl</servlet-name>
         <servlet-class>controlador.CategoriaControl</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>PresentacionControl</servlet-name>
         <servlet-class>controlador.PresentacionControl</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TemperaturaControl</servlet-name>
         <servlet-class>controlador.TemperaturaControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MarcaControl</servlet-name>
+        <servlet-class>controlador.MarcaControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RiesgoControl</servlet-name>
+        <servlet-class>controlador.RiesgoControl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -32,13 +40,21 @@
         <servlet-name>CategoriaControl</servlet-name>
         <url-pattern>/CategoriaControl</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PresentacionControl</servlet-name>
         <url-pattern>/PresentacionControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TemperaturaControl</servlet-name>
         <url-pattern>/TemperaturaControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MarcaControl</servlet-name>
+        <url-pattern>/MarcaControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RiesgoControl</servlet-name>
+        <url-pattern>/RiesgoControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
