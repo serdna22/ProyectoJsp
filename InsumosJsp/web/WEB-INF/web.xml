@@ -28,6 +28,14 @@
         <servlet-name>RiesgoControl</servlet-name>
         <servlet-class>controlador.RiesgoControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ElementoControl</servlet-name>
+        <servlet-class>controlador.ElementoControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsumoControl</servlet-name>
+        <servlet-class>controlador.InsumoControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>RiesgoControl</servlet-name>
         <url-pattern>/RiesgoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ElementoControl</servlet-name>
+        <url-pattern>/ElementoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsumoControl</servlet-name>
+        <url-pattern>/InsumoControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

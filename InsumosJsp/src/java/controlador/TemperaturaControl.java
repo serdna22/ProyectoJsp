@@ -38,7 +38,6 @@ public class TemperaturaControl extends HttpServlet {
                     String temperaturaNombre = request.getParameter("txtTemperaturaNombre");
                     tem.setIdTemperatura(Integer.parseInt(idTemperatura));
                     tem.setTemperaturaNombre(temperaturaNombre);
-
                     temdao.agregar(tem);
                     request.getRequestDispatcher("TemperaturaControl?menu=Temperatura&accion=Listar").forward(request, response);
                     break;
