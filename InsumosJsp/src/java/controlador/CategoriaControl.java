@@ -34,9 +34,9 @@ public class CategoriaControl extends HttpServlet {
                     request.setAttribute("categoriaLista", lista);
                     break;
                 case "Agregar":
-                    String idCategoria = request.getParameter("txtIdCategoria");
+//int autoincrement String idCategoria = request.getParameter("txtIdCategoria");
                     String categoriaNombre = request.getParameter("txtCategoriaNombre");
-                    ca.setIdCategoria(Integer.parseInt(idCategoria));
+//                    ca.setIdCategoria(Integer.parseInt(idCategoria));
                     ca.setCategoriaNombre(categoriaNombre);
  
                     cadao.agregar(ca);
@@ -49,9 +49,7 @@ public class CategoriaControl extends HttpServlet {
                     request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String idCategoria2 = request.getParameter("txtIdCategoria");
                     String categoriaNombre2 = request.getParameter("txtCategoriaNombre");
-                    ca.setIdCategoria(Integer.parseInt(idCategoria2));
                     ca.setCategoriaNombre(categoriaNombre2);
                     ca.setIdCategoria(Integer.parseInt(idCate));
                     cadao.actualizar(ca);

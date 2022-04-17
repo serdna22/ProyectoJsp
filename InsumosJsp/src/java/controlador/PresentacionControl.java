@@ -34,9 +34,9 @@ public class PresentacionControl extends HttpServlet {
                     request.setAttribute("presentacionLista", lista);
                     break;
                 case "Agregar":
-                    String idPresentacion = request.getParameter("txtIdPresentacion");
+//Autoincrement     String idPresentacion = request.getParameter("txtIdPresentacion");
                     String PresentacionNombre = request.getParameter("txtPresentacionNombre");
-                    ca.setIdPresentacion(Integer.parseInt(idPresentacion));
+//                    ca.setIdPresentacion(Integer.parseInt(idPresentacion));
                     ca.setPresentacionNombre(PresentacionNombre);
 
                     cadao.agregar(ca);
@@ -49,9 +49,7 @@ public class PresentacionControl extends HttpServlet {
                     request.getRequestDispatcher("PresentacionControl?menu=Presentacion&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String idPresentacion2 = request.getParameter("txtIdPresentacion");
                     String PresentacionNombre2 = request.getParameter("txtPresentacionNombre");
-                    ca.setIdPresentacion(Integer.parseInt(idPresentacion2));
                     ca.setPresentacionNombre(PresentacionNombre2);
                     ca.setIdPresentacion(Integer.parseInt(idPre));
                     cadao.actualizar(ca);
