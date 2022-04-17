@@ -76,11 +76,13 @@
                         </div>
                         <div class="form-group">
                             <label>Invima</label>
-                            <input type="text" value="${Insumo.getInsumoInvima()}" name="txtInsumoInvima" class="form-control">
+                            <input type="text" value="<c:if test="${Insumo.getInsumoInvima()==null}">N/A</c:if>
+                                    name="txtInsumoInvima" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Lote</label>
-                            <input type="text" value="${Insumo.getInsumoLote()}" name="txtInsumoLote" class="form-control">
+                            <input type="text" value="<c:if test="${Insumo.getInsumoLote()==null}">N/A</c:if>
+                               name="txtInsumoLote" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Vencimiento</label>

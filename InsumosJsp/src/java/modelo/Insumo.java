@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Insumo {
 
-    private int codigoInsumo;
+    private String codigoInsumo;
     private String insumoNombre;
     private int insumoMarcaFK;
     private int insumoRiesgoFK;
@@ -33,7 +33,7 @@ public class Insumo {
     public Insumo() {
     }
 
-    public Insumo(int codigoInsumo, String insumoNombre, int insumoMarcaFK, int insumoRiesgoFK, int insumoPresentacionFK, String insumoObservacion, int insumoExistencia, int insumoTemperaturaFK, String insumoRuta, String insumoInvima, String insumoLote, Date insumoVence, String insumoFichaTecnica) {
+    public Insumo(String codigoInsumo, String insumoNombre, int insumoMarcaFK, int insumoRiesgoFK, int insumoPresentacionFK, String insumoObservacion, int insumoExistencia, int insumoTemperaturaFK, String insumoRuta, String insumoInvima, String insumoLote, Date insumoVence, String insumoFichaTecnica) {
         this.codigoInsumo = codigoInsumo;
         this.insumoNombre = insumoNombre;
         this.insumoMarcaFK = insumoMarcaFK;
@@ -49,11 +49,11 @@ public class Insumo {
         this.insumoFichaTecnica = insumoFichaTecnica;
     }
 
-    public int getCodigoInsumo() {
+    public String getCodigoInsumo() {
         return codigoInsumo;
     }
 
-    public void setCodigoInsumo(int codigoInsumo) {
+    public void setCodigoInsumo(String codigoInsumo) {
         this.codigoInsumo = codigoInsumo;
     }
 

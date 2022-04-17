@@ -35,7 +35,7 @@ public class InsumoDao {
             while (rs.next()) {
                 Insumo in = new Insumo();
                 // in.setId(rs.getInt(1));
-                in.setCodigoInsumo(rs.getInt(1));
+                in.setCodigoInsumo(rs.getString(1));
                 in.setInsumoNombre(rs.getString(2));
                 in.setInsumoMarcaFK(rs.getInt(3));
                 in.setInsumoRiesgoFK(rs.getInt(4));
@@ -125,7 +125,7 @@ public class InsumoDao {
             ps.setString(10, in.getInsumoLote());
             ps.setDate(11, (Date) in.getInsumoVence());
             ps.setString(12, in.getInsumoFichaTecnica());
-            ps.setInt(13, in.getCodigoInsumo());
+            ps.setString(13, in.getCodigoInsumo());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());

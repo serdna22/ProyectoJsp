@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import modelo.Marca;
 import modelo.MarcaDao;
@@ -38,11 +39,13 @@ public class InsumoControl extends HttpServlet {
     TemperaturaDao temDao = new TemperaturaDao();
     Temperatura tem = new Temperatura();
     String idEleme;
+    SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+        
         if (menu.equals("Insumo")) {
             switch (accion) {
                 case "Listar":
@@ -60,21 +63,37 @@ public class InsumoControl extends HttpServlet {
                     
                     break;
                 case "Agregar":
-//                    String idInsumo = request.getParameter("txtIdInsumo");
-//                    String InsumoNombre = request.getParameter("txtInsumoNombre");
-//                    String InsumoPresentacion = request.getParameter("txtInsumoPresentacion");
-//                    String InsumoMarca = request.getParameter("txtInsumoMarca");
-//                    String InsumoCantidad = request.getParameter("txtInsumoCantidad");
-//                    String InsumoRuta = request.getParameter("txtInsumoRuta");
-//                    ins.setIdInsumo(idInsumo);
-//                    ins.setInsumoNombre(InsumoNombre);
-//                    ins.setInsumoPresentacion(Integer.parseInt(InsumoPresentacion));
-//                    ins.setInsumoMarca(Integer.parseInt(InsumoMarca));
-//                    ins.setInsumoCantidad(Integer.parseInt(InsumoCantidad));
-//                    ins.setInsumoRuta(InsumoRuta);
-//                    eleDao.agregar(ele);
-//                    request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
+                    String CodigoInsumo = request.getParameter("txtCodigoInsumo");
+                    String InsumoNombre = request.getParameter("txtInsumoNombre");
+                    String InsumoMarcaFK = request.getParameter("txtInsumoMarcaFK");
+                    String InsumoRiesgoFK = request.getParameter("txtInsumoRiesgoFK");
+                    String InsumoPresentacionFK = request.getParameter("txtInsumoPresentacionFK");
+                    String InsumoObservacion = request.getParameter("txtInsumoObservacion");
+                    String InsumoExistencia = request.getParameter("txtInsumoExistencia");
+                    String InsumoTemperaturaFK = request.getParameter("txtInsumoTemperaturaFK");
+                    String InsumoRuta = request.getParameter("txtInsumoRuta");
+                    String InsumoInvima = request.getParameter("txtInsumoInvima");
+                    String InsumoLote = request.getParameter("txtInsumoLote");
+                    String InsumoVence  = request.getParameter("txtInsumoVence");
+                    String InsumoFichaTecnica = request.getParameter("txtInsumoFichaTecnica");
+                    ins.setCodigoInsumo(CodigoInsumo);
+                    ins.setInsumoNombre(InsumoNombre);
+                    ins.setInsumoMarcaFK(Integer.parseInt(InsumoMarcaFK));
+                    ins.setInsumoRiesgoFK(Integer.parseInt(InsumoRiesgoFK));
+                    ins.setInsumoPresentacionFK(Integer.parseInt(InsumoPresentacionFK));
+                    ins.setInsumoObservacion(InsumoObservacion);
+                    ins.setInsumoExistencia(Integer.parseInt(InsumoExistencia));
+                    ins.setInsumoTemperaturaFK(Integer.parseInt(InsumoTemperaturaFK));
+                    ins.setInsumoRuta(InsumoRuta);
+                    ins.setInsumoInvima(InsumoInvima);
+                    ins.setInsumoLote(InsumoLote);
+                    Date fecha = formato.parse("2021/06/20 18:15:03");
+                    ins.setInsumoVence(FE);
+                    ins.setInsumoFichaTecnica(InsumoFichaTecnica);
+                    eleDao.agregar(ins);
+                    request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;
+
                 case "Editar":
 //                    idEleme = request.getParameter("idEd");
 //                    Insumo e = eleDao.listarId(idEleme);
