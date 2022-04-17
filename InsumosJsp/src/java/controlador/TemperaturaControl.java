@@ -65,7 +65,7 @@ public class TemperaturaControl extends HttpServlet {
                 default:
                     throw new AssertionError();
             }
-            request.getRequestDispatcher("Temperatura1.jsp").forward(request, response);
+            request.getRequestDispatcher("Temperatura.jsp").forward(request, response);
         }
 
     }
