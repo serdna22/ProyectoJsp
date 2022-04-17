@@ -32,10 +32,6 @@
                                 <li><a class="dropdown-item" href="#" target="myFrame">Marca</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Riesgo</a></li>
                                 <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Principio Activo</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Forma Farmaceutica</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Concentracion</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Unidad de Medidada</a></li>
                                 <li><a class="dropdown-item" href="TemperaturaControl?menu=Temperatura&accion=Listar" target="myFrame">Temperatura</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Alerta</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">StockExcel</a></li>
