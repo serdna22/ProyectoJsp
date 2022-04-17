@@ -79,7 +79,6 @@ public class CategoriaDao {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            // ps.setInt(1, ca.getIdCategoria());
             ps.setString(1, ca.getCategoriaNombre());
             ps.setInt(2, ca.getIdCategoria());
             ps.executeUpdate();
