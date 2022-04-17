@@ -25,7 +25,8 @@ public class UsuarioDao {
 
     public Usuario login(String usuario, String password) {
         Usuario em = new Usuario();
-        String sql = "select usuarioDocumento,usuarioNombre,usuarioPrivilegio,email from usuarios where email =? and password=?";
+        String sql = "select usuarioDocumento,usuarioNombre,usuarioPrivilegio,email "
+                + "from usuarios where email =? and password=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -66,7 +67,6 @@ public class UsuarioDao {
                 em.setUsuarioPrivilegio(rs.getInt(7));
                 em.setTipoDocNombre(rs.getString(8));
                 lista.add(em);
-
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -98,7 +98,7 @@ public class UsuarioDao {
         Usuario emp = new Usuario();
                 String sql = "select usuarioTipoIdenFK,usuarioDocumento,usuarioNombre,email,password,usuarioCelular,"
                 + "usuarioPrivilegio,tipoDocNombre from usuarios inner join tipodocumento "
-                + "on tipodocumento.idTipoDoc=usuarios.usuarioTipoIdenFK where usuarioDocumento=" + id;
+                + "on tipodocumento.idTipoDoc=usuarios.usuarioTipoIdenFK where usuarioDocumento='" + id + "'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -119,9 +119,9 @@ public class UsuarioDao {
         return emp;
     }
 
-    public int actualizar(Usuario em) {
+    public int actualizar(Usuario em,String id) {
         String sql = "update usuarios set usuarioTipoIdenFK=?, usuarioDocumento=?, usuarioNombre=?,"
-                + " email=?, password=?, usuarioCelular=?, usuarioPrivilegio=? where usuarioDocumento=? ";
+                + " email=?, password=?, usuarioCelular=?, usuarioPrivilegio=? where usuarioDocumento='"+id+"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -132,7 +132,6 @@ public class UsuarioDao {
             ps.setString(5, em.getPassword());
             ps.setString(6, em.getUsuarioCelular());
             ps.setInt(7, em.getUsuarioPrivilegio());
-            ps.setString(8, em.getUsuarioDocumento());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -141,7 +140,7 @@ public class UsuarioDao {
     }
 
     public void eliminar(String id) {
-        String sql = "delete from usuarios where usuarioDocumento=" + id;
+        String sql = "delete from usuarios where usuarioDocumento='" + id + "'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

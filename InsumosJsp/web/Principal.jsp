@@ -24,12 +24,11 @@
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="InsumoControl?menu=Insumo&accion=Listar" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Insumos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#" target="myFrame">Insumo</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Medicamento</a></li>
+                                <li><a class="dropdown-item" href="InsumoControl?menu=Insumo&accion=Listar" target="myFrame">Insumo</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Marca</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Riesgo</a></li>
                                 <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
@@ -48,7 +47,7 @@
                                 Elementos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#" target="myFrame">Elementos</a></li>
+                                <li><a class="dropdown-item" href="ElementoControl?menu=Elemento&accion=Listar" target="myFrame">Elementos</a></li>
                                 <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
                                 <li><a class="dropdown-item" href="CategoriaControl?menu=Categoria&accion=Listar" target="myFrame">Categorias</a></li>
                             </ul>

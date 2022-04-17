@@ -43,24 +43,4 @@ public class TipoDocumentoDao {
         return lista;
     }
 
-    public TipoDocumento nombreTipoD(String usuarioDocumento) {
-        TipoDocumento tip = new TipoDocumento();
-        List<TipoDocumento> listaUno = new ArrayList<>();
-        String sql = "select idTipoDoc,tipoDocNombre from usuarios inner join tipodocumento "
-                + "on usuarios.usuarioTipoIdenFK=tipodocumento.idTipoDoc where usuarioDocumento=" + usuarioDocumento;
-        try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                tip.setIdTipoDoc(rs.getInt(1));
-                tip.setTipoDocNombre(rs.getString(2));
-                listaUno.add(tip);
-            }
-        } catch (Exception e) {
-            System.err.println(e.toString());
-        }
-        return tip;
-    }
-
 }

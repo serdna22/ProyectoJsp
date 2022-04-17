@@ -10,10 +10,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import modelo.TipoDocumento;
-import modelo.TipoDocumentoDao;
 import modelo.Usuario;
 import modelo.UsuarioDao;
+import modelo.TipoDocumento;
+import modelo.TipoDocumentoDao;
 
 /**
  *
@@ -21,11 +21,11 @@ import modelo.UsuarioDao;
  */
 public class ControladorA extends HttpServlet {
 
-    UsuarioDao edao = new UsuarioDao();
+    UsuarioDao eDao = new UsuarioDao();
     Usuario em = new Usuario();
-    TipoDocumentoDao tipdao = new TipoDocumentoDao();
+    TipoDocumentoDao tipDao = new TipoDocumentoDao();
     TipoDocumento tip = new TipoDocumento();
-    String idUsuario;
+    String idUs;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -38,9 +38,9 @@ public class ControladorA extends HttpServlet {
         if (menu.equals("Usuario")) {
             switch (accion) {
                 case "Listar":
-                    List lista = edao.listar();
-                    List listaTipo = tipdao.listar();
-                    request.setAttribute("usuariosLista", lista);
+                    List lista = eDao.listar();
+                    List listaTipo = tipDao.listar();
+                    request.setAttribute("usuarioLista", lista);
                     request.setAttribute("tipoDocumentoLista", listaTipo);
                     break;
                 case "Agregar":
@@ -58,13 +58,13 @@ public class ControladorA extends HttpServlet {
                     em.setPassword(contraseña);
                     em.setUsuarioCelular(celular);
                     em.setUsuarioPrivilegio(Integer.parseInt(privilegio));
-                    edao.agregar(em);
+                    eDao.agregar(em);
                     request.getRequestDispatcher("ControladorA?menu=Usuario&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    idUsuario = request.getParameter("id");
-                    Usuario e = edao.listarId(idUsuario);
-                    request.setAttribute("usuario", e);
+                    idUs = request.getParameter("idEd");
+                    Usuario e = eDao.listarId(idUs);
+                    request.setAttribute("Usuario", e);
                     request.getRequestDispatcher("ControladorA?menu=Usuario&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
@@ -82,13 +82,12 @@ public class ControladorA extends HttpServlet {
                     em.setPassword(contraseña2);
                     em.setUsuarioCelular(celular2);
                     em.setUsuarioPrivilegio(Integer.parseInt(privilegio2));
-                    em.setUsuarioDocumento(idUsuario);
-                    edao.actualizar(em);
+                    eDao.actualizar(em,idUs);
                     request.getRequestDispatcher("ControladorA?menu=Usuario&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    idUsuario = request.getParameter("id");
-                    edao.eliminar(idUsuario);
+                    idUs = request.getParameter("idEl");
+                    eDao.eliminar(idUs);
                     request.getRequestDispatcher("ControladorA?menu=Usuario&accion=Listar").forward(request, response);
                     break;
                 default:

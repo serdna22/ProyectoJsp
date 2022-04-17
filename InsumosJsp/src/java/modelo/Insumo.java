@@ -25,6 +25,10 @@ public class Insumo {
     private String insumoLote;
     private Date insumoVence;
     private String insumoFichaTecnica;
+    private String marcaNombre;
+    private String riesgoClasificacion;
+    private String presentacionNombre;
+    private String temperaturaNombre;
 
     public Insumo() {
     }
@@ -147,6 +151,38 @@ public class Insumo {
 
     public void setInsumoFichaTecnica(String insumoFichaTecnica) {
         this.insumoFichaTecnica = insumoFichaTecnica;
+    }
+
+    public String getMarcaNombre() {
+        return marcaNombre;
+    }
+
+    public void setMarcaNombre(String marcaNombre) {
+        this.marcaNombre = marcaNombre;
+    }
+
+    public String getRiesgoClasificacion() {
+        return riesgoClasificacion;
+    }
+
+    public void setRiesgoClasificacion(String riesgoClasificacion) {
+        this.riesgoClasificacion = riesgoClasificacion;
+    }
+
+    public String getPresentacionNombre() {
+        return presentacionNombre;
+    }
+
+    public void setPresentacionNombre(String presentacionNombre) {
+        this.presentacionNombre = presentacionNombre;
+    }
+
+    public String getTemperaturaNombre() {
+        return temperaturaNombre;
+    }
+
+    public void setTemperaturaNombre(String temperaturaNombre) {
+        this.temperaturaNombre = temperaturaNombre;
     }
 
 }

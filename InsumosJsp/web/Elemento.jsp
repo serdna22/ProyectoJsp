@@ -17,44 +17,41 @@
         <div class="d-flex">
             <div class="card col-sm-3">
                 <div class="card-body"> 
-                    <form action="ControladorA?menu=Elemento" method="POST">
-                        <label>Tipo Documento</label>
-                        <select class="form-control form-select" name="txtTipoD">
-                            <option value="${Elemento.getElementoTipoIdenFK()}">${Elemento.getTipoDocNombre()}</option>
-                            <c:forEach var="tip" items="${tipoDocumentoLista}">
-                                <option value="${tip.getIdTipoDoc()}">${tip.getTipoDocNombre()}</option>
-                            </c:forEach>
-                        </select>
-                        <br>
+                    <form action="ElementoControl?menu=Elemento" method="POST">
                         <div class="form-group">
-                            <label>Documento</label>
-                            <input type="number" value="${Elemento.getElementoDocumento()}" name="txtDocumento" class="form-control">
+                            <label>ID</label>
+                            <input type="text" value="${Elemento.getIdElemento()}" name="txtIdElemento" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Nombres</label>
-                            <input type="text" value="${Elemento.getElementoNombre()}" name="txtNombres" class="form-control">
+                            <label>Nombre</label>
+                            <input type="text" value="${Elemento.getElementoNombre()}" name="txtElementoNombre" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Correo</label>
-                            <input type="text" value="${Elemento.getEmail()}" name="txtCorreo" class="form-control">
+                            <label>Presentacion</label>
+                            <select class="form-control form-select" name="txtElementoPresentacion">
+                                <option value="${Elemento.getElementoPresentacion()}">${Elemento.getPresentacionNombre()}</option>
+                                <c:forEach var="pre" items="${PresentacionLista}">
+                                    <option value="${pre.getIdPresentacion()}">${pre.getPresentacionNombre()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" value="${Elemento.getPassword()}" name="txtContraseña" class="form-control">
+                            <label>Categoria</label>
+                            <select class="form-control form-select" name="txtElementoCategoria">
+                                <option value="${Elemento.getElementoCategoria()}">${Elemento.getCategoriaNombre()}</option>
+                                <c:forEach var="ele" items="${CategoriaLista}">
+                                    <option value="${ele.getIdCategoria()}">${ele.getCategoriaNombre()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label>Celular</label>
-                            <input type="number" value="${Elemento.getElementoCelular()}" name="txtCelular" class="form-control">
+                            <label>Cantidad</label>
+                            <input type="number" value="${Elemento.getElementoCantidad()}" name="txtElementoCantidad" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Privilegio</label>
-                            <select class="form-control form-select" name="txtPrivilegio">
-                                <option value="${Elemento.getElementoPrivilegio()}">Seleccionar</option>
-                                <option value="1">Administrador</option>
-                                <option value="2">Elemento</option>
-                            </select>                
+                            <label>Imagen</label>
+                            <input type="text" value="${Elemento.getElementoRuta()}" name="txtElementoRuta" class="form-control">
                         </div>
-                        <br>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
@@ -65,38 +62,31 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>TIPO DOCUMENTO</th>
-                            <th>DOCUMENTO</th>
-                            <th>NOMBRES</th>
-                            <th>EMAIL</th>
-                            <th>CONTRASEÑA</th>
-                            <th>CELULAR</th>
-                            <th>PRIVILEGIO</th>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>PRESENTACION</th>
+                            <th>CATEGORIA</th>
+                            <th>CANTIDAD</th>
+                            <th>IMAGEM</th>
                             <th></th>
                             <th></th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="em" items="${ElementosLista}">
+                        <c:forEach var="ele" items="${ElementoLista}">
                             <tr>
-                                <td>${em.getTipoDocNombre()}</td>
-                                <td>${em.getElementoDocumento()}</td>
-                                <td>${em.getElementoNombre()}</td>
-                                <td>${em.getEmail()}</td>
-                                <td>${em.getPassword()}</td>
-                                <td>${em.getElementoCelular()}</td>
-                                <td> <c:if test="${em.getElementoPrivilegio()==1}">
-                                        Administrador
-                                    </c:if>
-                                    <c:if test="${em.getElementoPrivilegio()==2}">
-                                        Elemento
-                                    </c:if></td> 
-                                <td>
-                                    <a class="btn btn-warning" href="ControladorA?menu=Elemento&accion=Editar&id=${em.getElementoDocumento()}">Editar</a>
+                                <td>${ele.getIdElemento()}</td>
+                                <td>${ele.getElementoNombre()}</td>
+                                <td>${ele.getPresentacionNombre()}</td>
+                                <td>${ele.getCategoriaNombre()}</td>
+                                <td>${ele.getElementoCantidad()}</td>
+                                <td>${ele.getElementoRuta()}</td>
+                                <td>   
+                                    <a class="btn btn-warning" href="ElementoControl?menu=Elemento&accion=Editar&idEd=${ele.getIdElemento()}">Editar</a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" href="ControladorA?menu=Elemento&accion=Eliminar&id=${em.getElementoDocumento()}">Eliminar</a>
+                                    <a class="btn btn-danger" href="ElementoControl?menu=Elemento&accion=Eliminar&idEl=${ele.getIdElemento()}">Eliminar</a>
                                 </td>
                             </tr> 
                         </c:forEach>
@@ -107,5 +97,6 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     </body>
 </html>

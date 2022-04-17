@@ -10,17 +10,19 @@ package modelo;
  */
 public class Elemento {
 
-    private int idElemento;
+    private String idElemento;
     private String elementoNombre;
     private int elementoPresentacion;
     private int elementoCategoria;
     private int elementoCantidad;
     private String elementoRuta;
+    private String presentacionNombre;
+    private String categoriaNombre;
 
     public Elemento() {
     }
 
-    public Elemento(int idElemento, String elementoNombre, int elementoPresentacion, int elementoCategoria, int elementoCantidad, String elementoRuta) {
+    public Elemento(String idElemento, String elementoNombre, int elementoPresentacion, int elementoCategoria, int elementoCantidad, String elementoRuta) {
         this.idElemento = idElemento;
         this.elementoNombre = elementoNombre;
         this.elementoPresentacion = elementoPresentacion;
@@ -29,11 +31,11 @@ public class Elemento {
         this.elementoRuta = elementoRuta;
     }
 
-    public int getIdElemento() {
+    public String getIdElemento() {
         return idElemento;
     }
 
-    public void setIdElemento(int idElemento) {
+    public void setIdElemento(String idElemento) {
         this.idElemento = idElemento;
     }
 
@@ -75,6 +77,22 @@ public class Elemento {
 
     public void setElementoRuta(String elementoRuta) {
         this.elementoRuta = elementoRuta;
+    }
+
+    public String getPresentacionNombre() {
+        return presentacionNombre;
+    }
+
+    public void setPresentacionNombre(String presentacionNombre) {
+        this.presentacionNombre = presentacionNombre;
+    }
+
+    public String getCategoriaNombre() {
+        return categoriaNombre;
+    }
+
+    public void setCategoriaNombre(String categoriaNombre) {
+        this.categoriaNombre = categoriaNombre;
     }
 
 }
