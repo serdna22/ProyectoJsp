@@ -16,6 +16,10 @@
         <servlet-name>PresentacionControl</servlet-name>
         <servlet-class>controlador.PresentacionControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TemperaturaControl</servlet-name>
+        <servlet-class>controlador.TemperaturaControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +35,10 @@
         <servlet-mapping>
         <servlet-name>PresentacionControl</servlet-name>
         <url-pattern>/PresentacionControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TemperaturaControl</servlet-name>
+        <url-pattern>/TemperaturaControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

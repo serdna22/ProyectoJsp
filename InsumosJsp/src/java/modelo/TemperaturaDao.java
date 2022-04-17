@@ -65,6 +65,7 @@ public class TemperaturaDao {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                tem.setIdTemperatura(rs.getInt(1));
                 tem.setTemperaturaNombre(rs.getString(2));
             }
         } catch (Exception e) {
