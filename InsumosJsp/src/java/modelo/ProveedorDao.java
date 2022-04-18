@@ -39,7 +39,7 @@ public class ProveedorDao {
                 prov.setProveedorDireccion(rs.getString(3));
                 prov.setProveedorTelefono(rs.getString(4));
                 prov.setProveedorCelular(rs.getString(5));
-                prov.setProveedorFecha(rs.getDate(6));
+                prov.setProveedorFecha(rs.getString(6));
                 prov.setProveedorCiudad(rs.getString(7));
                 prov.setProveedorCorreo(rs.getString(8));
                 lista.add(prov);
@@ -60,7 +60,7 @@ public class ProveedorDao {
             ps.setString(2, prov.getProveedorDireccion());
             ps.setString(3, prov.getProveedorTelefono());
             ps.setString(4, prov.getProveedorCelular());
-            ps.setDate(5, (Date) prov.getProveedorFecha());
+            ps.setString(5, prov.getProveedorFecha());
             ps.setString(6, prov.getProveedorCiudad());
             ps.setString(7, prov.getProveedorCorreo());
             ps.executeUpdate();
@@ -82,7 +82,7 @@ public class ProveedorDao {
                 prov.setProveedorDireccion(rs.getString(3));
                 prov.setProveedorTelefono(rs.getString(4));
                 prov.setProveedorCelular(rs.getString(5));
-                prov.setProveedorFecha(rs.getDate(6));
+                prov.setProveedorFecha(rs.getString(6));
                 prov.setProveedorCiudad(rs.getString(7));
                 prov.setProveedorCorreo(rs.getString(8));
             }
@@ -101,7 +101,7 @@ public class ProveedorDao {
             ps.setString(2, prov.getProveedorDireccion());
             ps.setString(3, prov.getProveedorTelefono());
             ps.setString(4, prov.getProveedorCelular());
-            ps.setDate(5, (Date) prov.getProveedorFecha());
+            ps.setString(5, prov.getProveedorFecha());
             ps.setString(6, prov.getProveedorCiudad());
             ps.setString(7, prov.getProveedorCorreo());
             ps.setString(8, prov.getNitProveedor());
@@ -121,6 +121,10 @@ public class ProveedorDao {
         } catch (Exception e) {
             System.err.println(e.toString());
         }
+    }
+
+    public Proveedor listarId(String idProv) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

@@ -17,14 +17,14 @@ public class Proveedor {
     private String proveedorDireccion;
     private String proveedorTelefono;
     private String proveedorCelular;
-    private Date proveedorFecha;
+    private String proveedorFecha;
     private String proveedorCiudad;
     private String proveedorCorreo;
 
     public Proveedor() {
     }
 
-    public Proveedor(String nitProveedor, String proveedorNombre, String proveedorDireccion, String proveedorTelefono, String proveedorCelular, Date proveedorFecha, String proveedorCiudad, String proveedorCorreo) {
+    public Proveedor(String nitProveedor, String proveedorNombre, String proveedorDireccion, String proveedorTelefono, String proveedorCelular, String proveedorFecha, String proveedorCiudad, String proveedorCorreo) {
         this.nitProveedor = nitProveedor;
         this.proveedorNombre = proveedorNombre;
         this.proveedorDireccion = proveedorDireccion;
@@ -75,11 +75,11 @@ public class Proveedor {
         this.proveedorCelular = proveedorCelular;
     }
 
-    public Date getProveedorFecha() {
+    public String getProveedorFecha() {
         return proveedorFecha;
     }
 
-    public void setProveedorFecha(Date proveedorFecha) {
+    public void setProveedorFecha(String proveedorFecha) {
         this.proveedorFecha = proveedorFecha;
     }
 

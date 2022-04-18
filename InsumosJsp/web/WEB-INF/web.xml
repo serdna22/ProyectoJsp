@@ -44,6 +44,14 @@
         <servlet-name>ProcedimientoControl</servlet-name>
         <servlet-class>controlador.ProcedimientoControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TipoDocumentoControl</servlet-name>
+        <servlet-class>controlador.TipoDocumentoControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProveedorControl</servlet-name>
+        <servlet-class>controlador.ProveedorControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>ProcedimientoControl</servlet-name>
         <url-pattern>/ProcedimientoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoDocumentoControl</servlet-name>
+        <url-pattern>/TipoDocumentoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProveedorControl</servlet-name>
+        <url-pattern>/ProveedorControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
