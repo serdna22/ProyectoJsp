@@ -10,57 +10,57 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import modelo.Categoria;
-import modelo.CategoriaDao;
+import modelo.Procedimiento;
+import modelo.ProcedimientoDao;
 
 /**
  *
  * @author serdn
  */
-public class CategoriaControl extends HttpServlet {
+public class ProcedimientoControl extends HttpServlet {
 
-    CategoriaDao cadao = new CategoriaDao();
-    Categoria ca = new Categoria();
-    String idCate;
+    ProcedimientoDao prodao = new ProcedimientoDao();
+    Procedimiento pro = new Procedimiento();
+    String idPro;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        if (menu.equals("Categoria")) {
+        if (menu.equals("Procedimiento")) {
             switch (accion) {
                 case "Listar":
-                    List lista = cadao.listar();
-                    request.setAttribute("categoriaLista", lista);
+                    List lista = prodao.listar();
+                    request.setAttribute("procedimientoLista", lista);
                     break;
                 case "Agregar":
-                    String categoriaNombre = request.getParameter("txtCategoriaNombre");
-                    ca.setCategoriaNombre(categoriaNombre);
-                    cadao.agregar(ca);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    String procedimientoNombre = request.getParameter("txtProcedimientoNombre");
+                    pro.setProcedimientoNombre(procedimientoNombre);
+                    prodao.agregar(pro);
+                    request.getRequestDispatcher("ProcedimientoControl?menu=Procedimiento&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    idCate = request.getParameter("idEd");
-                    Categoria cate = cadao.listarId(Integer.parseInt(idCate));
-                    request.setAttribute("categoriaEditar", cate);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    idPro = request.getParameter("idEd");
+                    Procedimiento proce = prodao.listarId(Integer.parseInt(idPro));
+                    request.setAttribute("procedimientoEditar", proce);
+                    request.getRequestDispatcher("ProcedimientoControl?menu=Procedimiento&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String categoriaNombre2 = request.getParameter("txtCategoriaNombre");
-                    ca.setCategoriaNombre(categoriaNombre2);
-                    ca.setIdCategoria(Integer.parseInt(idCate));
-                    cadao.actualizar(ca);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    String procedimientoNombre2 = request.getParameter("txtProcedimientoNombre");
+                    pro.setProcedimientoNombre(procedimientoNombre2);
+                    pro.setIdProcedimiento(Integer.parseInt(idPro));
+                    prodao.actualizar(pro);
+                    request.getRequestDispatcher("ProcedimientoControl?menu=Procedimiento&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    idCate = request.getParameter("idEli");
-                    cadao.eliminar(Integer.parseInt(idCate));
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    idPro = request.getParameter("idEli");
+                    prodao.eliminar(Integer.parseInt(idPro));
+                    request.getRequestDispatcher("ProcedimientoControl?menu=Procedimiento&accion=Listar").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();
             }
-            request.getRequestDispatcher("Categoria.jsp").forward(request, response);
+            request.getRequestDispatcher("Procedimiento.jsp").forward(request, response);
         }
 
     }

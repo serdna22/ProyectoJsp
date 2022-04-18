@@ -7,21 +7,23 @@ package config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/**registro
+/**
+ * registro
  *
  * @author serdn
  */
 public class Conexion {
+
     Connection con;
-    String url= "jdbc:mysql://localhost:3306/insumos";
-    String user ="root";
-//    String pass = "david";
-    String pass = "1234";
-    
-    public Connection Conexion(){
+    String url = "jdbc:mysql://localhost:3306/insumos";
+    String user = "root";
+    String pass = "david";
+    //String pass = "1234";
+
+    public Connection Conexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection(url,user,pass);
+            con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
             System.err.println(e.toString());
         }

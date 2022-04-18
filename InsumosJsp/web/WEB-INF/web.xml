@@ -36,6 +36,14 @@
         <servlet-name>InsumoControl</servlet-name>
         <servlet-class>controlador.InsumoControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultorioControl</servlet-name>
+        <servlet-class>controlador.ConsultorioControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcedimientoControl</servlet-name>
+        <servlet-class>controlador.ProcedimientoControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>InsumoControl</servlet-name>
         <url-pattern>/InsumoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultorioControl</servlet-name>
+        <url-pattern>/ConsultorioControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcedimientoControl</servlet-name>
+        <url-pattern>/ProcedimientoControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
