@@ -14,6 +14,7 @@
         <title>Insumo</title>
     </head>
     <body>
+        <h1>Insumos</h1>
         <div class="d-flex">
             <div class="card col-sm-2">
                 <div class="card-body"> 
