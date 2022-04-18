@@ -32,8 +32,6 @@
                                 <li><a class="dropdown-item" href="MarcaControl?menu=Marca&accion=Listar" target="myFrame">Marca</a></li>
                                 <li><a class="dropdown-item" href="RiesgoControl?menu=Riesgo&accion=Listar" target="myFrame">Riesgo</a></li>
                                 <li><a class="dropdown-item" href="InsumoControl?menu=Insumo&accion=Listar" target="myFrame">Insumo</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Marca</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Riesgo</a></li>
                                 <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
                                 <li><a class="dropdown-item" href="TemperaturaControl?menu=Temperatura&accion=Listar" target="myFrame">Temperatura</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Alerta</a></li>
@@ -57,16 +55,22 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="ControladorA?menu=Usuario&accion=Listar" target="myFrame">Usuarios</a></li>
+                                <li><a class="dropdown-item" href="TipoDocumento?menu=TipoDocumento&accion=Listar" target="myFrame">Usuarios</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Proveedores</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Consultorios</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Procedimientos</a></li>
+                                <li><a class="dropdown-item" href="ConsultorioControl?menu=Consultorio&accion=Listar" target="myFrame">Consultorios</a></li>
+                                <li><a class="dropdown-item" href="ProcedimientoControl?menu=Procedimiento&accion=Listar" target="myFrame">Procedimientos</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" target="myFrame">Factura</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" target="myFrame">Salida</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Salida
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#" target="myFrame">Detalle Salida</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

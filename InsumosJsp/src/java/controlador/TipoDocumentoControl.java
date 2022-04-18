@@ -10,57 +10,57 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import modelo.Categoria;
-import modelo.CategoriaDao;
+import modelo.TipoDocumento;
+import modelo.TipoDocumentoDao;
 
 /**
  *
  * @author serdn
  */
-public class CategoriaControl extends HttpServlet {
+public class TipoDocumentoControl extends HttpServlet {
 
-    CategoriaDao cadao = new CategoriaDao();
-    Categoria ca = new Categoria();
-    String idCate;
+    TipoDocumentoDao tipodocdao = new TipoDocumentoDao();
+    TipoDocumento tipodoc = new TipoDocumento();
+    String idTipodoc;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        if (menu.equals("Categoria")) {
+        if (menu.equals("TipoDocumento")) {
             switch (accion) {
                 case "Listar":
-                    List lista = cadao.listar();
-                    request.setAttribute("categoriaLista", lista);
+                    List lista = tipodocdao.listar();
+                    request.setAttribute("tipodocumentoLista", lista);
                     break;
-                case "Agregar":
-                    String categoriaNombre = request.getParameter("txtCategoriaNombre");
-                    ca.setCategoriaNombre(categoriaNombre);
-                    cadao.agregar(ca);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                /*case "Agregar":
+                    String tipodocNombre = request.getParameter("txtTipoDocNombre");
+                    tipodoc.setTipoDocNombre(tipodocNombre);
+                    tipodocdao.agregar(tipodoc);
+                    request.getRequestDispatcher("TipoDocumentoControl?menu=TipoDocumento&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    idCate = request.getParameter("idEd");
-                    Categoria cate = cadao.listarId(Integer.parseInt(idCate));
-                    request.setAttribute("categoriaEditar", cate);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    idTipodoc = request.getParameter("idEd");
+                    TipoDocumento tipodo = tipodocdao.listarId(Integer.parseInt(idTipodoc));
+                    request.setAttribute("tipodocumentoEditar", tipodo);
+                    request.getRequestDispatcher("TipoDocumentoControl?menu=TipoDocumento&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String categoriaNombre2 = request.getParameter("txtCategoriaNombre");
-                    ca.setCategoriaNombre(categoriaNombre2);
-                    ca.setIdCategoria(Integer.parseInt(idCate));
-                    cadao.actualizar(ca);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    String tipoDocNombre2 = request.getParameter("txtTipoDocNombre");
+                    tipodoc.setTipoDocNombre(tipoDocNombre2);
+                    tipodoc.setIdTipoDoc(Integer.parseInt(idTipodoc));
+                    tipodocdao.actualizar(tipodoc);
+                    request.getRequestDispatcher("TipoDocumentoControl?menu=TipoDocumento&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    idCate = request.getParameter("idEli");
-                    cadao.eliminar(Integer.parseInt(idCate));
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
-                    break;
+                    idTipodoc = request.getParameter("idEli");
+                    tipodocdao.eliminar(Integer.parseInt(idTipodoc));
+                    request.getRequestDispatcher("TipoDocumentoControl?menu=TipoDocumento&accion=Listar").forward(request, response);
+                    break;*/
                 default:
                     throw new AssertionError();
             }
-            request.getRequestDispatcher("Categoria.jsp").forward(request, response);
+            request.getRequestDispatcher("TipoDocumento.jsp").forward(request, response);
         }
 
     }

@@ -10,57 +10,57 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import modelo.Categoria;
-import modelo.CategoriaDao;
+import modelo.Consultorio;
+import modelo.ConsultorioDao;
 
 /**
  *
  * @author serdn
  */
-public class CategoriaControl extends HttpServlet {
+public class ConsultorioControl extends HttpServlet {
 
-    CategoriaDao cadao = new CategoriaDao();
-    Categoria ca = new Categoria();
-    String idCate;
+    ConsultorioDao consdao = new ConsultorioDao();
+    Consultorio cons = new Consultorio();
+    String idCons;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        if (menu.equals("Categoria")) {
+        if (menu.equals("Consultorio")) {
             switch (accion) {
                 case "Listar":
-                    List lista = cadao.listar();
-                    request.setAttribute("categoriaLista", lista);
+                    List lista = consdao.listar();
+                    request.setAttribute("consultorioLista", lista);
                     break;
                 case "Agregar":
-                    String categoriaNombre = request.getParameter("txtCategoriaNombre");
-                    ca.setCategoriaNombre(categoriaNombre);
-                    cadao.agregar(ca);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    String consultorioNombre = request.getParameter("txtConsultorioNombre");
+                    cons.setConsultorioNombre(consultorioNombre);
+                    consdao.agregar(cons);
+                    request.getRequestDispatcher("ConsultorioControl?menu=Consultorio&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    idCate = request.getParameter("idEd");
-                    Categoria cate = cadao.listarId(Integer.parseInt(idCate));
-                    request.setAttribute("categoriaEditar", cate);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    idCons = request.getParameter("idEd");
+                    Consultorio consu = consdao.listarId(Integer.parseInt(idCons));
+                    request.setAttribute("consultorioEditar", consu);
+                    request.getRequestDispatcher("ConsultorioControl?menu=Consultorio&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String categoriaNombre2 = request.getParameter("txtCategoriaNombre");
-                    ca.setCategoriaNombre(categoriaNombre2);
-                    ca.setIdCategoria(Integer.parseInt(idCate));
-                    cadao.actualizar(ca);
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    String consultorioNombre2 = request.getParameter("txtConsultorioNombre");
+                    cons.setConsultorioNombre(consultorioNombre2);
+                    cons.setIdConsultorio(Integer.parseInt(idCons));
+                    consdao.actualizar(cons);
+                    request.getRequestDispatcher("ConsultorioControl?menu=Consultorio&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    idCate = request.getParameter("idEli");
-                    cadao.eliminar(Integer.parseInt(idCate));
-                    request.getRequestDispatcher("CategoriaControl?menu=Categoria&accion=Listar").forward(request, response);
+                    idCons = request.getParameter("idEli");
+                    consdao.eliminar(Integer.parseInt(idCons));
+                    request.getRequestDispatcher("ConsultorioControl?menu=Consultorio&accion=Listar").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();
             }
-            request.getRequestDispatcher("Categoria.jsp").forward(request, response);
+            request.getRequestDispatcher("Consultorio.jsp").forward(request, response);
         }
 
     }
