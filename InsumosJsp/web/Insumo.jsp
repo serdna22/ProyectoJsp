@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="d-flex">
-            <div class="card col-sm-3">
+            <div class="card col-sm-2">
                 <div class="card-body"> 
                     <form action="InsumoControl?menu=Insumo" method="POST">
                         <div class="form-group">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group">
                             <label>Observacion</label>
-                            <input type="number" value="${Insumo.getInsumoObservacion()}" name="txtInsumoObservacion" class="form-control">
+                            <input type="text" value="${Insumo.getInsumoObservacion()}" name="txtInsumoObservacion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Existencia</label>
@@ -76,21 +76,21 @@
                         </div>
                         <div class="form-group">
                             <label>Invima</label>
-                            <input type="text" value="<c:if test="${Insumo.getInsumoInvima()==null}">N/A</c:if>
-                                    name="txtInsumoInvima" class="form-control">
+                            <input type="text" value="<c:if test="${Insumo.getInsumoInvima()==null}">N/A</c:if> <c:if test="${Insumo.getInsumoInvima()!=null}">${Insumo.getInsumoInvima()}</c:if>"
+                                   name="txtInsumoInvima" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Lote</label>
-                            <input type="text" value="<c:if test="${Insumo.getInsumoLote()==null}">N/A</c:if>
-                               name="txtInsumoLote" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Vencimiento</label>
-                            <input type="date" value="${Insumo.getInsumoVence()}" name="txtInsumoVence" class="form-control">
+                            <input type="text" value="<c:if test="${Insumo.getInsumoLote()==null}">N/A</c:if><c:if test="${Insumo.getInsumoLote()!=null}">${Insumo.getInsumoLote()}</c:if>"
+                                   name="txtInsumoLote" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Vencimiento</label>
+                                <input type="date" value="${Insumo.getInsumoVence()}" name="txtInsumoVence" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>FichaTecnica</label>
-                            <input type="date" value="${Insumo.getInsumoFichaTecnica()}" name="txtInsumoFichaTecnica" class="form-control">
+                            <input type="text" value="${Insumo.getInsumoFichaTecnica()}" name="txtInsumoFichaTecnica" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -124,7 +124,7 @@
                             <tr>
                                 <td>${ins.getCodigoInsumo()}</td>
                                 <td>${ins.getInsumoNombre()}</td>
-                                <td>${ins.getMarcaNombre()}</td>s
+                                <td>${ins.getMarcaNombre()}</td>
                                 <td>${ins.getRiesgoClasificacion()}</td>
                                 <td>${ins.getPresentacionNombre()}</td>
                                 <td>${ins.getInsumoObservacion()}</td>
@@ -148,6 +148,5 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
     </body>
 </html>

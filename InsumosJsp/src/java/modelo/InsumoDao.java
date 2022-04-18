@@ -6,7 +6,6 @@ package modelo;
 
 import config.Conexion;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -26,7 +25,13 @@ public class InsumoDao {
     // operaciones Crud
 
     public List listar() {
-        String sql = "select * from insumo";
+        String sql = "SELECT codigoInsumo,insumoNombre,insumoMarcaFK,insumoRiesgoFK,insumoPresentacionFK,insumoObservacion, "
+                + "insumoExistencia,insumoTemperaturaFK,insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica,marcaNombre, "
+                + "riesgoClasificacion,insumoPresentacionFK,temperaturaNombre "
+                + "FROM insumo inner join marca on insumo.insumoMarcaFK=marca.idMarca "
+                + "inner join riesgo on insumo.insumoRiesgoFK=riesgo.idRiesgo "
+                + "inner join presentacion on presentacion.idPresentacion=insumo.insumoPresentacionFK "
+                + "inner join temperatura on temperatura.idTemperatura=insumo.insumoTemperaturaFK";
         List<Insumo> lista = new ArrayList<>();
         try {
             con = cn.Conexion();
@@ -46,8 +51,12 @@ public class InsumoDao {
                 in.setInsumoRuta(rs.getString(9));
                 in.setInsumoInvima(rs.getString(10));
                 in.setInsumoLote(rs.getString(11));
-                in.setInsumoVence(rs.getDate(12));
+                in.setInsumoVence(rs.getString(12));
                 in.setInsumoFichaTecnica(rs.getString(13));
+                in.setMarcaNombre(rs.getString(14));
+                in.setRiesgoClasificacion(rs.getString(15));
+                in.setPresentacionNombre(rs.getString(16));
+                in.setTemperaturaNombre(rs.getString(17));
                 lista.add(in);
 
             }
@@ -58,22 +67,26 @@ public class InsumoDao {
     }
 
     public int agregar(Insumo in) {
-        String sql = "insert into insumo (insumoNombre,insumoMarcaFK,insumoRiesgoFK,insumoPresentacionFK,insumoObservacion,insumoExistencia,insumoTemperaturaFK,insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into insumo (codigoInsumo, insumoNombre,insumoMarcaFK,insumoRiesgoFK,"
+                + "insumoPresentacionFK,insumoObservacion,insumoExistencia,insumoTemperaturaFK,"
+                + "insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica)"
+                + " values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, in.getInsumoNombre());
-            ps.setInt(2, in.getInsumoMarcaFK());
-            ps.setInt(3, in.getInsumoRiesgoFK());
-            ps.setInt(4, in.getInsumoPresentacionFK());
-            ps.setString(5, in.getInsumoObservacion());
-            ps.setInt(6, in.getInsumoExistencia());
-            ps.setInt(7, in.getInsumoTemperaturaFK());
-            ps.setString(8, in.getInsumoRuta());
-            ps.setString(9, in.getInsumoInvima());
-            ps.setString(10, in.getInsumoLote());
-            ps.setDate(11, (Date) in.getInsumoVence());
-            ps.setString(12, in.getInsumoFichaTecnica());
+            ps.setString(1, in.getCodigoInsumo());
+            ps.setString(2, in.getInsumoNombre());
+            ps.setInt(3, in.getInsumoMarcaFK());
+            ps.setInt(4, in.getInsumoRiesgoFK());
+            ps.setInt(5, in.getInsumoPresentacionFK());
+            ps.setString(6, in.getInsumoObservacion());
+            ps.setInt(7, in.getInsumoExistencia());
+            ps.setInt(8, in.getInsumoTemperaturaFK());
+            ps.setString(9, in.getInsumoRuta());
+            ps.setString(10, in.getInsumoInvima());
+            ps.setString(11, in.getInsumoLote());
+            ps.setString(12, in.getInsumoVence());
+            ps.setString(13, in.getInsumoFichaTecnica());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -81,14 +94,22 @@ public class InsumoDao {
         return res;
     }
 
-    public Insumo listarId(int codigoInsumo) {
+    public Insumo listarId(String codigoInsumo) {
         Insumo in = new Insumo();
-        String sql = "select * from insumo where codigoInsumo=" + codigoInsumo;
+                String sql = "SELECT codigoInsumo,insumoNombre,insumoMarcaFK,insumoRiesgoFK,insumoPresentacionFK,insumoObservacion, "
+                + "insumoExistencia,insumoTemperaturaFK,insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica,marcaNombre, "
+                + "riesgoClasificacion,presentacionNombre,temperaturaNombre "
+                + "FROM insumo inner join marca on insumo.insumoMarcaFK=marca.idMarca "
+                + "inner join riesgo on insumo.insumoRiesgoFK=riesgo.idRiesgo "
+                + "inner join presentacion on presentacion.idPresentacion=insumo.insumoPresentacionFK "
+                + "inner join temperatura on temperatura.idTemperatura=insumo.insumoTemperaturaFK "
+                + "where codigoInsumo='"+codigoInsumo+"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                in.setCodigoInsumo(rs.getString(1));
                 in.setInsumoNombre(rs.getString(2));
                 in.setInsumoMarcaFK(rs.getInt(3));
                 in.setInsumoRiesgoFK(rs.getInt(4));
@@ -99,8 +120,12 @@ public class InsumoDao {
                 in.setInsumoRuta(rs.getString(9));
                 in.setInsumoInvima(rs.getString(10));
                 in.setInsumoLote(rs.getString(11));
-                in.setInsumoVence(rs.getDate(12));
+                in.setInsumoVence(rs.getString(12));
                 in.setInsumoFichaTecnica(rs.getString(13));
+                in.setMarcaNombre(rs.getString(14));
+                in.setRiesgoClasificacion(rs.getString(15));
+                in.setPresentacionNombre(rs.getString(16));
+                in.setTemperaturaNombre(rs.getString(17));
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -108,24 +133,26 @@ public class InsumoDao {
         return in;
     }
 
-    public int actualizar(Insumo in) {
-        String sql = "update insumo set InsumoNombre=?, InsumoMarcaFK=?, InsumoRiesgoFK=?, InsumoPresentacionFK=?, InsumoObservacion=?, InsumoExistencia=?, InsumoTemperaturaFK=?, InsumoRuta=?, InsumoInvima=?, InsumoLote=?, InsumoVence=?, InsumoFichaTecnica where codigoInsumo=? ";
+    public int actualizar(Insumo in,String id) {
+        String sql = "update insumo set codigoInsumo=?, InsumoNombre=?, InsumoMarcaFK=?, InsumoRiesgoFK=?, InsumoPresentacionFK=?, "
+                + "InsumoObservacion=?, InsumoExistencia=?, InsumoTemperaturaFK=?, InsumoRuta=?, InsumoInvima=?, "
+                + "InsumoLote=?, InsumoVence=?, InsumoFichaTecnica=? where codigoInsumo='"+id+"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, in.getInsumoNombre());
-            ps.setInt(2, in.getInsumoMarcaFK());
-            ps.setInt(3, in.getInsumoRiesgoFK());
-            ps.setInt(4, in.getInsumoPresentacionFK());
-            ps.setString(5, in.getInsumoObservacion());
-            ps.setInt(6, in.getInsumoExistencia());
-            ps.setInt(7, in.getInsumoTemperaturaFK());
-            ps.setString(8, in.getInsumoRuta());
-            ps.setString(9, in.getInsumoInvima());
-            ps.setString(10, in.getInsumoLote());
-            ps.setDate(11, (Date) in.getInsumoVence());
-            ps.setString(12, in.getInsumoFichaTecnica());
-            ps.setString(13, in.getCodigoInsumo());
+            ps.setString(1, in.getCodigoInsumo());
+            ps.setString(2, in.getInsumoNombre());
+            ps.setInt(3, in.getInsumoMarcaFK());
+            ps.setInt(4, in.getInsumoRiesgoFK());
+            ps.setInt(5, in.getInsumoPresentacionFK());
+            ps.setString(6, in.getInsumoObservacion());
+            ps.setInt(7, in.getInsumoExistencia());
+            ps.setInt(8, in.getInsumoTemperaturaFK());
+            ps.setString(9, in.getInsumoRuta());
+            ps.setString(10, in.getInsumoInvima());
+            ps.setString(11, in.getInsumoLote());
+            ps.setString(12, in.getInsumoVence());
+            ps.setString(13, in.getInsumoFichaTecnica());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -133,8 +160,8 @@ public class InsumoDao {
         return res;
     }
 
-    public void eliminar(int codigoInsumo) {
-        String sql = "delete from insumo where codigoInsumo=" + codigoInsumo;
+    public void eliminar(String codigoInsumo) {
+        String sql = "delete from insumo where codigoInsumo='" + codigoInsumo+"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

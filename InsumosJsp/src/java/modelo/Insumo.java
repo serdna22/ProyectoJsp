@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
-
 import java.util.Date;
-
 /**
  *
  * @author Pc_Estiven
@@ -23,7 +21,7 @@ public class Insumo {
     private String insumoRuta;
     private String insumoInvima;
     private String insumoLote;
-    private Date insumoVence;
+    private String insumoVence;
     private String insumoFichaTecnica;
     private String marcaNombre;
     private String riesgoClasificacion;
@@ -33,7 +31,7 @@ public class Insumo {
     public Insumo() {
     }
 
-    public Insumo(String codigoInsumo, String insumoNombre, int insumoMarcaFK, int insumoRiesgoFK, int insumoPresentacionFK, String insumoObservacion, int insumoExistencia, int insumoTemperaturaFK, String insumoRuta, String insumoInvima, String insumoLote, Date insumoVence, String insumoFichaTecnica) {
+    public Insumo(String codigoInsumo, String insumoNombre, int insumoMarcaFK, int insumoRiesgoFK, int insumoPresentacionFK, String insumoObservacion, int insumoExistencia, int insumoTemperaturaFK, String insumoRuta, String insumoInvima, String insumoLote, String insumoVence, String insumoFichaTecnica) {
         this.codigoInsumo = codigoInsumo;
         this.insumoNombre = insumoNombre;
         this.insumoMarcaFK = insumoMarcaFK;
@@ -137,11 +135,11 @@ public class Insumo {
         this.insumoLote = insumoLote;
     }
 
-    public Date getInsumoVence() {
+    public String getInsumoVence() {
         return insumoVence;
     }
 
-    public void setInsumoVence(Date insumoVence) {
+    public void setInsumoVence(String insumoVence) {
         this.insumoVence = insumoVence;
     }
 

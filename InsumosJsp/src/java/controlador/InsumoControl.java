@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import modelo.Marca;
 import modelo.MarcaDao;
@@ -38,8 +37,7 @@ public class InsumoControl extends HttpServlet {
     Riesgo rie = new Riesgo();
     TemperaturaDao temDao = new TemperaturaDao();
     Temperatura tem = new Temperatura();
-    String idEleme;
-    SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    String idInsu;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -74,7 +72,7 @@ public class InsumoControl extends HttpServlet {
                     String InsumoRuta = request.getParameter("txtInsumoRuta");
                     String InsumoInvima = request.getParameter("txtInsumoInvima");
                     String InsumoLote = request.getParameter("txtInsumoLote");
-                    String InsumoVence  = request.getParameter("txtInsumoVence");
+                    String InsumoVence = request.getParameter("txtInsumoVence");
                     String InsumoFichaTecnica = request.getParameter("txtInsumoFichaTecnica");
                     ins.setCodigoInsumo(CodigoInsumo);
                     ins.setInsumoNombre(InsumoNombre);
@@ -87,39 +85,53 @@ public class InsumoControl extends HttpServlet {
                     ins.setInsumoRuta(InsumoRuta);
                     ins.setInsumoInvima(InsumoInvima);
                     ins.setInsumoLote(InsumoLote);
-                    Date fecha = formato.parse("2021/06/20 18:15:03");
-                    ins.setInsumoVence(FE);
+                    ins.setInsumoVence(InsumoVence);
                     ins.setInsumoFichaTecnica(InsumoFichaTecnica);
                     eleDao.agregar(ins);
                     request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;
 
+
                 case "Editar":
-//                    idEleme = request.getParameter("idEd");
-//                    Insumo e = eleDao.listarId(idEleme);
-//                    request.setAttribute("Insumo", e);
-//                    request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
+                    idInsu = request.getParameter("idEd");
+                    Insumo e = eleDao.listarId(idInsu);
+                    request.setAttribute("Insumo", e);
+                    request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-//                    String idInsumo2 = request.getParameter("txtIdInsumo");
-//                    String InsumoNombre2 = request.getParameter("txtInsumoNombre");
-//                    String InsumoPresentacion2 = request.getParameter("txtInsumoPresentacion");
-//                    String InsumoMarca2 = request.getParameter("txtInsumoMarca");
-//                    String InsumoCantidad2 = request.getParameter("txtInsumoCantidad");
-//                    String InsumoRuta2 = request.getParameter("txtInsumoRuta");
-//                    ins.setIdInsumo(idInsumo2);
-//                    ins.setInsumoNombre(InsumoNombre2);
-//                    ins.setInsumoPresentacion(Integer.parseInt(InsumoPresentacion2));
-//                    ins.setInsumoMarca(Integer.parseInt(InsumoMarca2));
-//                    ins.setInsumoCantidad(Integer.parseInt(InsumoCantidad2));
-//                    ins.setInsumoRuta(InsumoRuta2);
-//                    eleDao.actualizar(ele, idEleme);
-//                    request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
+                    String CodigoInsumo2 = request.getParameter("txtCodigoInsumo");
+                    String InsumoNombre2 = request.getParameter("txtInsumoNombre");
+                    String InsumoMarcaFK2 = request.getParameter("txtInsumoMarcaFK");
+                    String InsumoRiesgoFK2 = request.getParameter("txtInsumoRiesgoFK");
+                    String InsumoPresentacionFK2 = request.getParameter("txtInsumoPresentacionFK");
+                    String InsumoObservacion2 = request.getParameter("txtInsumoObservacion");
+                    String InsumoExistencia2 = request.getParameter("txtInsumoExistencia");
+                    String InsumoTemperaturaFK2 = request.getParameter("txtInsumoTemperaturaFK");
+                    String InsumoRuta2 = request.getParameter("txtInsumoRuta");
+                    String InsumoInvima2 = request.getParameter("txtInsumoInvima");
+                    String InsumoLote2 = request.getParameter("txtInsumoLote");
+                    String InsumoVence2 = request.getParameter("txtInsumoVence");
+                    String InsumoFichaTecnica2 = request.getParameter("txtInsumoFichaTecnica");
+                    ins.setCodigoInsumo(CodigoInsumo2);
+                    ins.setInsumoNombre(InsumoNombre2);
+                    ins.setInsumoMarcaFK(Integer.parseInt(InsumoMarcaFK2));
+                    ins.setInsumoRiesgoFK(Integer.parseInt(InsumoRiesgoFK2));
+                    ins.setInsumoPresentacionFK(Integer.parseInt(InsumoPresentacionFK2));
+                    ins.setInsumoObservacion(InsumoObservacion2);
+                    ins.setInsumoExistencia(Integer.parseInt(InsumoExistencia2));
+                    ins.setInsumoTemperaturaFK(Integer.parseInt(InsumoTemperaturaFK2));
+                    ins.setInsumoRuta(InsumoRuta2);
+                    ins.setInsumoInvima(InsumoInvima2);
+                    ins.setInsumoLote(InsumoLote2);
+                    ins.setInsumoVence(InsumoVence2);
+                    ins.setInsumoFichaTecnica(InsumoFichaTecnica2);
+                    eleDao.actualizar(ins, idInsu);
+                    request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-//                    idInsumo = request.getParameter("idEl");
-//                    eleDao.eliminar(idInsumo);
-//                    request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
+                    idInsu = request.getParameter("idEl");
+                    eleDao.eliminar(idInsu);
+                    request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();
