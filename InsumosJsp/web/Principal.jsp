@@ -28,6 +28,9 @@
                                 Insumos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#" target="myFrame">Insumo</a></li>
+                                <li><a class="dropdown-item" href="MarcaControl?menu=Marca&accion=Listar" target="myFrame">Marca</a></li>
+                                <li><a class="dropdown-item" href="RiesgoControl?menu=Riesgo&accion=Listar" target="myFrame">Riesgo</a></li>
                                 <li><a class="dropdown-item" href="InsumoControl?menu=Insumo&accion=Listar" target="myFrame">Insumo</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Marca</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Riesgo</a></li>

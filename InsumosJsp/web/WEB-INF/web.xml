@@ -21,6 +21,14 @@
         <servlet-class>controlador.TemperaturaControl</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>MarcaControl</servlet-name>
+        <servlet-class>controlador.MarcaControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RiesgoControl</servlet-name>
+        <servlet-class>controlador.RiesgoControl</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ElementoControl</servlet-name>
         <servlet-class>controlador.ElementoControl</servlet-class>
     </servlet>
@@ -49,10 +57,18 @@
         <url-pattern>/TemperaturaControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>MarcaControl</servlet-name>
+        <url-pattern>/MarcaControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RiesgoControl</servlet-name>
+        <url-pattern>/RiesgoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ElementoControl</servlet-name>
         <url-pattern>/ElementoControl</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>InsumoControl</servlet-name>
         <url-pattern>/InsumoControl</url-pattern>
     </servlet-mapping>
