@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Categoria
+    Document   : TipoDocumento
     Created on : 13/04/2022, 9:09:37 a. m.
     Author     : serdn
 --%>
@@ -14,6 +14,7 @@
         <title>Categoria</title>
     </head>
     <body>
+        <h1>Tipo Documento</h1>
         <div class="d-flex">
             <div class="card col-sm-3">
                 <div class="card-body"> 

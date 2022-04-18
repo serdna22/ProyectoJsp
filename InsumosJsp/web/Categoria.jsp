@@ -14,6 +14,7 @@
         <title>Categoria</title>
     </head>
     <body>
+        <h1>Categoria</h1>
         <div class="d-flex">
             <div class="card col-sm-3">
                 <div class="card-body"> 
