@@ -55,7 +55,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="ControladorA?menu=Usuario&accion=Listar" target="myFrame">Usuarios</a></li>
-                                <li><a class="dropdown-item" href="TipoDocumento?menu=TipoDocumento&accion=Listar" target="myFrame">Usuarios</a></li>
+                                <li><a class="dropdown-item" href="TipoDocumento?menu=TipoDocumento&accion=Listar" target="myFrame">Tipo de Documento</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Proveedores</a></li>
                                 <li><a class="dropdown-item" href="ConsultorioControl?menu=Consultorio&accion=Listar" target="myFrame">Consultorios</a></li>
                                 <li><a class="dropdown-item" href="ProcedimientoControl?menu=Procedimiento&accion=Listar" target="myFrame">Procedimientos</a></li>

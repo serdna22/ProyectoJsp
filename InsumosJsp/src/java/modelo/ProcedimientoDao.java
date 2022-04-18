@@ -65,7 +65,8 @@ public class ProcedimientoDao {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                pro.setProcedimientoNombre(rs.getString(1));
+                pro.setIdProcedimiento(rs.getInt(1));
+                pro.setProcedimientoNombre(rs.getString(2));
             }
         } catch (Exception e) {
             System.err.println(e.toString());

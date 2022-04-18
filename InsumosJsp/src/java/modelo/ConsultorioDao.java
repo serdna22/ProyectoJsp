@@ -64,6 +64,7 @@ public class ConsultorioDao {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                consu.setIdConsultorio(rs.getInt(1));
                 consu.setConsultorioNombre(rs.getString(2));
             }
         } catch (Exception e) {

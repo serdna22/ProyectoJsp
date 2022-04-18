@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Categoria
+    Document   : Consultorio
     Created on : 13/04/2022, 9:09:37 a. m.
     Author     : serdn
 --%>
@@ -14,6 +14,7 @@
         <title>Consultorio</title>
     </head>
     <body>
+        <h1>Consultorio</h1>
         <div class="d-flex">
             <div class="card col-sm-3">
                 <div class="card-body"> 
@@ -50,10 +51,10 @@
                                 <td>${cons.getConsultorioNombre()}</td>
 
                                 <td>
-                                    <a class="btn btn-warning" href="ConsultorioControl?menu=Consultorio&accion=Editar&idEd=${ca.getIdConsultorio()}">Editar</a>
+                                    <a class="btn btn-warning" href="ConsultorioControl?menu=Consultorio&accion=Editar&idEd=${cons.getIdConsultorio()}">Editar</a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" href="ConsultorioControl?menu=Consultorio&accion=Eliminar&idEli=${ca.getIdConsultorio()}">Eliminar</a>
+                                    <a class="btn btn-danger" href="ConsultorioControl?menu=Consultorio&accion=Eliminar&idEli=${cons.getIdConsultorio()}">Eliminar</a>
                                 </td>
                             </tr> 
                         </c:forEach>

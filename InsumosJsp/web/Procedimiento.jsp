@@ -14,6 +14,7 @@
         <title>Procedimiento</title>
     </head>
     <body>
+        <h1>Procedimientos</h1>
         <div class="d-flex">
             <div class="card col-sm-3">
                 <div class="card-body"> 
@@ -50,10 +51,10 @@
                                 <td>${proc.getProcedimientoNombre()}</td>
 
                                 <td>
-                                    <a class="btn btn-warning" href="ProcedimientoControl?menu=Procedimiento&accion=Editar&idEd=${ca.getIdProcedimiento()}">Editar</a>
+                                    <a class="btn btn-warning" href="ProcedimientoControl?menu=Procedimiento&accion=Editar&idEd=${proc.getIdProcedimiento()}">Editar</a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" href="ProcedimientoControl?menu=Procedimiento&accion=Eliminar&idEli=${ca.getIdProcedimiento()}">Eliminar</a>
+                                    <a class="btn btn-danger" href="ProcedimientoControl?menu=Procedimiento&accion=Eliminar&idEli=${proc.getIdProcedimiento()}">Eliminar</a>
                                 </td>
                             </tr> 
                         </c:forEach>
