@@ -28,10 +28,9 @@
                                 Insumos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#" target="myFrame">Insumo</a></li>
+                                <li><a class="dropdown-item" href="InsumoControl?menu=Insumo&accion=Listar" target="myFrame">Insumo</a></li>
                                 <li><a class="dropdown-item" href="MarcaControl?menu=Marca&accion=Listar" target="myFrame">Marca</a></li>
                                 <li><a class="dropdown-item" href="RiesgoControl?menu=Riesgo&accion=Listar" target="myFrame">Riesgo</a></li>
-                                <li><a class="dropdown-item" href="InsumoControl?menu=Insumo&accion=Listar" target="myFrame">Insumo</a></li>
                                 <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
                                 <li><a class="dropdown-item" href="TemperaturaControl?menu=Temperatura&accion=Listar" target="myFrame">Temperatura</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">Alerta</a></li>
@@ -55,7 +54,6 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="ControladorA?menu=Usuario&accion=Listar" target="myFrame">Usuarios</a></li>
-                                <li><a class="dropdown-item" href="TipoDocumento?menu=TipoDocumento&accion=Listar" target="myFrame">Tipo de Documento</a></li>
                                 <li><a class="dropdown-item" href="ProveedorControl?menu=Proveedor&accion=Listar" target="myFrame">Proveedores</a></li>
                                 <li><a class="dropdown-item" href="ConsultorioControl?menu=Consultorio&accion=Listar" target="myFrame">Consultorios</a></li>
                                 <li><a class="dropdown-item" href="ProcedimientoControl?menu=Procedimiento&accion=Listar" target="myFrame">Procedimientos</a></li>

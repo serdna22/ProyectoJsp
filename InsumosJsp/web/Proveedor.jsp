@@ -19,8 +19,12 @@
                 <div class="card-body"> 
                     <form action="ProveedorControl?menu=Proveedor" method="POST">
                         <div class="form-group">
+                            <label>NIT</label>
+                            <input type="text" value="${proveedorEditar.getNitProveedor()}" name="txtNitProveedor" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label>NOMBRE</label>
-                            <input type="number" value="${proveedorEditar.getProveedorNombre()}" name="txtProveedorNombre" class="form-control">
+                            <input type="text" value="${proveedorEditar.getProveedorNombre()}" name="txtProveedorNombre" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>DIRECCION</label>
@@ -36,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <label>FECHA</label>
-                            <input type="text" value="${proveedorEditar.getProveedorFecha()}" name="txtProveedorFecha" class="form-control">
+                            <input type="date" value="${proveedorEditar.getProveedorFecha()}" name="txtProveedorFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>CIUDAD</label>
@@ -56,6 +60,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th>NIT</th>
                             <th>NOMBRE</th>
                             <th>DIRECCION</th>
                             <th>TELEFONO</th>
@@ -70,7 +75,7 @@
                     <tbody>
                         <c:forEach var="em" items="${proveedorLista}">
                             <tr>
-                                <!--<td>${em.getNitProveedor()}</td>-->
+                                <td>${em.getNitProveedor()}</td>
                                 <td>${em.getProveedorNombre()}</td>
                                 <td>${em.getProveedorDireccion()}</td>
                                 <td>${em.getProveedorTelefono()}</td>
