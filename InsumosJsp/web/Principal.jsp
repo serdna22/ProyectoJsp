@@ -61,8 +61,14 @@
                                 <li><a class="dropdown-item" href="ProcedimientoControl?menu=Procedimiento&accion=Listar" target="myFrame">Procedimientos</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" target="myFrame">Factura</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Facturas
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="EntradaInsumoControl?menu=EntradaInsumo&accion=Listar" target="myFrame">Factura de Insumos</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Factura de Elementos</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

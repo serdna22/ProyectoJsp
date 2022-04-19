@@ -27,7 +27,7 @@ public class ProveedorControl extends HttpServlet {
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        if (menu.equals("Categoria")) {
+        if (menu.equals("Proveedor")) {
             switch (accion) {
                 case "Listar":
                     List lista = provdao.listar();
