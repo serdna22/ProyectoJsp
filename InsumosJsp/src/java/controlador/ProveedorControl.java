@@ -34,6 +34,8 @@ public class ProveedorControl extends HttpServlet {
                     request.setAttribute("proveedorLista", lista);
                     break;
                 case "Agregar":
+                    String nitProveedor = request.getParameter("txtNitProveedor");
+                    prov.setNitProveedor(nitProveedor);
                     String proveedorNombre = request.getParameter("txtProveedorNombre");
                     prov.setProveedorNombre(proveedorNombre);
                     String proveedorDireccion = request.getParameter("txtProveedorDireccion");
@@ -57,7 +59,10 @@ public class ProveedorControl extends HttpServlet {
                     request.setAttribute("proveedorEditar", prove);
                     request.getRequestDispatcher("ProveedorControl?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
+
                 case "Actualizar":
+                    String nitProveedor2 = request.getParameter("txtNitProveedor");
+                    prov.setNitProveedor(nitProveedor2);
                     String proveedorNombre2 = request.getParameter("txtProveedorNombre");
                     prov.setProveedorNombre(proveedorNombre2);
                     String proveedorDireccion2 = request.getParameter("txtProveedorDireccion");
@@ -72,13 +77,12 @@ public class ProveedorControl extends HttpServlet {
                     prov.setProveedorCiudad(proveedorCiudad2);
                     String proveedorCorreo2 = request.getParameter("txtProveedorCorreo");
                     prov.setProveedorCorreo(proveedorCorreo2);
-                    prov.setNitProveedor(idProv);
-                    provdao.actualizar(prov);
+                    provdao.actualizar(prov,idProv);
                     request.getRequestDispatcher("ProveedorControl?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
                     idProv = request.getParameter("idEli");
-                    provdao.eliminar(Integer.parseInt(idProv));
+                    provdao.eliminar((idProv));
                     request.getRequestDispatcher("ProveedorControl?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
                 default:

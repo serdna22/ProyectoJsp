@@ -43,7 +43,6 @@ public class ProveedorDao {
                 prov.setProveedorCiudad(rs.getString(7));
                 prov.setProveedorCorreo(rs.getString(8));
                 lista.add(prov);
-
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -52,17 +51,18 @@ public class ProveedorDao {
     }
 
     public int agregar(Proveedor prov) {
-        String sql = "insert into proveedor (proveedorNombre,proveedorDireccion,proveedorTelefono,proveedorCelular,proveedorFecha,proveedorCiudad,proveedorCorreo) values (?,?,?,?,?,?,?)";
+        String sql = "insert into proveedor (nitProveedor,proveedorNombre,proveedorDireccion,proveedorTelefono,proveedorCelular,proveedorFecha,proveedorCiudad,proveedorCorreo) values (?,?,?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, prov.getProveedorNombre());
-            ps.setString(2, prov.getProveedorDireccion());
-            ps.setString(3, prov.getProveedorTelefono());
-            ps.setString(4, prov.getProveedorCelular());
-            ps.setString(5, prov.getProveedorFecha());
-            ps.setString(6, prov.getProveedorCiudad());
-            ps.setString(7, prov.getProveedorCorreo());
+            ps.setString(1, prov.getNitProveedor());
+            ps.setString(2, prov.getProveedorNombre());
+            ps.setString(3, prov.getProveedorDireccion());
+            ps.setString(4, prov.getProveedorTelefono());
+            ps.setString(5, prov.getProveedorCelular());
+            ps.setString(6, prov.getProveedorFecha());
+            ps.setString(7, prov.getProveedorCiudad());
+            ps.setString(8, prov.getProveedorCorreo());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -70,14 +70,15 @@ public class ProveedorDao {
         return res;
     }
 
-    public int listarId(int nitProveedor) {
+    public Proveedor listarId(String nitProveedor) {
         Proveedor prov = new Proveedor();
-        String sql = "select * from proveedor where nitProveedor=" + nitProveedor;
+        String sql = "select * from proveedor where nitProveedor='" + nitProveedor + "'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                prov.setNitProveedor(rs.getString(1));
                 prov.setProveedorNombre(rs.getString(2));
                 prov.setProveedorDireccion(rs.getString(3));
                 prov.setProveedorTelefono(rs.getString(4));
@@ -89,22 +90,23 @@ public class ProveedorDao {
         } catch (Exception e) {
             System.err.println(e.toString());
         }
-        return nitProveedor;
+        return prov;
     }
 
-    public int actualizar(Proveedor prov) {
-        String sql = "update proveedor set Dni=?, Nombres=?, Telefono=?, Estado=?, User=? where nitProveedor=? ";
+    public int actualizar(Proveedor prov, String id) {
+        String sql = "update proveedor set nitProveedor=?, proveedorNombre=?, proveedorDireccion=?, proveedorTelefono=?, proveedorCelular=?, proveedorFecha=?, proveedorCiudad=?,\n"
+                + "proveedorCorreo=? where nitProveedor='" + id + "'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, prov.getProveedorNombre());
-            ps.setString(2, prov.getProveedorDireccion());
-            ps.setString(3, prov.getProveedorTelefono());
-            ps.setString(4, prov.getProveedorCelular());
-            ps.setString(5, prov.getProveedorFecha());
-            ps.setString(6, prov.getProveedorCiudad());
-            ps.setString(7, prov.getProveedorCorreo());
-            ps.setString(8, prov.getNitProveedor());
+            ps.setString(1, prov.getNitProveedor());
+            ps.setString(2, prov.getProveedorNombre());
+            ps.setString(3, prov.getProveedorDireccion());
+            ps.setString(4, prov.getProveedorTelefono());
+            ps.setString(5, prov.getProveedorCelular());
+            ps.setString(6, prov.getProveedorFecha());
+            ps.setString(7, prov.getProveedorCiudad());
+            ps.setString(8, prov.getProveedorCorreo());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -112,7 +114,7 @@ public class ProveedorDao {
         return res;
     }
 
-    public void eliminar(int nitProveedor) {
+    public void eliminar(String nitProveedor) {
         String sql = "delete from proveedor where nitProveedor=" + nitProveedor;
         try {
             con = cn.Conexion();
@@ -121,10 +123,6 @@ public class ProveedorDao {
         } catch (Exception e) {
             System.err.println(e.toString());
         }
-    }
-
-    public Proveedor listarId(String idProv) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
