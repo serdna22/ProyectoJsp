@@ -21,15 +21,15 @@
                     <form action="InsumoControl?menu=Insumo" method="POST">
                         <div class="form-group">
                             <label>Codigo</label>
-                            <input type="text" value="${Insumo.getCodigoInsumo()}" name="txtCodigoInsumo" class="form-control">
+                            <input type="number" value="${Insumo.getCodigoInsumo()}" name="txtCodigoInsumo" class="form-control" min="1" max="9999999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" value="${Insumo.getInsumoNombre()}" name="txtInsumoNombre" class="form-control">
+                            <input type="text" value="${Insumo.getInsumoNombre()}" name="txtInsumoNombre" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Marca</label>
-                            <select class="form-control form-select" name="txtInsumoMarcaFK">
+                            <select class="form-control form-select" name="txtInsumoMarcaFK" required>
                                 <option value="${Insumo.getInsumoMarcaFK()}">${Insumo.getMarcaNombre()}</option>
                                 <c:forEach var="mar" items="${MarcaLista}">
                                     <option value="${mar.getIdMarca()}">${mar.getMarcaNombre()}</option>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label>Riesgo</label>
-                            <select class="form-control form-select" name="txtInsumoRiesgoFK">
+                            <select class="form-control form-select" name="txtInsumoRiesgoFK" required>
                                 <option value="${Insumo.getInsumoRiesgoFK()}">${Insumo.getRiesgoClasificacion()}</option>
                                 <c:forEach var="rie" items="${RiesgoLista}">
                                     <option value="${rie.getIdRiesgo()}">${rie.getRiesgoClasificacion()}</option>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label>Presentacion</label>
-                            <select class="form-control form-select" name="txtInsumoPresentacionFK">
+                            <select class="form-control form-select" name="txtInsumoPresentacionFK" required>
                                 <option value="${Insumo.getInsumoPresentacionFK()}">${Insumo.getPresentacionNombre()}</option>
                                 <c:forEach var="pre" items="${PresentacionLista}">
                                     <option value="${pre.getIdPresentacion()}">${pre.getPresentacionNombre()}</option>
@@ -56,15 +56,15 @@
                         </div>
                         <div class="form-group">
                             <label>Observacion</label>
-                            <input type="text" value="${Insumo.getInsumoObservacion()}" name="txtInsumoObservacion" class="form-control">
+                            <input type="text" value="${Insumo.getInsumoObservacion()}" name="txtInsumoObservacion" class="form-control" maxlength="100" required>
                         </div>
                         <div class="form-group">
                             <label>Existencia</label>
-                            <input type="number" value="${Insumo.getInsumoExistencia()}" name="txtInsumoExistencia" class="form-control">
+                            <input type="number" value="${Insumo.getInsumoExistencia()}" name="txtInsumoExistencia" class="form-control" min="1" max="9999999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Temperatura</label>
-                            <select class="form-control form-select" name="txtInsumoTemperaturaFK">
+                            <select class="form-control form-select" name="txtInsumoTemperaturaFK" required>
                                 <option value="${Insumo.getInsumoTemperaturaFK()}">${Insumo.getTemperaturaNombre()}</option>
                                 <c:forEach var="tem" items="${TemperaturaLista}">
                                     <option value="${tem.getIdTemperatura()}">${tem.getTemperaturaNombre()}</option>
@@ -73,25 +73,25 @@
                         </div>
                         <div class="form-group">
                             <label>Imagen</label>
-                            <input type="text" value="${Insumo.getInsumoRuta()}" name="txtInsumoRuta" class="form-control">
+                            <input type="text" value="${Insumo.getInsumoRuta()}" name="txtInsumoRuta" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Invima</label>
                             <input type="text" value="<c:if test="${Insumo.getInsumoInvima()==null}">N/A</c:if> <c:if test="${Insumo.getInsumoInvima()!=null}">${Insumo.getInsumoInvima()}</c:if>"
-                                   name="txtInsumoInvima" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Lote</label>
-                            <input type="text" value="<c:if test="${Insumo.getInsumoLote()==null}">N/A</c:if><c:if test="${Insumo.getInsumoLote()!=null}">${Insumo.getInsumoLote()}</c:if>"
-                                   name="txtInsumoLote" class="form-control">
+                                   name="txtInsumoInvima" class="form-control" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Lote</label>
+                                    <input type="text" value="<c:if test="${Insumo.getInsumoLote()==null}">N/A</c:if><c:if test="${Insumo.getInsumoLote()!=null}">${Insumo.getInsumoLote()}</c:if>"
+                                       name="txtInsumoLote" class="form-control" maxlength="45" required>
                             </div>
                             <div class="form-group">
                                 <label>Vencimiento</label>
-                                <input type="date" value="${Insumo.getInsumoVence()}" name="txtInsumoVence" class="form-control">
+                                    <input type="date" value="${Insumo.getInsumoVence()}" name="txtInsumoVence" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>FichaTecnica</label>
-                            <input type="text" value="${Insumo.getInsumoFichaTecnica()}" name="txtInsumoFichaTecnica" class="form-control">
+                            <input type="text" value="${Insumo.getInsumoFichaTecnica()}" name="txtInsumoFichaTecnica" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">

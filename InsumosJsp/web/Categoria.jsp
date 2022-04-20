@@ -21,11 +21,11 @@
                     <form action="CategoriaControl?menu=Categoria" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="number" value="${categoriaEditar.getIdCategoria()}" name="txtIdCategoria" class="form-control">
+                            <input type="number" value="${categoriaEditar.getIdCategoria()}" name="txtIdCategoria" class="form-control" min="1" max="99999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>NOMBRE</label>
-                            <input type="text" value="${categoriaEditar.getCategoriaNombre()}" name="txtCategoriaNombre" class="form-control">
+                            <input type="text" value="${categoriaEditar.getCategoriaNombre()}" name="txtCategoriaNombre" class="form-control" maxlength="20" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">

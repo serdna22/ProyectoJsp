@@ -21,11 +21,11 @@
                     <form action="RiesgoControl?menu=Riesgo" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="number" value="${riesgoEditar.getIdRiesgo()}" name="txtIdRiesgo" class="form-control">
+                            <input type="number" value="${riesgoEditar.getIdRiesgo()}" name="txtIdRiesgo" class="form-control" min="1" max="999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>CLASIFICACION</label>
-                            <input type="text" value="${riesgoEditar.getRiesgoClasificacion()}" name="txtRiesgoClasificacion" class="form-control">
+                            <input type="text" value="${riesgoEditar.getRiesgoClasificacion()}" name="txtRiesgoClasificacion" class="form-control" maxlength="10" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">

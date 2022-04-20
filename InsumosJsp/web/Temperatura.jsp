@@ -21,11 +21,11 @@
                     <form action="TemperaturaControl?menu=Temperatura" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="number" value="${temperaturaEditar.getIdTemperatura()}" name="txtIdTemperatura" class="form-control">
+                            <input type="number" value="${temperaturaEditar.getIdTemperatura()}" name="txtIdTemperatura" class="form-control "min="1" max="99999999" required>
                         </div>
                         <div class="form-group">
                             <label>NOMBRE</label>
-                            <input type="text" value="${temperaturaEditar.getTemperaturaNombre()}" name="txtTemperaturaNombre" class="form-control">
+                            <input type="text" value="${temperaturaEditar.getTemperaturaNombre()}" name="txtTemperaturaNombre" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
