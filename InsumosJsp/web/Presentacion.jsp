@@ -22,12 +22,12 @@
                         <div class="form-group">
                             <label>ID</label>
                             <input type="number" value="${PresentacionEditar.getIdPresentacion()}" 
-                                   name="txtIdPresentacion" class="form-control">
+                                   name="txtIdPresentacion" class="form-control" min="1" max="99999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>NOMBRE</label>
                             <input type="text" value="${PresentacionEditar.getPresentacionNombre()}" 
-                                   name="txtPresentacionNombre" class="form-control">
+                                   name="txtPresentacionNombre" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">

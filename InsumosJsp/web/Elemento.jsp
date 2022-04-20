@@ -21,7 +21,7 @@
                     <form action="ElementoControl?menu=Elemento" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="text" value="${Elemento.getIdElemento()}" name="txtIdElemento" class="form-control" min="1" max="999999999" pattern="^[1-9]" required>
+                            <input type="number" value="${Elemento.getIdElemento()}" name="txtIdElemento" class="form-control" min="1" max="9999999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="number" value="${Elemento.getElementoCantidad()}" name="txtElementoCantidad" class="form-control" min="1" max="999999" pattern="^[1-9]" required>
+                            <input type="number" value="${Elemento.getElementoCantidad()}" name="txtElementoCantidad" class="form-control" min="1" max="9999999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Imagen</label>

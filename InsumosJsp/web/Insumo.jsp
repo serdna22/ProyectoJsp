@@ -21,7 +21,7 @@
                     <form action="InsumoControl?menu=Insumo" method="POST">
                         <div class="form-group">
                             <label>Codigo</label>
-                            <input type="number" value="${Insumo.getCodigoInsumo()}" name="txtCodigoInsumo" class="form-control" min="1" max="999999999" pattern="^[1-9]" required>
+                            <input type="number" value="${Insumo.getCodigoInsumo()}" name="txtCodigoInsumo" class="form-control" min="1" max="9999999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label>Existencia</label>
-                            <input type="number" value="${Insumo.getInsumoExistencia()}" name="txtInsumoExistencia" class="form-control" min="1" max="999999999" pattern="^[1-9]" required>
+                            <input type="number" value="${Insumo.getInsumoExistencia()}" name="txtInsumoExistencia" class="form-control" min="1" max="9999999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Temperatura</label>

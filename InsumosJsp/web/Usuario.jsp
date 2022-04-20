@@ -42,15 +42,15 @@
                         </div>
                         <div class="form-group">
                             <label>Contraseña</label>
-                            <input type="password" value="${Usuario.getPassword()}" name="txtContraseña" class="form-control" required>
+                            <input type="password" value="${Usuario.getPassword()}" name="txtContraseña" class="form-control" minlength="4" required>
                         </div>
                         <div class="form-group">
                             <label>Celular</label>
-                            <input type="number" value="${Usuario.getUsuarioCelular()}" name="txtCelular" class="form-control" pattern="^[1-9]" min="1" "maxlength="30" required>
+                            <input type="number" value="${Usuario.getUsuarioCelular()}" name="txtCelular" class="form-control" pattern="^[1-9]" min="1" "maxlength="12" required>
                         </div>
                         <div class="form-group">
                             <label>Privilegio</label>
-                            <select class="form-control form-select" name="txtPrivilegio" required="">
+                            <select class="form-control form-select" name="txtPrivilegio" required>
                                 <option value="${Usuario.getUsuarioPrivilegio()}">
                                     <c:if test="${Usuario.getUsuarioPrivilegio()==1}">
                                         Administrador

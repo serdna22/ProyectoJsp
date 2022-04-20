@@ -21,11 +21,11 @@
                     <form action="MarcaControl?menu=Marca" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="number" value="${marcaEditar.getIdMarca()}" name="txtIdMarca" class="form-control">
+                            <input type="number" value="${marcaEditar.getIdMarca()}" name="txtIdMarca" class="form-control" min="1" max="99999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>NOMBRE</label>
-                            <input type="text" value="${marcaEditar.getMarcaNombre()}" name="txtMarcaNombre" class="form-control">
+                            <input type="text" value="${marcaEditar.getMarcaNombre()}" name="txtMarcaNombre" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
