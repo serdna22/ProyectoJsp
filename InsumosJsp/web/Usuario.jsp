@@ -21,7 +21,7 @@
                     <form action="ControladorA?menu=Usuario" method="POST">
                         <div class="form-group">
                             <label>Tipo Documento</label>
-                            <select class="form-control form-select" name="txtTipoD">
+                            <select class="form-control form-select" name="txtTipoD" required>
                                 <option value="${Usuario.getUsuarioTipoIdenFK()}">${Usuario.getTipoDocNombre()}</option>
                                 <c:forEach var="tip" items="${tipoDocumentoLista}">
                                     <option value="${tip.getIdTipoDoc()}">${tip.getTipoDocNombre()}</option>
@@ -30,27 +30,27 @@
                         </div>
                         <div class="form-group">
                             <label>Documento</label>
-                            <input type="number" value="${Usuario.getUsuarioDocumento()}" name="txtDocumento" class="form-control">
+                            <input type="number" value="${Usuario.getUsuarioDocumento()}" name="txtDocumento" class="form-control" maxlength="12" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Nombres</label>
-                            <input type="text" value="${Usuario.getUsuarioNombre()}" name="txtNombres" class="form-control">
+                            <input type="text" value="${Usuario.getUsuarioNombre()}" name="txtNombres" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Correo</label>
-                            <input type="text" value="${Usuario.getEmail()}" name="txtCorreo" class="form-control">
+                            <input type="email" value="${Usuario.getEmail()}" name="txtCorreo" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Contraseña</label>
-                            <input type="password" value="${Usuario.getPassword()}" name="txtContraseña" class="form-control">
+                            <input type="password" value="${Usuario.getPassword()}" name="txtContraseña" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Celular</label>
-                            <input type="number" value="${Usuario.getUsuarioCelular()}" name="txtCelular" class="form-control">
+                            <input type="number" value="${Usuario.getUsuarioCelular()}" name="txtCelular" class="form-control" pattern="^[1-9]" min="1" "maxlength="30" required>
                         </div>
                         <div class="form-group">
                             <label>Privilegio</label>
-                            <select class="form-control form-select" name="txtPrivilegio">
+                            <select class="form-control form-select" name="txtPrivilegio" required="">
                                 <option value="${Usuario.getUsuarioPrivilegio()}">
                                     <c:if test="${Usuario.getUsuarioPrivilegio()==1}">
                                         Administrador
@@ -104,7 +104,6 @@
                                 <td>
                                     <a class="btn btn-warning" href="ControladorA?menu=Usuario&accion=Editar&idEd=${em.getUsuarioDocumento()}">Editar</a>
                                     <a class="btn btn-danger" href="ControladorA?menu=Usuario&accion=Eliminar&idEl=${em.getUsuarioDocumento()}">Eliminar</a>
-
                                 </td>
                             </tr> 
                         </c:forEach>

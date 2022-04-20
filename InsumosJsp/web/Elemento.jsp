@@ -21,15 +21,15 @@
                     <form action="ElementoControl?menu=Elemento" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="text" value="${Elemento.getIdElemento()}" name="txtIdElemento" class="form-control">
+                            <input type="text" value="${Elemento.getIdElemento()}" name="txtIdElemento" class="form-control" min="1" max="999999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" value="${Elemento.getElementoNombre()}" name="txtElementoNombre" class="form-control">
+                            <input type="text" value="${Elemento.getElementoNombre()}" name="txtElementoNombre" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Presentacion</label>
-                            <select class="form-control form-select" name="txtElementoPresentacion">
+                            <select class="form-control form-select" name="txtElementoPresentacion" required>
                                 <option value="${Elemento.getElementoPresentacion()}">${Elemento.getPresentacionNombre()}</option>
                                 <c:forEach var="pre" items="${PresentacionLista}">
                                     <option value="${pre.getIdPresentacion()}">${pre.getPresentacionNombre()}</option>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label>Categoria</label>
-                            <select class="form-control form-select" name="txtElementoCategoria">
+                            <select class="form-control form-select" name="txtElementoCategoria" required>
                                 <option value="${Elemento.getElementoCategoria()}">${Elemento.getCategoriaNombre()}</option>
                                 <c:forEach var="ele" items="${CategoriaLista}">
                                     <option value="${ele.getIdCategoria()}">${ele.getCategoriaNombre()}</option>
@@ -47,11 +47,11 @@
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="number" value="${Elemento.getElementoCantidad()}" name="txtElementoCantidad" class="form-control">
+                            <input type="number" value="${Elemento.getElementoCantidad()}" name="txtElementoCantidad" class="form-control" min="1" max="999999" pattern="^[1-9]" required>
                         </div>
                         <div class="form-group">
                             <label>Imagen</label>
-                            <input type="text" value="${Elemento.getElementoRuta()}" name="txtElementoRuta" class="form-control">
+                            <input type="text" value="${Elemento.getElementoRuta()}" name="txtElementoRuta" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">

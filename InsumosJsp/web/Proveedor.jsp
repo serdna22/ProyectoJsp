@@ -20,35 +20,35 @@
                     <form action="ProveedorControl?menu=Proveedor" method="POST">
                         <div class="form-group">
                             <label>NIT</label>
-                            <input type="text" value="${proveedorEditar.getNitProveedor()}" name="txtNitProveedor" class="form-control">
+                            <input type="text" value="${proveedorEditar.getNitProveedor()}" name="txtNitProveedor" class="form-control" maxlength="20" required>
                         </div>
                         <div class="form-group">
                             <label>NOMBRE</label>
-                            <input type="text" value="${proveedorEditar.getProveedorNombre()}" name="txtProveedorNombre" class="form-control">
+                            <input type="text" value="${proveedorEditar.getProveedorNombre()}" name="txtProveedorNombre" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>DIRECCION</label>
-                            <input type="text" value="${proveedorEditar.getProveedorDireccion()}" name="txtProveedorDireccion" class="form-control">
+                            <input type="text" value="${proveedorEditar.getProveedorDireccion()}" name="txtProveedorDireccion" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>TELEFONO</label>
-                            <input type="text" value="${proveedorEditar.getProveedorTelefono()}" name="txtProveedorTelefono" class="form-control">
+                            <input type="number" value="${proveedorEditar.getProveedorTelefono()}" name="txtProveedorTelefono" class="form-control" pattern="^[1-9]" min="1" "maxlength="30" required>
                         </div>
                         <div class="form-group">
                             <label>CELULAR</label>
-                            <input type="text" value="${proveedorEditar.getProveedorCelular()}" name="txtProveedorCelular" class="form-control">
+                            <input type="number" value="${proveedorEditar.getProveedorCelular()}" name="txtProveedorCelular" class="form-control" pattern="^[1-9]" min="1" "maxlength="30" required>
                         </div>
                         <div class="form-group">
                             <label>FECHA</label>
-                            <input type="date" value="${proveedorEditar.getProveedorFecha()}" name="txtProveedorFecha" class="form-control">
+                            <input type="date" value="${proveedorEditar.getProveedorFecha()}" name="txtProveedorFecha" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>CIUDAD</label>
-                            <input type="text" value="${proveedorEditar.getProveedorCiudad()}" name="txtProveedorCiudad" class="form-control">
+                            <input type="text" value="${proveedorEditar.getProveedorCiudad()}" name="txtProveedorCiudad" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>CORREO</label>
-                            <input type="text" value="${proveedorEditar.getProveedorCorreo()}" name="txtProveedorCorreo" class="form-control">
+                            <input type="email" value="${proveedorEditar.getProveedorCorreo()}" name="txtProveedorCorreo" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
