@@ -6,9 +6,11 @@ package modelo;
 
 import config.Conexion;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,17 +52,20 @@ public class FacturaDao {
     }
 
     public int agregar(Factura fac) {
-        String sql = "insert into factura (facturaProveedorFK,facturaArchivo,facturaIvaTotal,facturaDescuento,facturaFecha,facturaUsuario) values (?,?,?,?,?,?)";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String fecha = dateFormat.format(date);
+        String sql = "insert into factura (idFactura,facturaProveedorFK,facturaIvaTotal,facturaDescuento,facturaFecha,facturaUsuario) values (?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, fac.getFacturaProveedorFK());
-            ps.setString(2, fac.getFacturaArchivo());
-            ps.setDouble(3, fac.getFacturaIvaTotal());
+            ps.setString(1, fac.getIdFactura());
+            ps.setString(2, fac.getFacturaProveedorFK());
+            ps.setDouble(3, 30);
             ps.setDouble(4, fac.getFacturaDescuento());
-            ps.setString(5, fac.getFacturaFecha());
-            ps.setString(6, fac.getFacturaUsuario());
-            ps.executeUpdate();
+            ps.setString(5, fecha);
+            ps.setString(6, "565787");
+            res = ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
         }

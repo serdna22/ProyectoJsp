@@ -61,11 +61,11 @@
                         </div>
                         <div class="form-group">
                             <label>Lote</label>
-                            <input type="text" value="N/A" name="txtDFlote" class="form-control" maxlength="45" required>
+                            <input type="text" value="" name="txtDFlote" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Invima</label>
-                            <input type="text" value="N/A" name="txtDFinvima" class="form-control" maxlength="45" required>
+                            <input type="text" value="" name="txtDFinvima" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Fecha Vencimiento</label>

@@ -52,11 +52,11 @@ public class DetalleFacturaDao {
     }
 
     public int agregar(DetalleFactura DeFac) {
-        String sql = "insert into detallefactura (DFfacturaFK,DFinsumoFK,DFcantidadInsumo,DFlote,DFfechaVence,DFinvima,DFiva,DFvalorUnitario,DFvalorTotal) values (?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into detallefactura (DFfacturaFK,DFinsumoFK,DFcantidadInsumo,DFlote,"
+                + "DFfechaVence,DFinvima,DFiva,DFvalorUnitario,DFvalorTotal) values (?,?,?,?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            // ps.setInt(1, DeFac.getIdDetalleFactura());
             ps.setString(1, DeFac.getDFfacturaFK());
             ps.setString(2, DeFac.getDFinsumoFK());
             ps.setInt(3, DeFac.getDFcantidadInsumo());
@@ -66,7 +66,7 @@ public class DetalleFacturaDao {
             ps.setFloat(7, DeFac.getDFiva());
             ps.setDouble(8, DeFac.getDFvalorUnitario());
             ps.setDouble(9, DeFac.getDFvalorTotal());
-            ps.executeUpdate();
+            res = ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
         }

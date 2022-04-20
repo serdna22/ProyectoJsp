@@ -18,6 +18,9 @@ import modelo.Insumo;
 import modelo.InsumoDao;
 import modelo.Factura;
 import modelo.DetalleFactura;
+import modelo.DetalleFacturaDao;
+import modelo.FacturaDao;
+import modelo.Usuario;
 
 /**
  *
@@ -30,7 +33,9 @@ public class EntradaInsumoControl extends HttpServlet {
     InsumoDao insDao = new InsumoDao();
     Insumo ins = new Insumo();
     Factura fac = new Factura();
+    FacturaDao facDao = new FacturaDao();
     DetalleFactura detFac = new DetalleFactura();
+    DetalleFacturaDao detFacDao = new DetalleFacturaDao();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -104,7 +109,23 @@ public class EntradaInsumoControl extends HttpServlet {
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
                     break;
                 case "Guardar":
-                    
+                    Factura facturaGuardar = (Factura) sessionFactura.getAttribute("Factura");
+                   if(facDao.agregar(facturaGuardar)==1){
+                     
+                    for (int i = 0; i < listaDF.size(); i++) {
+                      detFac = new DetalleFactura();
+                      detFac.setDFfacturaFK(facturaGuardar.getIdFactura());
+                      detFac.setDFinsumoFK(listaDF.get(i).getDFinsumoFK());
+                      detFac.setDFcantidadInsumo(listaDF.get(i).getDFcantidadInsumo());
+                      detFac.setDFlote(listaDF.get(i).getDFlote());
+                      detFac.setDFfechaVence(listaDF.get(i).getDFfechaVence());
+                      detFac.setDFinvima(listaDF.get(i).getDFinvima());
+                      detFac.setDFiva(listaDF.get(i).getDFiva());
+                      detFac.setDFvalorUnitario(listaDF.get(i).getDFvalorUnitario());
+                      detFac.setDFvalorTotal(listaDF.get(i).getDFvalorTotal());
+                      detFacDao.agregar(detFac);
+                    }
+                   }
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
                     break;
                 default:
