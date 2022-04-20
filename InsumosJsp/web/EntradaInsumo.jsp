@@ -21,60 +21,62 @@
                     <form action="EntradaInsumoControl?menu=EntradaInsumo" method="POST">
                         <div class="form-group">
                             <label>CODIGO FACTURA</label>
-                            <input type="text" value="" name="txtIdEntradaInsumo" class="form-control">
+                            <input type="text" value="" name="txtIdFactura" class="form-control" maxlength="11" minlength="3" required>
                         </div>
                         <div class="form-group">
                             <label>Proveedor</label>
-                            <select class="form-control form-select" name="txtEntradaInsumoPresentacion">
-                                <option value=""></option>
-                                <c:forEach var="pre" items="">
-                                    <option value=""></option>
+                            <select class="form-control form-select" name="txtFacturaProveedorFK" required>
+                                <option value="">Seleccionar</option>
+                                <c:forEach var="pro" items="${ProveedorLista}">
+                                    <option value="${pro.getNitProveedor()}">${pro.getProveedorNombre()}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Descuentos</label>
-                            <input type="number" value="" name="txtIdEntradaInsumo" class="form-control">
+                            <input type="number" value="" name="txtFacturaDescuento" class="form-control" max="3" pattern="^[1-9]">
                         </div>
                         <h4>Entrada de Insumos</h4>
                         <div class="form-group">
                             <label>Insumos</label>
-                            <select class="form-control form-select" name="txtEntradaInsumoCategoria">
-                                <option value=""></option>
-                                <c:forEach var="ele" items="">
-                                    <option value=""></option>
+                            <select class="form-control form-select" name="txtDFinsumoFK" required>
+                                <option value="">Seleccionar</option>
+                                <c:forEach var="ins" items="${InsumoLista}">
+                                    <option value="${ins.getCodigoInsumo()}">${ins.getInsumoNombre()}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="number" value="" name="txtEntradaInsumoCantidad" class="form-control">
+                            <input type="number" value="" name="txtDFcantidadInsumo" class="form-control" 
+                                   min="1" max="999999" pattern="^[1-9]" placeholder="Ejemplo: 8 cajas,45 paquetes">
                         </div>
                         <div class="form-group">
                             <label>Unidades de:</label>
-                            <input type="number" value="" name="txtEntradaInsumoCantidad" class="form-control">
+                            <input type="number" value="" name="txtDFcantidadInsumo2" class="form-control" 
+                                   min="1" max="999999999" pattern="^[1-9]" placeholder="Ejemplo: Cajas x 50 UN, paquetes x 100 UN">
                         </div>
                         <div class="form-group">
                             <label>Lote</label>
-                            <input type="text" value="" name="txtEntradaInsumoRuta" class="form-control">
+                            <input type="text" value="" name="txtDFlote" class="form-control" maxlength="45">
                         </div>
                         <div class="form-group">
                             <label>Invima</label>
-                            <input type="text" value="" name="txtEntradaInsumoRuta" class="form-control">
+                            <input type="text" value="" name="txtDFinvima" class="form-control" maxlength="45">
                         </div>
                         <div class="form-group">
                             <label>Fecha Vencimiento</label>
-                            <input type="date" value="" name="txtEntradaInsumoRuta" class="form-control">
+                            <input type="date" value="" name="txtDFfechaVence" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label>IVA</label>
-                            <input type="number" value="" name="txtEntradaInsumoRuta" class="form-control">
+                            <input type="number" value="" name="txtDFiva" class="form-control" min="1" max="3" pattern="^[1-9]">
                         </div>
                         <div class="form-group">
                             <label>Valor Unitario</label>
-                            <input type="number" value="" name="txtEntradaInsumoRuta" class="form-control">
+                            <input type="number" value="" name="txtDFvalorUnitario" class="form-control" min="1" max="999999999" pattern="^[1-9]">
                         </div>
-                        <input type="submit" name="accion" value="Agregar Insumo" class="btn btn-primary">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
                         <input type="submit" name="accion" value="Vaciar Factura" class="btn btn-danger">
                     </form>
                 </div>
@@ -106,9 +108,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="ele" items="">
+                        <c:forEach var="ele" items="${agregarInsumoListas}">
                             <tr>
-                                <td>imagen jaj</td>
+                                <td>${ele.getIdFactura()}</td>
                                 <td>n</td>
                                 <td>c</td>
                                 <td>un</td>

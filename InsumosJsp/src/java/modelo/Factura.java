@@ -4,8 +4,6 @@
  */
 package modelo;
 
-import java.util.Date;
-
 /**
  *
  * @author Pc_Estiven
@@ -17,13 +15,13 @@ public class Factura {
     private String facturaArchivo;
     private Double facturaIvaTotal;
     private Double facturaDescuento;
-    private Date facturaFecha;
+    private String facturaFecha;
     private String facturaUsuario;
 
     public Factura() {
     }
 
-    public Factura(String idFactura, String facturaProveedorFK, String facturaArchivo, Double facturaIvaTotal, Double facturaDescuento, Date facturaFecha, String facturaUsuario) {
+    public Factura(String idFactura, String facturaProveedorFK, String facturaArchivo, Double facturaIvaTotal, Double facturaDescuento, String facturaFecha, String facturaUsuario) {
         this.idFactura = idFactura;
         this.facturaProveedorFK = facturaProveedorFK;
         this.facturaArchivo = facturaArchivo;
@@ -73,11 +71,11 @@ public class Factura {
         this.facturaDescuento = facturaDescuento;
     }
 
-    public Date getFacturaFecha() {
+    public String getFacturaFecha() {
         return facturaFecha;
     }
 
-    public void setFacturaFecha(Date facturaFecha) {
+    public void setFacturaFecha(String facturaFecha) {
         this.facturaFecha = facturaFecha;
     }
 

@@ -39,7 +39,7 @@ public class FacturaDao {
                 fac.setFacturaArchivo(rs.getString(3));
                 fac.setFacturaIvaTotal(rs.getDouble(4));
                 fac.setFacturaDescuento(rs.getDouble(5));
-                fac.setFacturaFecha(rs.getDate(6));
+                fac.setFacturaFecha(rs.getString(6));
                 fac.setFacturaUsuario(rs.getString(7));
                 lista.add(fac);
             }
@@ -58,7 +58,7 @@ public class FacturaDao {
             ps.setString(2, fac.getFacturaArchivo());
             ps.setDouble(3, fac.getFacturaIvaTotal());
             ps.setDouble(4, fac.getFacturaDescuento());
-            ps.setDate(5, (Date) fac.getFacturaFecha());
+            ps.setString(5, fac.getFacturaFecha());
             ps.setString(6, fac.getFacturaUsuario());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -79,7 +79,7 @@ public class FacturaDao {
                 fac.setFacturaArchivo(rs.getString(3));
                 fac.setFacturaIvaTotal(rs.getDouble(4));
                 fac.setFacturaDescuento(rs.getDouble(5));
-                fac.setFacturaFecha(rs.getDate(6));
+                fac.setFacturaFecha(rs.getString(6));
                 fac.setFacturaUsuario(rs.getString(7));
             }
         } catch (Exception e) {
@@ -97,7 +97,7 @@ public class FacturaDao {
             ps.setString(2, fac.getFacturaArchivo());
             ps.setDouble(3, fac.getFacturaIvaTotal());
             ps.setDouble(4, fac.getFacturaDescuento());
-            ps.setDate(5, (Date) fac.getFacturaFecha());
+            ps.setString(5, fac.getFacturaFecha());
             ps.setString(6, fac.getFacturaUsuario());
             ps.setString(7, fac.getIdFactura());
             ps.executeUpdate();

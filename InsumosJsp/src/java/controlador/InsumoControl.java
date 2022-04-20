@@ -134,7 +134,7 @@ public class InsumoControl extends HttpServlet {
                     request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;
                 default:
-                    throw new AssertionError();
+                    request.getRequestDispatcher("Insumo.jsp").forward(request, response);
             }
             request.getRequestDispatcher("Insumo.jsp").forward(request, response);
         }
