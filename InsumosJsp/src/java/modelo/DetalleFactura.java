@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
-
-import java.util.Date;
-
 /**
  *
  * @author Pc_Estiven
@@ -14,14 +11,18 @@ public class DetalleFactura {
 
     private int idDetalleFactura;
     private String DFfacturaFK;
-    private int DFinsumoFK;
+    private String DFinsumoFK;
     private int DFcantidadInsumo;
     private String DFlote;
-    private Date DFfechaVence;
+    private String DFfechaVence;
     private String DFinvima;
     private float DFiva;
     private Double DFvalorUnitario;
     private Double DFvalorTotal;
+    private String nombreInsumo;
+
+    public DetalleFactura() {
+    }
 
     public int getIdDetalleFactura() {
         return idDetalleFactura;
@@ -39,11 +40,11 @@ public class DetalleFactura {
         this.DFfacturaFK = DFfacturaFK;
     }
 
-    public int getDFinsumoFK() {
+    public String getDFinsumoFK() {
         return DFinsumoFK;
     }
 
-    public void setDFinsumoFK(int DFinsumoFK) {
+    public void setDFinsumoFK(String DFinsumoFK) {
         this.DFinsumoFK = DFinsumoFK;
     }
 
@@ -63,11 +64,11 @@ public class DetalleFactura {
         this.DFlote = DFlote;
     }
 
-    public Date getDFfechaVence() {
+    public String getDFfechaVence() {
         return DFfechaVence;
     }
 
-    public void setDFfechaVence(Date DFfechaVence) {
+    public void setDFfechaVence(String DFfechaVence) {
         this.DFfechaVence = DFfechaVence;
     }
 
@@ -103,20 +104,12 @@ public class DetalleFactura {
         this.DFvalorTotal = DFvalorTotal;
     }
 
-    public DetalleFactura(int idDetalleFactura, String DFfacturaFK, int DFinsumoFK, int DFcantidadInsumo, String DFlote, Date DFfechaVence, String DFinvima, float DFiva, Double DFvalorUnitario, Double DFvalorTotal) {
-        this.idDetalleFactura = idDetalleFactura;
-        this.DFfacturaFK = DFfacturaFK;
-        this.DFinsumoFK = DFinsumoFK;
-        this.DFcantidadInsumo = DFcantidadInsumo;
-        this.DFlote = DFlote;
-        this.DFfechaVence = DFfechaVence;
-        this.DFinvima = DFinvima;
-        this.DFiva = DFiva;
-        this.DFvalorUnitario = DFvalorUnitario;
-        this.DFvalorTotal = DFvalorTotal;
+    public String getNombreInsumo() {
+        return nombreInsumo;
     }
 
-    public DetalleFactura() {
+    public void setNombreInsumo(String nombreInsumo) {
+        this.nombreInsumo = nombreInsumo;
     }
-
+    
 }

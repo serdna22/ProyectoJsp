@@ -95,7 +95,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="mt-4" style="height: 900px; margin-left: 10px">
+        <div class="mt-4" style="height: 1300px; margin-left: 10px">
             <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>
         </div>
         <!-- JavaScript Bundle with Popper -->

@@ -31,14 +31,14 @@ public class EntradaInsumoControl extends HttpServlet {
     Insumo ins = new Insumo();
     Factura fac = new Factura();
     DetalleFactura detFac = new DetalleFactura();
-    String idProv;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        HttpSession agregarInsumo = request.getSession();
-        List<Factura> listaFactura = new ArrayList<>();
+        HttpSession session = request.getSession();
+        HttpSession sessionFactura = request.getSession();
+        ArrayList<DetalleFactura> listaDF = (ArrayList<DetalleFactura>) session.getAttribute("listaDF");
 
         if (menu.equals("EntradaInsumo")) {
             switch (accion) {
@@ -47,6 +47,8 @@ public class EntradaInsumoControl extends HttpServlet {
                     request.setAttribute("ProveedorLista", listaPro);
                     List listaIns = insDao.listar();
                     request.setAttribute("InsumoLista", listaIns);
+                    Factura facc = (Factura) sessionFactura.getAttribute("Factura");
+                    request.setAttribute("factura", facc);
                     break;
                 case "Agregar":
                     String IdFactura = request.getParameter("txtIdFactura");
@@ -55,19 +57,55 @@ public class EntradaInsumoControl extends HttpServlet {
                     fac.setFacturaProveedorFK(FacturaProveedorFK);
                     String FacturaDescuento = request.getParameter("txtFacturaDescuento");
                     fac.setFacturaDescuento(Double.parseDouble(FacturaDescuento));
-                    
-                    if (agregarInsumo.getAttribute("insumosSession")!= null) {
-                        listaFactura = (List<Factura>)agregarInsumo.getAttribute("insumosSession");
+                    Proveedor nombrePro = proDao.listarId(FacturaProveedorFK);
+                    fac.setNombreProveedor(nombrePro.getProveedorNombre());
+                    sessionFactura.setAttribute("Factura", fac);
+
+                    String DFinsumoFK = request.getParameter("txtDFinsumoFK");
+                    detFac.setDFinsumoFK(DFinsumoFK);
+                    String DFcantidadInsumo1 = request.getParameter("txtDFcantidadInsumo");
+                    String DFcantidadInsumo2 = request.getParameter("txtDFcantidadInsumo2");
+                    int uno = Integer.parseInt(DFcantidadInsumo1);
+                    int dos = Integer.parseInt(DFcantidadInsumo2);
+                    detFac.setDFcantidadInsumo(uno * dos);
+                    String DFlote = request.getParameter("txtDFlote");
+                    detFac.setDFlote(DFlote);
+                    String DFinvima = request.getParameter("txtDFinvima");
+                    detFac.setDFinvima(DFinvima);
+                    String DFfechaVence = request.getParameter("txtDFfechaVence");
+                    detFac.setDFfechaVence(DFfechaVence);
+                    String DFiva = request.getParameter("txtDFiva");
+                    detFac.setDFiva(Float.parseFloat(DFiva));
+                    String DFvalorUnitario = request.getParameter("txtDFvalorUnitario");
+                    detFac.setDFvalorUnitario(Double.parseDouble(DFvalorUnitario));
+                    detFac.setDFvalorTotal(detFac.getDFvalorUnitario() * detFac.getDFcantidadInsumo());
+                    Insumo nombre = insDao.listarId(DFinsumoFK);
+                    detFac.setNombreInsumo(nombre.getInsumoNombre());
+
+                    if (listaDF == null) {
+                        listaDF = new ArrayList<DetalleFactura>();
                     }
-                    listaFactura.add(fac);
-                    agregarInsumo.setAttribute("insumosSession", listaFactura);
-                    request.setAttribute("agregarInsumoListas", agregarInsumo);
+                    listaDF.add(detFac);
+                    detFac = new DetalleFactura();
+                    session.setAttribute("listaDF", listaDF);
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
                     break;
-                case "Eliminar":
-                    idProv = request.getParameter("idEli");
-                    proDao.eliminar((idProv));
-                    request.getRequestDispatcher("ProveedorControl?menu=Proveedor&accion=Listar").forward(request, response);
+
+                case "Vaciar":
+//                    sessionFactura.invalidate();
+                    session.invalidate();
+                    request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
+                    break;
+
+                case "Quitar":
+                    String id = request.getParameter("idQu");
+                    listaDF.remove(Integer.parseInt(id));
+                    session.setAttribute("listaDF", listaDF);
+                    request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
+                    break;
+                case "Guardar":
+                    
+                    request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();

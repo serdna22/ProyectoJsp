@@ -6,7 +6,6 @@ package modelo;
 
 import config.Conexion;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -36,10 +35,10 @@ public class DetalleFacturaDao {
                 DetalleFactura DeFac = new DetalleFactura();
                 DeFac.setIdDetalleFactura(rs.getInt(1));
                 DeFac.setDFfacturaFK(rs.getString(2));
-                DeFac.setDFinsumoFK(rs.getInt(3));
+                DeFac.setDFinsumoFK(rs.getString(3));
                 DeFac.setDFcantidadInsumo(rs.getInt(4));
                 DeFac.setDFlote(rs.getString(5));
-                DeFac.setDFfechaVence(rs.getDate(6));
+                DeFac.setDFfechaVence(rs.getString(6));
                 DeFac.setDFinvima(rs.getString(7));
                 DeFac.setDFiva(rs.getFloat(8));
                 DeFac.setDFvalorUnitario(rs.getDouble(9));
@@ -59,10 +58,10 @@ public class DetalleFacturaDao {
             ps = con.prepareStatement(sql);
             // ps.setInt(1, DeFac.getIdDetalleFactura());
             ps.setString(1, DeFac.getDFfacturaFK());
-            ps.setInt(2, DeFac.getDFinsumoFK());
+            ps.setString(2, DeFac.getDFinsumoFK());
             ps.setInt(3, DeFac.getDFcantidadInsumo());
             ps.setString(4, DeFac.getDFlote());
-            ps.setDate(5, (Date) DeFac.getDFfechaVence());
+            ps.setString(5, DeFac.getDFfechaVence());
             ps.setString(6, DeFac.getDFinvima());
             ps.setFloat(7, DeFac.getDFiva());
             ps.setDouble(8, DeFac.getDFvalorUnitario());
@@ -83,10 +82,10 @@ public class DetalleFacturaDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 DeFac.setDFfacturaFK(rs.getString(2));
-                DeFac.setDFinsumoFK(rs.getInt(3));
+                DeFac.setDFinsumoFK(rs.getString(3));
                 DeFac.setDFcantidadInsumo(rs.getInt(4));
                 DeFac.setDFlote(rs.getString(5));
-                DeFac.setDFfechaVence(rs.getDate(6));
+                DeFac.setDFfechaVence(rs.getString(6));
                 DeFac.setDFinvima(rs.getString(7));
                 DeFac.setDFiva(rs.getFloat(8));
                 DeFac.setDFvalorUnitario(rs.getDouble(9));
@@ -104,10 +103,10 @@ public class DetalleFacturaDao {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, Defac.getDFfacturaFK());
-            ps.setInt(2, Defac.getDFinsumoFK());
+            ps.setString(2, Defac.getDFinsumoFK());
             ps.setInt(3, Defac.getDFcantidadInsumo());
             ps.setString(4, Defac.getDFlote());
-            ps.setDate(5, (Date) Defac.getDFfechaVence());
+            ps.setString(5,Defac.getDFfechaVence());
             ps.setString(6, Defac.getDFinvima());
             ps.setFloat(7, Defac.getDFiva());
             ps.setDouble(8, Defac.getDFvalorUnitario());

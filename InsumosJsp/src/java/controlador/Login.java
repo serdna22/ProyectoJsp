@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import modelo.Usuario;
 import modelo.UsuarioDao;
@@ -17,9 +18,10 @@ import modelo.UsuarioDao;
  * @author serdn
  */
 public class Login extends HttpServlet {
-
+     
     UsuarioDao edao = new UsuarioDao();
     Usuario em = new Usuario();
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -61,6 +63,8 @@ public class Login extends HttpServlet {
             em = edao.login(user, pass);
          
             if (em.getUsuarioDocumento()!= null) {
+                HttpSession sessionUsuario = request.getSession();
+                sessionUsuario.setAttribute("usuario", em);
                 request.setAttribute("usuario", em);
                 request.getRequestDispatcher("ControladorA?menu=Principal").forward(request, response);
             } else {
