@@ -31,6 +31,7 @@ public class ControladorA extends HttpServlet {
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+        Usuario usu = (Usuario)request.getSession().getAttribute("usuario");
 
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
@@ -42,6 +43,7 @@ public class ControladorA extends HttpServlet {
                     List listaTipo = tipDao.listar();
                     request.setAttribute("usuarioLista", lista);
                     request.setAttribute("tipoDocumentoLista", listaTipo);
+                    request.setAttribute("usuario", usu);
                     break;
                 case "Agregar":
                     String tipoD = request.getParameter("txtTipoD");

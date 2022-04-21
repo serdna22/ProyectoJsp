@@ -56,22 +56,27 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
-
+          HttpSession session = request.getSession();
         if (accion.equalsIgnoreCase("Ingresar")) {
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
             em = edao.login(user, pass);
          
             if (em.getUsuarioDocumento()!= null) {
-                HttpSession sessionUsuario = request.getSession();
-                sessionUsuario.setAttribute("usuario", em);
+               
+                session.setAttribute("usuario", em);
                 request.setAttribute("usuario", em);
                 request.getRequestDispatcher("ControladorA?menu=Principal").forward(request, response);
             } else {
+                request.removeAttribute("usuario");
+                session.removeAttribute("usuario");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
+            request.removeAttribute("usuario");
+            session.removeAttribute("usuario");
             request.getRequestDispatcher("index.jsp").forward(request, response);
+            
         }
     }
 

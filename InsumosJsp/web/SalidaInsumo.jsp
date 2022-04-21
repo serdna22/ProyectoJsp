@@ -1,5 +1,5 @@
 <%-- 
-    Document   : EntradaInsumo
+    Document   : SalidaInsumo
     Created on : 13/04/2022, 9:09:37 a. m.
     Author     : serdn
 --%>
@@ -15,34 +15,34 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <title>EntradaInsumo</title>
+        <title>SalidaInsumo</title>
     </head>
     <body>
-        <h2>FACTURA INSUMOS</h2>
+        <h2>Salida INSUMOS</h2>
         <div class="d-flex">
             <div class="card col-sm-3">
                 <div class="card-body"> 
-                    <form action="EntradaInsumoControl?menu=EntradaInsumo" method="POST">
+                    <form action="SalidaInsumoControl?menu=SalidaInsumo" method="POST">
                         <%  %>
                         <div class="form-group">
-                            <label>CODIGO FACTURA</label>
-                            <input type="text" value="${factura.getIdFactura()}" name="txtIdFactura" class="form-control" maxlength="11" minlength="3" required>
+                            <label>CODIGO Salida</label>
+                            <input type="text" value="${Salida.getIdSalida()}" name="txtIdSalida" class="form-control" maxlength="11" minlength="3" required>
                         </div>
                         <div class="form-group">
-                            <label>Proveedor</label>
-                            <select class="form-control form-select" name="txtFacturaProveedorFK" required>
-                                <option value="${factura.getFacturaProveedorFK()}">${factura.getNombreProveedor()}</option>
-                                <c:forEach var="pro" items="${ProveedorLista}">
-                                    <option value="${pro.getNitProveedor()}">${pro.getProveedorNombre()}</option>
+                            <label>Consultorio</label>
+                            <select class="form-control form-select" name="txtSalidaConsultorioFK" required>
+                                <option value="${Salida.getSalidaConsultorioFK()}">${Salida.getNombreConsultorio()}</option>
+                                <c:forEach var="pro" items="${ConsultorioLista}">
+                                    <option value="${pro.getNitConsultorio()}">${pro.getConsultorioNombre()}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Descuentos</label>
-                            <input type="number" value="${factura.getFacturaDescuento()}" name="txtFacturaDescuento" class="form-control" max="300" pattern="^[1-9]" required>
+                            <input type="number" value="${Salida.getSalidaDescuento()}" name="txtSalidaDescuento" class="form-control" max="300" pattern="^[1-9]" required>
                         </div>
                         <%  %>
-                        <h4>Entrada de Insumos</h4>
+                        <h4>Salida de Insumos</h4>
                         <div class="form-group">
                             <label>Insumos</label>
                             <select class="form-control form-select" name="txtDFinsumoFK" required>
@@ -84,12 +84,12 @@
                                    min="1" max="9999999999" pattern="^[1-9]" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" id="btnAgregar" class="btn btn-primary">
-                        <a  class="btn btn-danger" href="EntradaInsumoControl?menu=EntradaInsumo&accion=Vaciar">Vaciar Factura</a>
+                        <a  class="btn btn-danger" href="SalidaInsumoControl?menu=SalidaInsumo&accion=Vaciar">Vaciar Salida</a>
                     </form>
                 </div>
             </div>  
             <div class="col-sm-9">
-                <a class="btn btn-success" href="EntradaInsumoControl?menu=EntradaInsumo&accion=Guardar">Guardar Factura</a>
+                <a class="btn btn-success" href="SalidaInsumoControl?menu=SalidaInsumo&accion=Guardar">Guardar Salida</a>
                 <br><br>
                 <table class="table table-hover">
                     <thead>
@@ -108,25 +108,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="listarDF" items="${sessionScope.listaDF}" varStatus="status">
+                        <c:forEach var="listarDS" items="${sessionScope.listaDS}" varStatus="status">
                             <tr>
                                 <td><c:out value="${status.index+1}" /> </td>
-                                <td>${listarDF.getNombreInsumo()}</td>
-                                <td>${listarDF.getDFcantidadInsumo()}</td>
-                                <td>${listarDF.getDFlote()}</td>
-                                <td>${listarDF.getDFinvima()}</td>
-                                <td>${listarDF.getDFfechaVence()}</td>
-                                <td>${listarDF.getDFiva()}</td>
-                                <td>${listarDF.getDFvalorUnitario()}</td>
-                                <td>${listarDF.getDFvalorTotal()}</td>
+                                <td>${listarDS.getNombreInsumo()}</td>
+                                <td>${listarDS.getDFcantidadInsumo()}</td>
+                                <td>${listarDS.getDFlote()}</td>
+                                <td>${listarDS.getDFinvima()}</td>
+                                <td>${listarDS.getDFfechaVence()}</td>
+                                <td>${listarDS.getDFiva()}</td>
+                                <td>${listarDS.getDFvalorUnitario()}</td>
+                                <td>${listarDS.getDFvalorTotal()}</td>
                                 <td>   
-                                    <a class="btn btn-danger" href="EntradaInsumoControl?menu=EntradaInsumo&accion=Quitar&idQu=${status.index}">Quitar</a>
+                                    <a class="btn btn-danger" href="SalidaInsumoControl?menu=SalidaInsumo&accion=Quitar&idQu=${status.index}">Quitar</a>
                                 </td>
                             </tr> 
                         </c:forEach>
                     </tbody>
                 </table>
-                <a class="btn btn-success" href="EntradaInsumoControl?menu=EntradaInsumo&accion=Guardar">Guardar Factura</a>
+                <a class="btn btn-success" href="SalidaInsumoControl?menu=SalidaInsumo&accion=Guardar">Guardar Salida</a>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

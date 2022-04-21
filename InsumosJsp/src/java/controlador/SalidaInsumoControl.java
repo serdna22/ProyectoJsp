@@ -12,96 +12,96 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Proveedor;
-import modelo.ProveedorDao;
+import modelo.Consultorio;
+import modelo.ConsultorioDao;
 import modelo.Insumo;
 import modelo.InsumoDao;
-import modelo.Factura;
-import modelo.DetalleFactura;
-import modelo.DetalleFacturaDao;
-import modelo.FacturaDao;
+import modelo.Salida;
+import modelo.DetalleSalida;
+import modelo.DetalleSalidaDao;
+import modelo.SalidaDao;
 import modelo.Usuario;
 
 /**
  *
  * @author serdn
  */
-public class EntradaInsumoControl extends HttpServlet {
+public class SalidaInsumoControl extends HttpServlet {
 
-    ProveedorDao proDao = new ProveedorDao();
-    Proveedor pro = new Proveedor();
+    ConsultorioDao conDao = new ConsultorioDao();
+    Consultorio con = new Consultorio();
     InsumoDao insDao = new InsumoDao();
     Insumo ins = new Insumo();
-    Factura fac = new Factura();
-    FacturaDao facDao = new FacturaDao();
-    DetalleFactura detFac = new DetalleFactura();
-    DetalleFacturaDao detFacDao = new DetalleFacturaDao();
+    Salida Sal = new Salida();
+    SalidaDao SalDao = new SalidaDao();
+    DetalleSalida detSal = new DetalleSalida();
+    DetalleSalidaDao detSalDao = new DetalleSalidaDao();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         HttpSession session = request.getSession();
-        ArrayList<DetalleFactura> listaDF = (ArrayList<DetalleFactura>) session.getAttribute("listaDF");
+        ArrayList<DetalleSalida> listaDS = (ArrayList<DetalleSalida>) session.getAttribute("listaDS");
         Usuario usu = (Usuario)request.getSession().getAttribute("usuario");
 
         if (menu.equals("EntradaInsumo")) {
             switch (accion) {
                 case "Listar":
-                    List listaPro = proDao.listar();
-                    request.setAttribute("ProveedorLista", listaPro);
+                    List listaCon = conDao.listar();
+                    request.setAttribute("ConsultorioLista", listaCon);
                     List listaIns = insDao.listar();
                     request.setAttribute("InsumoLista", listaIns);
-                    Factura facc = (Factura) session.getAttribute("Factura");
-                    request.setAttribute("factura", facc);
+                    Salida Sali = (Salida) session.getAttribute("Salida");
+                    request.setAttribute("Salida", Sali);
                     request.setAttribute("usuario", usu);
                     break;
                 case "Agregar":
-                    String IdFactura = request.getParameter("txtIdFactura");
-                    fac.setIdFactura(IdFactura);
-                    String FacturaProveedorFK = request.getParameter("txtFacturaProveedorFK");
-                    fac.setFacturaProveedorFK(FacturaProveedorFK);
-                    String FacturaDescuento = request.getParameter("txtFacturaDescuento");
-                    fac.setFacturaDescuento(Double.parseDouble(FacturaDescuento));
-                    Proveedor nombrePro = proDao.listarId(FacturaProveedorFK);
-                    fac.setDocumentoUsuario(usu.getUsuarioDocumento());
-                    fac.setNombreProveedor(nombrePro.getProveedorNombre());
-                    session.setAttribute("Factura", fac);
+                    String IdSalida = request.getParameter("txtIdSalida");
+                    Sal.setIdSalida(IdSalida);
+                    String SalidaConsultorioFK = request.getParameter("txtSalidaConsultorioFK");
+                    Sal.setSalidaConsultorioFK(SalidaConsultorioFK);
+                    String SalidaDescuento = request.getParameter("txtSalidaDescuento");
+                    Sal.setSalidaDescuento(Double.parseDouble(SalidaDescuento));
+                    Consultorio nombreCon = conDao.listarId(SalidaConsultorioFK);
+                    Sal.setDocumentoUsuario(usu.getUsuarioDocumento());
+                    Sal.setNombreConsultorio(nombreCon.getConsultorioNombre());
+                    session.setAttribute("Salida", Sal);
                     
 
                     String DFinsumoFK = request.getParameter("txtDFinsumoFK");
-                    detFac.setDFinsumoFK(DFinsumoFK);
+                    detSal.setDFinsumoFK(DFinsumoFK);
                     
                     String DFcantidadInsumo1 = request.getParameter("txtDFcantidadInsumo");
                     String DFcantidadInsumo2 = request.getParameter("txtDFcantidadInsumo2");
                     int uno = Integer.parseInt(DFcantidadInsumo1);
                     int dos = Integer.parseInt(DFcantidadInsumo2);
-                    detFac.setDFcantidadInsumo(uno * dos);
+                    detSal.setDFcantidadInsumo(uno * dos);
                     String DFlote = request.getParameter("txtDFlote");
-                    detFac.setDFlote(DFlote);
+                    detSal.setDFlote(DFlote);
                     String DFinvima = request.getParameter("txtDFinvima");
-                    detFac.setDFinvima(DFinvima);
+                    detSal.setDFinvima(DFinvima);
                     String DFfechaVence = request.getParameter("txtDFfechaVence");
-                    detFac.setDFfechaVence(DFfechaVence);
+                    detSal.setDFfechaVence(DFfechaVence);
                     String DFiva = request.getParameter("txtDFiva");
-                    detFac.setDFiva(Float.parseFloat(DFiva));
+                    detSal.setDFiva(Float.parseFloat(DFiva));
                     String DFvalorUnitario = request.getParameter("txtDFvalorUnitario");
-                    detFac.setDFvalorUnitario(Double.parseDouble(DFvalorUnitario));
-                    detFac.setDFvalorTotal(detFac.getDFvalorUnitario() * detFac.getDFcantidadInsumo());
+                    detSal.setDFvalorUnitario(Double.parseDouble(DFvalorUnitario));
+                    detSal.setDFvalorTotal(detSal.getDFvalorUnitario() * detSal.getDFcantidadInsumo());
                     Insumo nombre = insDao.listarId(DFinsumoFK);
-                    detFac.setNombreInsumo(nombre.getInsumoNombre());
+                    detSal.setNombreInsumo(nombre.getInsumoNombre());
 
-                    if (listaDF == null) {
-                        listaDF = new ArrayList<DetalleFactura>();
+                    if (listaDS == null) {
+                        listaDS = new ArrayList<DetalleSalida>();
                     }
-                    listaDF.add(detFac);
-                    detFac = new DetalleFactura();
-                    session.setAttribute("listaDF", listaDF);
+                    listaDS.add(detSal);
+                    detSal = new DetalleSalida();
+                    session.setAttribute("listaDS", listaDS);
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
                     break;
 
                 case "Vaciar":
-                    if (session.getAttribute("Factura") != null) {
+                    if (session.getAttribute("Salida") != null) {
                         session.invalidate();
                     }
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
@@ -109,26 +109,26 @@ public class EntradaInsumoControl extends HttpServlet {
 
                 case "Quitar":
                     String id = request.getParameter("idQu");
-                    listaDF.remove(Integer.parseInt(id));
-                    session.setAttribute("listaDF", listaDF);
+                    listaDS.remove(Integer.parseInt(id));
+                    session.setAttribute("listaDS", listaDS);
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
                     break;
                 case "Guardar":
-                    Factura facturaGuardar = (Factura) session.getAttribute("Factura");
-                   if(facDao.agregar(facturaGuardar)==1){
+                    Salida SalidaGuardar = (Salida) session.getAttribute("Salida");
+                   if(SalDao.agregar(SalidaGuardar)==1){
                      
-                    for (int i = 0; i < listaDF.size(); i++) {
-                      detFac = new DetalleFactura();
-                      detFac.setDFfacturaFK(facturaGuardar.getIdFactura());
-                      detFac.setDFinsumoFK(listaDF.get(i).getDFinsumoFK());
-                      detFac.setDFcantidadInsumo(listaDF.get(i).getDFcantidadInsumo());
-                      detFac.setDFlote(listaDF.get(i).getDFlote());
-                      detFac.setDFfechaVence(listaDF.get(i).getDFfechaVence());
-                      detFac.setDFinvima(listaDF.get(i).getDFinvima());
-                      detFac.setDFiva(listaDF.get(i).getDFiva());
-                      detFac.setDFvalorUnitario(listaDF.get(i).getDFvalorUnitario());
-                      detFac.setDFvalorTotal(listaDF.get(i).getDFvalorTotal());
-                      detFacDao.agregar(detFac);
+                    for (int i = 0; i < listaDS.size(); i++) {
+                      detSal = new DetalleSalida();
+                      detSal.setDFSalidaFK(SalidaGuardar.getIdSalida());
+                      detSal.setDFinsumoFK(listaDS.get(i).getDFinsumoFK());
+                      detSal.setDFcantidadInsumo(listaDS.get(i).getDFcantidadInsumo());
+                      detSal.setDFlote(listaDS.get(i).getDFlote());
+                      detSal.setDFfechaVence(listaDS.get(i).getDFfechaVence());
+                      detSal.setDFinvima(listaDS.get(i).getDFinvima());
+                      detSal.setDFiva(listaDS.get(i).getDFiva());
+                      detSal.setDFvalorUnitario(listaDS.get(i).getDFvalorUnitario());
+                      detSal.setDFvalorTotal(listaDS.get(i).getDFvalorTotal());
+                      detSalDao.agregar(detSal);
                     }
                    }
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);

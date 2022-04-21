@@ -20,6 +20,7 @@ import modelo.Temperatura;
 import modelo.TemperaturaDao;
 import modelo.Insumo;
 import modelo.InsumoDao;
+import modelo.Usuario;
 
 /**
  *
@@ -43,6 +44,7 @@ public class InsumoControl extends HttpServlet {
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+        Usuario usu = (Usuario)request.getSession().getAttribute("usuario");
         
         if (menu.equals("Insumo")) {
             switch (accion) {
@@ -58,7 +60,7 @@ public class InsumoControl extends HttpServlet {
                     request.setAttribute("RiesgoLista", listarie);
                     request.setAttribute("PresentacionLista", listapre);
                     request.setAttribute("TemperaturaLista", listatem);
-                    
+                    request.setAttribute("usuario", usu);
                     break;
                 case "Agregar":
                     String CodigoInsumo = request.getParameter("txtCodigoInsumo");

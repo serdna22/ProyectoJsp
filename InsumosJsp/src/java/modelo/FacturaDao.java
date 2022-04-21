@@ -64,7 +64,7 @@ public class FacturaDao {
             ps.setDouble(3, 30);
             ps.setDouble(4, fac.getFacturaDescuento());
             ps.setString(5, fecha);
-            ps.setString(6, "565787");
+            ps.setString(6, fac.getDocumentoUsuario());
             res = ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());

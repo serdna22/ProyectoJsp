@@ -18,6 +18,7 @@ public class Factura {
     private String facturaFecha;
     private String facturaUsuario;
     private String nombreProveedor;
+    private String documentoUsuario;
 
     public Factura() {
     }
@@ -94,6 +95,14 @@ public class Factura {
 
     public void setNombreProveedor(String nombreProveedor) {
         this.nombreProveedor = nombreProveedor;
+    }
+
+    public String getDocumentoUsuario() {
+        return documentoUsuario;
+    }
+
+    public void setDocumentoUsuario(String documentoUsuario) {
+        this.documentoUsuario = documentoUsuario;
     }
 
 }
