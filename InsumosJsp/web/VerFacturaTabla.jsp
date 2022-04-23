@@ -15,14 +15,25 @@
     </head>
     <body>
         <h1>Factura</h1>
-
-            <h6>${FacturaListaId.getIdFactura()}</h6><br>
-            <h6>${FacturaListaId.getFacturaProveedorFK()}</h6><br>
-            <h6>${FacturaListaId.getFacturaIvaTotal()}</h6><br>
-            <h6>${FacturaListaId.getFacturaDescuento()}</h6><br>
-            <h6>${FacturaListaId.getFacturaFecha()}</h6><br>
-            <h6>${FacturaListaId.getDocumentoUsuario()}</h6>
-
+        <h1 class="h2">Encabezado h1 con estilo h2</h1>
+        <div class="d-flex">
+            <label class="btn-primary">Factura: ${FacturaListaId.getIdFactura()}</label>
+        </div>
+        <div class="d-flex">
+            <label class="btn-primary">Proveedor: ${FacturaListaId.getFacturaProveedorFK()}</label>  
+        </div>
+        <div class="d-flex">
+            <label class="btn-primary">IVA Total: ${FacturaListaId.getFacturaIvaTotal()}</label>
+        </div>
+        <div class="d-flex">
+            <label class="btn-primary">Descuento: ${FacturaListaId.getFacturaDescuento()}</label>
+        </div>
+        <div class="d-flex">
+            <label class="btn-primary">Fecha: ${FacturaListaId.getFacturaFecha()}</label>
+        </div>
+        <div class="d-flex">
+            <label class="btn-primary">Usuario Responsable: ${FacturaListaId.getDocumentoUsuario()}</label> 
+        </div>
         <h1>Detalle Factura</h1>
         <div class="d-flex"> 
             <div class="col-sm-9">
