@@ -96,6 +96,10 @@
                             <label>Ficha Tecnica</label>
                             <input type="text" value="${Insumo.getInsumoFichaTecnica()}" name="txtInsumoFichaTecnica" class="form-control" maxlength="45" required>
                         </div>
+                        <div class="form-group">
+                            <label>Ficha Tecnica</label>
+                            <input type="number" value="${Insumo.getPorcentaje()}" name="txtPorcentaje" class="form-control" maxlength="45" required>
+                        </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
