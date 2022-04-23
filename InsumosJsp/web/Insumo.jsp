@@ -119,6 +119,7 @@
                             <th>LOTE</th>
                             <th>VENCIMIENTO</th>
                             <th>FICHA TECNICA</th>
+                            <th>IVA</th>
                             <th></th>
 
                         </tr>
@@ -139,6 +140,7 @@
                                 <td>${ins.getInsumoLote()}</td>
                                 <td>${ins.getInsumoVence()}</td>
                                 <td>${ins.getInsumoFichaTecnica()}</td>
+                                <td>${ins.getPorcentaje()}</td>
                                 <td>   
                                     <a class="btn btn-warning" href="InsumoControl?menu=Insumo&accion=Editar&idEd=${ins.getCodigoInsumo()}">Editar</a>
                                     <a class="btn btn-danger" href="InsumoControl?menu=Insumo&accion=Eliminar&idEl=${ins.getCodigoInsumo()}">Eliminar</a>
