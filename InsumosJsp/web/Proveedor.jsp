@@ -14,6 +14,7 @@
         <title>Proveedor</title>
     </head>
     <body>
+        <h1>Proveedor</h1>
         <div class="d-flex">
             <div class="card col-sm-3">
                 <div class="card-body"> 
