@@ -27,7 +27,7 @@ public class InsumoDao {
     public List listar() {
         String sql = "SELECT codigoInsumo,insumoNombre,insumoMarcaFK,insumoRiesgoFK,insumoPresentacionFK,insumoObservacion, "
                 + "insumoExistencia,insumoTemperaturaFK,insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica,marcaNombre, "
-                + "riesgoClasificacion,insumoPresentacionFK,temperaturaNombre "
+                + "riesgoClasificacion,insumoPresentacionFK,temperaturaNombre,porcentaje "
                 + "FROM insumo inner join marca on insumo.insumoMarcaFK=marca.idMarca "
                 + "inner join riesgo on insumo.insumoRiesgoFK=riesgo.idRiesgo "
                 + "inner join presentacion on presentacion.idPresentacion=insumo.insumoPresentacionFK "
