@@ -72,25 +72,20 @@ public class FacturaDao {
         return res;
     }
 
-    public Factura listarId(int idFactura) {
-        Factura fac = new Factura();
-        String sql = "select * from factura where idFactura=" + idFactura;
+    public String listarId(String idFactura) {
+        String repet="";
+        String sql = "select idFactura from factura where idFactura='" + idFactura+"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                fac.setFacturaProveedorFK(rs.getString(2));
-                fac.setFacturaArchivo(rs.getString(3));
-                fac.setFacturaIvaTotal(rs.getDouble(4));
-                fac.setFacturaDescuento(rs.getDouble(5));
-                fac.setFacturaFecha(rs.getString(6));
-                fac.setFacturaUsuario(rs.getString(7));
+                repet = rs.getString(1);
             }
         } catch (Exception e) {
             System.err.println(e.toString());
         }
-        return fac;
+        return repet;
     }
 
     public int actualizar(Factura fac) {

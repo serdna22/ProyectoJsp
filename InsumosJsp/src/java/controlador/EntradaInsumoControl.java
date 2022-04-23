@@ -43,7 +43,7 @@ public class EntradaInsumoControl extends HttpServlet {
         String accion = request.getParameter("accion");
         HttpSession session = request.getSession();
         ArrayList<DetalleFactura> listaDF = (ArrayList<DetalleFactura>) session.getAttribute("listaDF");
-        Usuario usu = (Usuario)request.getSession().getAttribute("usuario");
+        Usuario usu = (Usuario) request.getSession().getAttribute("usuario");
 
         if (menu.equals("EntradaInsumo")) {
             switch (accion) {
@@ -58,7 +58,13 @@ public class EntradaInsumoControl extends HttpServlet {
                     break;
                 case "Agregar":
                     String IdFactura = request.getParameter("txtIdFactura");
-                    fac.setIdFactura(IdFactura);
+                    String repetido = facDao.listarId(IdFactura);
+                    if (IdFactura.equals(repetido)) {
+                        fac.setIdFactura("");
+                        request.setAttribute("repetido", "ID REPETIDO");
+                    } else {
+                        fac.setIdFactura(IdFactura);
+                    }
                     String FacturaProveedorFK = request.getParameter("txtFacturaProveedorFK");
                     fac.setFacturaProveedorFK(FacturaProveedorFK);
                     String FacturaDescuento = request.getParameter("txtFacturaDescuento");
@@ -67,11 +73,10 @@ public class EntradaInsumoControl extends HttpServlet {
                     fac.setDocumentoUsuario(usu.getUsuarioDocumento());
                     fac.setNombreProveedor(nombrePro.getProveedorNombre());
                     session.setAttribute("Factura", fac);
-                    
 
                     String DFinsumoFK = request.getParameter("txtDFinsumoFK");
                     detFac.setDFinsumoFK(DFinsumoFK);
-                    
+
                     String DFcantidadInsumo1 = request.getParameter("txtDFcantidadInsumo");
                     String DFcantidadInsumo2 = request.getParameter("txtDFcantidadInsumo2");
                     int uno = Integer.parseInt(DFcantidadInsumo1);
@@ -102,7 +107,7 @@ public class EntradaInsumoControl extends HttpServlet {
 
                 case "Vaciar":
                     if (session.getAttribute("Factura") != null) {
-                        session.setAttribute("Factura", null); 
+                        session.setAttribute("Factura", null);
                         session.setAttribute("listaDF", null);
                     }
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
@@ -116,22 +121,22 @@ public class EntradaInsumoControl extends HttpServlet {
                     break;
                 case "Guardar":
                     Factura facturaGuardar = (Factura) session.getAttribute("Factura");
-                   if(facDao.agregar(facturaGuardar)==1){
-                     
-                    for (int i = 0; i < listaDF.size(); i++) {
-                      detFac = new DetalleFactura();
-                      detFac.setDFfacturaFK(facturaGuardar.getIdFactura());
-                      detFac.setDFinsumoFK(listaDF.get(i).getDFinsumoFK());
-                      detFac.setDFcantidadInsumo(listaDF.get(i).getDFcantidadInsumo());
-                      detFac.setDFlote(listaDF.get(i).getDFlote());
-                      detFac.setDFfechaVence(listaDF.get(i).getDFfechaVence());
-                      detFac.setDFinvima(listaDF.get(i).getDFinvima());
-                      detFac.setDFiva(listaDF.get(i).getDFiva());
-                      detFac.setDFvalorUnitario(listaDF.get(i).getDFvalorUnitario());
-                      detFac.setDFvalorTotal(listaDF.get(i).getDFvalorTotal());
-                      detFacDao.agregar(detFac);
+                    if (facDao.agregar(facturaGuardar) == 1) {
+
+                        for (int i = 0; i < listaDF.size(); i++) {
+                            detFac = new DetalleFactura();
+                            detFac.setDFfacturaFK(facturaGuardar.getIdFactura());
+                            detFac.setDFinsumoFK(listaDF.get(i).getDFinsumoFK());
+                            detFac.setDFcantidadInsumo(listaDF.get(i).getDFcantidadInsumo());
+                            detFac.setDFlote(listaDF.get(i).getDFlote());
+                            detFac.setDFfechaVence(listaDF.get(i).getDFfechaVence());
+                            detFac.setDFinvima(listaDF.get(i).getDFinvima());
+                            detFac.setDFiva(listaDF.get(i).getDFiva());
+                            detFac.setDFvalorUnitario(listaDF.get(i).getDFvalorUnitario());
+                            detFac.setDFvalorTotal(listaDF.get(i).getDFvalorTotal());
+                            detFacDao.agregar(detFac);
+                        }
                     }
-                   }
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
                     break;
                 default:

@@ -64,11 +64,12 @@ public class SalidaInsumoControl extends HttpServlet {
                     break;
                 case "Agregar":
                     String IdSalida = request.getParameter("txtIdSalida");                 
-                    Salida repetido = SalDao.listarId(IdSalida);
-                    if (repetido==null) {
-                        Sal.setIdSalida(IdSalida);
+                    String repetido = SalDao.listarId(IdSalida);
+                    if (IdSalida.equals(repetido)) {
+                        Sal.setIdSalida("");  
+                        request.setAttribute("repetido", "ID REPETIDO");
                     }else{
-                       Sal.setIdSalida("ID REPETIDO"); 
+                      Sal.setIdSalida(IdSalida);  
                     }
                     String SalidaConsultorioFK = request.getParameter("txtSalidaConsultorioFK");
                     Sal.setSalidaConsultorioFK(Integer.parseInt(SalidaConsultorioFK));

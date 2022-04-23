@@ -25,6 +25,7 @@
                     <form action="SalidaInsumoControl?menu=SalidaInsumo" method="POST">
                         <div class="form-group">
                             <label>Codigo Salida</label>
+                            ${repetido}
                             <input type="text" value="${Salida.getIdSalida()}" name="txtIdSalida" class="form-control" maxlength="11" minlength="3" required>
                         </div>
                         <div class="form-group">

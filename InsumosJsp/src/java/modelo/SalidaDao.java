@@ -74,20 +74,20 @@ public class SalidaDao {
         return res;
     }
 
-    public Salida listarId(String idSalida) {
-        Salida sali = new Salida();
-        String sql = "select idSalida from salida where idsalida=" + idSalida;
+    public String listarId(String idSalida) {
+        String repe="";
+        String sql = "select idSalida from salida where idsalida='" + idSalida +"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                sali.setIdSalida(rs.getString(1));
+              repe=rs.getString(1);
             }
         } catch (Exception e) {
             System.err.println(e.toString());
         }
-        return sali;
+        return repe;
     }
 
     public int actualizar(Salida sali) {

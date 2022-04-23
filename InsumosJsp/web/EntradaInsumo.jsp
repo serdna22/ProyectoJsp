@@ -25,6 +25,7 @@
                     <form action="EntradaInsumoControl?menu=EntradaInsumo" method="POST">
                         <div class="form-group">
                             <label>CODIGO FACTURA</label>
+                            ${repetido}
                             <input type="text" value="${factura.getIdFactura()}" name="txtIdFactura" class="form-control" maxlength="11" minlength="3" required>
                         </div>
                         <div class="form-group">
