@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <label>ID</label>
                             <input type="number" value="${PresentacionEditar.getIdPresentacion()}" 
-                                   name="txtIdPresentacion" class="form-control" min="1" max="99999999" pattern="^[1-9]" required>
+                                   name="txtIdPresentacion" class="form-control" min="1" max="99999999" pattern="^[1-9]" disabled>
                         </div>
                         <div class="form-group">
                             <label>NOMBRE</label>

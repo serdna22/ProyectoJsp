@@ -52,9 +52,13 @@
         <servlet-name>ProveedorControl</servlet-name>
         <servlet-class>controlador.ProveedorControl</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>EntradaInsumoControl</servlet-name>
         <servlet-class>controlador.EntradaInsumoControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SalidaInsumoControl</servlet-name>
+        <servlet-class>controlador.SalidaInsumoControl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -108,9 +112,13 @@
         <servlet-name>ProveedorControl</servlet-name>
         <url-pattern>/ProveedorControl</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>EntradaInsumoControl</servlet-name>
         <url-pattern>/EntradaInsumoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SalidaInsumoControl</servlet-name>
+        <url-pattern>/SalidaInsumoControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

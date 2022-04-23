@@ -12,32 +12,35 @@ import java.util.Date;
  */
 public class Salida {
 
-    private int idSalida;
+    private String idSalida;
     private String salidaUsuarioFK;
     private int salidaConsultorioFK;
-    private int salidaProcedimiento;
+    private int salidaProcedimientoFK;
     private String salidaSala;
     private String salidaPersonaRecibio;
     private Date salidaFecha;
+    private String nombreUsuario;
+    private String nombreConsultorio;
+    private String nombreProcedimiento;
 
     public Salida() {
     }
 
-    public Salida(int idSalida, String salidaUsuarioFK, int salidaConsultorioFK, int salidaProcedimiento, String salidaSala, String salidaPersonaRecibio, Date salidaFecha) {
+    public Salida(String idSalida, String salidaUsuarioFK, int salidaConsultorioFK, int salidaProcedimientoFK, String salidaSala, String salidaPersonaRecibio, Date salidaFecha) {
         this.idSalida = idSalida;
         this.salidaUsuarioFK = salidaUsuarioFK;
         this.salidaConsultorioFK = salidaConsultorioFK;
-        this.salidaProcedimiento = salidaProcedimiento;
+        this.salidaProcedimientoFK = salidaProcedimientoFK;
         this.salidaSala = salidaSala;
         this.salidaPersonaRecibio = salidaPersonaRecibio;
         this.salidaFecha = salidaFecha;
     }
 
-    public int getIdSalida() {
+    public String getIdSalida() {
         return idSalida;
     }
 
-    public void setIdSalida(int idSalida) {
+    public void setIdSalida(String idSalida) {
         this.idSalida = idSalida;
     }
 
@@ -57,12 +60,12 @@ public class Salida {
         this.salidaConsultorioFK = salidaConsultorioFK;
     }
 
-    public int getSalidaProcedimiento() {
-        return salidaProcedimiento;
+    public int getSalidaProcedimientoFK() {
+        return salidaProcedimientoFK;
     }
 
-    public void setSalidaProcedimiento(int salidaProcedimiento) {
-        this.salidaProcedimiento = salidaProcedimiento;
+    public void setSalidaProcedimientoFK(int salidaProcedimientoFK) {
+        this.salidaProcedimientoFK = salidaProcedimientoFK;
     }
 
     public String getSalidaSala() {
@@ -87,6 +90,30 @@ public class Salida {
 
     public void setSalidaFecha(Date salidaFecha) {
         this.salidaFecha = salidaFecha;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getNombreConsultorio() {
+        return nombreConsultorio;
+    }
+
+    public void setNombreConsultorio(String nombreConsultorio) {
+        this.nombreConsultorio = nombreConsultorio;
+    }
+
+    public String getNombreProcedimiento() {
+        return nombreProcedimiento;
+    }
+
+    public void setNombreProcedimiento(String nombreProcedimiento) {
+        this.nombreProcedimiento = nombreProcedimiento;
     }
 
 }

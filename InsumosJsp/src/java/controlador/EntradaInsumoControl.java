@@ -102,7 +102,8 @@ public class EntradaInsumoControl extends HttpServlet {
 
                 case "Vaciar":
                     if (session.getAttribute("Factura") != null) {
-                        session.invalidate();
+                        session.setAttribute("Factura", null); 
+                        session.setAttribute("listaDF", null);
                     }
                     request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
                     break;

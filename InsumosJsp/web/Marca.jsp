@@ -21,7 +21,7 @@
                     <form action="MarcaControl?menu=Marca" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="number" value="${marcaEditar.getIdMarca()}" name="txtIdMarca" class="form-control" min="1" max="99999999" pattern="^[1-9]" required>
+                            <input type="number" value="${marcaEditar.getIdMarca()}" name="txtIdMarca" class="form-control" min="1" max="99999999" pattern="^[1-9]" disabled>
                         </div>
                         <div class="form-group">
                             <label>NOMBRE</label>

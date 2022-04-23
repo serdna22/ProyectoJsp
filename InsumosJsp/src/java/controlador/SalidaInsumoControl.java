@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Procedimiento;
+import modelo.ProcedimientoDao;
 import modelo.Consultorio;
 import modelo.ConsultorioDao;
 import modelo.Insumo;
@@ -27,9 +29,11 @@ import modelo.Usuario;
  * @author serdn
  */
 public class SalidaInsumoControl extends HttpServlet {
-
+ 
     ConsultorioDao conDao = new ConsultorioDao();
     Consultorio con = new Consultorio();
+    ProcedimientoDao proDao = new ProcedimientoDao();
+    Procedimiento pro = new Procedimiento();
     InsumoDao insDao = new InsumoDao();
     Insumo ins = new Insumo();
     Salida Sal = new Salida();
@@ -43,13 +47,15 @@ public class SalidaInsumoControl extends HttpServlet {
         String accion = request.getParameter("accion");
         HttpSession session = request.getSession();
         ArrayList<DetalleSalida> listaDS = (ArrayList<DetalleSalida>) session.getAttribute("listaDS");
-        Usuario usu = (Usuario)request.getSession().getAttribute("usuario");
+        Usuario usu = (Usuario) request.getSession().getAttribute("usuario");
 
-        if (menu.equals("EntradaInsumo")) {
+        if (menu.equals("SalidaInsumo")) {
             switch (accion) {
                 case "Listar":
                     List listaCon = conDao.listar();
                     request.setAttribute("ConsultorioLista", listaCon);
+                    List listaPro = proDao.listar();
+                    request.setAttribute("ProcedimientoLista", listaPro);
                     List listaIns = insDao.listar();
                     request.setAttribute("InsumoLista", listaIns);
                     Salida Sali = (Salida) session.getAttribute("Salida");
@@ -57,37 +63,43 @@ public class SalidaInsumoControl extends HttpServlet {
                     request.setAttribute("usuario", usu);
                     break;
                 case "Agregar":
-                    String IdSalida = request.getParameter("txtIdSalida");
-                    Sal.setIdSalida(IdSalida);
+                    String IdSalida = request.getParameter("txtIdSalida");                 
+                    Salida repetido = SalDao.listarId(IdSalida);
+                    if (repetido==null) {
+                        Sal.setIdSalida(IdSalida);
+                    }else{
+                       Sal.setIdSalida("ID REPETIDO"); 
+                    }
                     String SalidaConsultorioFK = request.getParameter("txtSalidaConsultorioFK");
-                    Sal.setSalidaConsultorioFK(SalidaConsultorioFK);
-                    String SalidaDescuento = request.getParameter("txtSalidaDescuento");
-                    Sal.setSalidaDescuento(Double.parseDouble(SalidaDescuento));
-                    Consultorio nombreCon = conDao.listarId(SalidaConsultorioFK);
-                    Sal.setDocumentoUsuario(usu.getUsuarioDocumento());
-                    Sal.setNombreConsultorio(nombreCon.getConsultorioNombre());
-                    session.setAttribute("Salida", Sal);
+                    Sal.setSalidaConsultorioFK(Integer.parseInt(SalidaConsultorioFK));
+                    String SalidaProcedimientoFK = request.getParameter("txtSalidaProcedimientoFK");
+                    Sal.setSalidaProcedimientoFK(Integer.parseInt(SalidaProcedimientoFK));
+                    String SalidaSala = request.getParameter("txtSalidaSala");
+                    Sal.setSalidaSala(SalidaSala);
+                    String SalidaPersonaRecibio = request.getParameter("txtSalidaPersonaRecibio");
+                    Sal.setSalidaPersonaRecibio(SalidaPersonaRecibio);
                     
+                    Consultorio nombreCon = conDao.listarId(Integer.parseInt(SalidaConsultorioFK));
+                    Sal.setNombreConsultorio(nombreCon.getConsultorioNombre());
+                    Procedimiento nombrePro = proDao.listarId(Integer.parseInt(SalidaProcedimientoFK));
+                    Sal.setNombreProcedimiento(nombrePro.getProcedimientoNombre());
+                    Sal.setSalidaUsuarioFK(usu.getUsuarioDocumento());
+                    session.setAttribute("Salida", Sal);
 
                     String DFinsumoFK = request.getParameter("txtDFinsumoFK");
-                    detSal.setDFinsumoFK(DFinsumoFK);
-                    
-                    String DFcantidadInsumo1 = request.getParameter("txtDFcantidadInsumo");
-                    String DFcantidadInsumo2 = request.getParameter("txtDFcantidadInsumo2");
-                    int uno = Integer.parseInt(DFcantidadInsumo1);
-                    int dos = Integer.parseInt(DFcantidadInsumo2);
-                    detSal.setDFcantidadInsumo(uno * dos);
-                    String DFlote = request.getParameter("txtDFlote");
-                    detSal.setDFlote(DFlote);
-                    String DFinvima = request.getParameter("txtDFinvima");
-                    detSal.setDFinvima(DFinvima);
-                    String DFfechaVence = request.getParameter("txtDFfechaVence");
-                    detSal.setDFfechaVence(DFfechaVence);
-                    String DFiva = request.getParameter("txtDFiva");
-                    detSal.setDFiva(Float.parseFloat(DFiva));
-                    String DFvalorUnitario = request.getParameter("txtDFvalorUnitario");
-                    detSal.setDFvalorUnitario(Double.parseDouble(DFvalorUnitario));
-                    detSal.setDFvalorTotal(detSal.getDFvalorUnitario() * detSal.getDFcantidadInsumo());
+                    detSal.setDScodigoInsumoFK(DFinsumoFK);
+
+                    String DScantidadInsumo1 = request.getParameter("txtDScantidad");
+                    String DScantidadInsumo2 = request.getParameter("txtDScantidad2");
+                    int uno = Integer.parseInt(DScantidadInsumo1);
+                    int dos = Integer.parseInt(DScantidadInsumo2);
+                    detSal.setDScantidad(uno * dos);
+                    String DSlote = request.getParameter("txtDSlote");
+                    detSal.setDSlote(DSlote);
+                    String DSinvima = request.getParameter("txtDSinvima");
+                    detSal.setDSinvima(DSinvima);
+                    String DSfechaVence = request.getParameter("txtDSfechaVence");
+                    detSal.setDSfechaVence(DSfechaVence);
                     Insumo nombre = insDao.listarId(DFinsumoFK);
                     detSal.setNombreInsumo(nombre.getInsumoNombre());
 
@@ -97,46 +109,44 @@ public class SalidaInsumoControl extends HttpServlet {
                     listaDS.add(detSal);
                     detSal = new DetalleSalida();
                     session.setAttribute("listaDS", listaDS);
-                    request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("SalidaInsumoControl?menu=SalidaInsumo&accion=Listar").forward(request, response);
                     break;
 
                 case "Vaciar":
                     if (session.getAttribute("Salida") != null) {
-                        session.invalidate();
+                        session.setAttribute("Salida", null); 
+                        session.setAttribute("listaDS", null);
                     }
-                    request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("SalidaInsumoControl?menu=SalidaInsumo&accion=Listar").forward(request, response);
                     break;
 
                 case "Quitar":
                     String id = request.getParameter("idQu");
                     listaDS.remove(Integer.parseInt(id));
                     session.setAttribute("listaDS", listaDS);
-                    request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("SalidaInsumoControl?menu=SalidaInsumo&accion=Listar").forward(request, response);
                     break;
                 case "Guardar":
                     Salida SalidaGuardar = (Salida) session.getAttribute("Salida");
-                   if(SalDao.agregar(SalidaGuardar)==1){
-                     
-                    for (int i = 0; i < listaDS.size(); i++) {
-                      detSal = new DetalleSalida();
-                      detSal.setDFSalidaFK(SalidaGuardar.getIdSalida());
-                      detSal.setDFinsumoFK(listaDS.get(i).getDFinsumoFK());
-                      detSal.setDFcantidadInsumo(listaDS.get(i).getDFcantidadInsumo());
-                      detSal.setDFlote(listaDS.get(i).getDFlote());
-                      detSal.setDFfechaVence(listaDS.get(i).getDFfechaVence());
-                      detSal.setDFinvima(listaDS.get(i).getDFinvima());
-                      detSal.setDFiva(listaDS.get(i).getDFiva());
-                      detSal.setDFvalorUnitario(listaDS.get(i).getDFvalorUnitario());
-                      detSal.setDFvalorTotal(listaDS.get(i).getDFvalorTotal());
-                      detSalDao.agregar(detSal);
+                    if (SalDao.agregar(SalidaGuardar) == 1) {
+                        System.out.println("se guardo salida");
+                        for (int i = 0; i < listaDS.size(); i++) {
+                            detSal = new DetalleSalida();
+                            detSal.setDSidSalidaFK(SalidaGuardar.getIdSalida());
+                            detSal.setDScodigoInsumoFK(listaDS.get(i).getDScodigoInsumoFK());
+                            detSal.setDScantidad(listaDS.get(i).getDScantidad());
+                            detSal.setDSlote(listaDS.get(i).getDSlote());
+                            detSal.setDSfechaVence(listaDS.get(i).getDSfechaVence());
+                            detSal.setDSinvima(listaDS.get(i).getDSinvima());
+                            detSalDao.agregar(detSal);
+                        }
                     }
-                   }
-                    request.getRequestDispatcher("EntradaInsumoControl?menu=EntradaInsumo&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("SalidaInsumoControl?menu=SalidaInsumo&accion=Listar").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();
             }
-            request.getRequestDispatcher("EntradaInsumo.jsp").forward(request, response);
+            request.getRequestDispatcher("SalidaInsumo.jsp").forward(request, response);
         }
 
     }

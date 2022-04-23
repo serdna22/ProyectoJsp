@@ -23,25 +23,37 @@
             <div class="card col-sm-3">
                 <div class="card-body"> 
                     <form action="SalidaInsumoControl?menu=SalidaInsumo" method="POST">
-                        <%  %>
                         <div class="form-group">
-                            <label>CODIGO Salida</label>
+                            <label>Codigo Salida</label>
                             <input type="text" value="${Salida.getIdSalida()}" name="txtIdSalida" class="form-control" maxlength="11" minlength="3" required>
                         </div>
                         <div class="form-group">
                             <label>Consultorio</label>
                             <select class="form-control form-select" name="txtSalidaConsultorioFK" required>
                                 <option value="${Salida.getSalidaConsultorioFK()}">${Salida.getNombreConsultorio()}</option>
-                                <c:forEach var="pro" items="${ConsultorioLista}">
-                                    <option value="${pro.getNitConsultorio()}">${pro.getConsultorioNombre()}</option>
+                                <c:forEach var="conS" items="${ConsultorioLista}">
+                                    <option value="${conS.getIdConsultorio()}">${conS.getConsultorioNombre()}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Descuentos</label>
-                            <input type="number" value="${Salida.getSalidaDescuento()}" name="txtSalidaDescuento" class="form-control" max="300" pattern="^[1-9]" required>
+                            <label>Procedimiento</label>
+                            <select class="form-control form-select" name="txtSalidaProcedimientoFK" required>
+                                <option value="${Salida.getSalidaProcedimientoFK()}">${Salida.getNombreProcedimiento()}</option>
+                                <c:forEach var="proS" items="${ProcedimientoLista}">
+                                    <option value="${proS.getIdProcedimiento()}">${proS.getProcedimientoNombre()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
-                        <%  %>
+                        <div class="form-group">
+                            <label>Sala</label>
+                            <input type="text" value="${Salida.getSalidaSala()}" name="txtSalidaSala" class="form-control" minlength="3" maxlength="10"  required>
+                        </div>
+                        <div class="form-group">
+                            <label>Persona que Recibe</label>
+                            <input type="text" value="${Salida.getSalidaPersonaRecibio()}" name="txtSalidaPersonaRecibio" class="form-control" minlength="5" maxlength="45"  required>
+                        </div>
+
                         <h4>Salida de Insumos</h4>
                         <div class="form-group">
                             <label>Insumos</label>
@@ -53,35 +65,30 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Cantidad Actual</label>
+                            <input type="number" value="${insumoActual.getInsumoExistencia()}" name="txtDScantidad" class="form-control" disabled>                          
+                        </div>
+                        <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="number" value="1" name="txtDFcantidadInsumo" class="form-control" 
+                            <input type="number" value="1" name="txtDScantidad" class="form-control" 
                                    min="1" max="999999" pattern="^[1-9]" placeholder="Ejemplo: 8 cajas,45 paquetes" required>
                         </div>
                         <div class="form-group">
                             <label>Unidades de:</label>
-                            <input type="number" value="1" name="txtDFcantidadInsumo2" class="form-control " 
+                            <input type="number" value="1" name="txtDScantidad2" class="form-control " 
                                    min="1" max="999999999" pattern="^[1-9]" placeholder="Ejemplo: Cajas x 50 UN, paquetes x 100 UN" required>
                         </div>
                         <div class="form-group">
                             <label>Lote</label>
-                            <input type="text" value="" name="txtDFlote" class="form-control" maxlength="45" required>
+                            <input type="text" value="${insumoActual.getInsumoLote()}" name="txtDSlote" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Invima</label>
-                            <input type="text" value="" name="txtDFinvima" class="form-control" maxlength="45" required>
+                            <input type="text" value="${insumoActual.getInsumoInvima()}" name="txtDSinvima" class="form-control" maxlength="45" required>
                         </div>
                         <div class="form-group">
                             <label>Fecha Vencimiento</label>
-                            <input type="date" value="" name="txtDFfechaVence" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>IVA</label>
-                            <input type="number" value="19" name="txtDFiva" class="form-control" min="0" max="30" pattern="^[0-9]" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Valor por Unidad</label>
-                            <input type="number" value="" name="txtDFvalorUnitario" class="form-control" 
-                                   min="1" max="9999999999" pattern="^[1-9]" required>
+                            <input type="date" value="${insumoActual.getInsumoVence()}" name="txtDSfechaVence" class="form-control" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" id="btnAgregar" class="btn btn-primary">
                         <a  class="btn btn-danger" href="SalidaInsumoControl?menu=SalidaInsumo&accion=Vaciar">Vaciar Salida</a>
@@ -100,9 +107,6 @@
                             <th>Lote</th>
                             <th>Invima</th>
                             <th>Vencimiento</th>
-                            <th>IVA</th>
-                            <th>Valor Unitario</th>
-                            <th>Valor Total</th>
                             <th>Quitar</th>
 
                         </tr>
@@ -112,13 +116,10 @@
                             <tr>
                                 <td><c:out value="${status.index+1}" /> </td>
                                 <td>${listarDS.getNombreInsumo()}</td>
-                                <td>${listarDS.getDFcantidadInsumo()}</td>
-                                <td>${listarDS.getDFlote()}</td>
-                                <td>${listarDS.getDFinvima()}</td>
-                                <td>${listarDS.getDFfechaVence()}</td>
-                                <td>${listarDS.getDFiva()}</td>
-                                <td>${listarDS.getDFvalorUnitario()}</td>
-                                <td>${listarDS.getDFvalorTotal()}</td>
+                                <td>${listarDS.getDScantidad()}</td>
+                                <td>${listarDS.getDSlote()}</td>
+                                <td>${listarDS.getDSinvima()}</td>
+                                <td>${listarDS.getDSfechaVence()}</td>
                                 <td>   
                                     <a class="btn btn-danger" href="SalidaInsumoControl?menu=SalidaInsumo&accion=Quitar&idQu=${status.index}">Quitar</a>
                                 </td>

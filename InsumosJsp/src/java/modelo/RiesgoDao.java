@@ -65,6 +65,7 @@ public class RiesgoDao {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                ries.setIdRiesgo(rs.getInt(1));
                 ries.setRiesgoClasificacion(rs.getString(2));
             }
         } catch (Exception e) {

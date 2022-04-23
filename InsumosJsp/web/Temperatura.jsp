@@ -21,7 +21,7 @@
                     <form action="TemperaturaControl?menu=Temperatura" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="number" value="${temperaturaEditar.getIdTemperatura()}" name="txtIdTemperatura" class="form-control "min="1" max="99999999" required>
+                            <input type="number" value="${temperaturaEditar.getIdTemperatura()}" name="txtIdTemperatura" class="form-control "min="1" max="99999999" disabled>
                         </div>
                         <div class="form-group">
                             <label>NOMBRE</label>

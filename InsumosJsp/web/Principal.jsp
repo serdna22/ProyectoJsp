@@ -69,7 +69,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="EntradaInsumoControl?menu=EntradaInsumo&accion=Listar" target="myFrame">Factura de Insumos</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Factura de Elementos</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Ver Facturas</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -77,7 +77,8 @@
                                 Salida
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#" target="myFrame">Detalle Salida</a></li>
+                                <li><a class="dropdown-item" href="SalidaInsumoControl?menu=SalidaInsumo&accion=Listar" target="myFrame">Salida de  Insumos</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Ver Salidas</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -4,8 +4,6 @@
  */
 package modelo;
 
-import java.util.Date;
-
 /**
  *
  * @author Pc_Estiven
@@ -13,17 +11,18 @@ import java.util.Date;
 public class DetalleSalida {
 
     private int idDetalleSalida;
-    private int DSidSalidaFK;
-    private int DScodigoInsumoFK;
+    private String DSidSalidaFK;
+    private String DScodigoInsumoFK;
     private int DScantidad;
     private String DSinvima;
     private String DSlote;
-    private Date DSfechaVence;
-
+    private String DSfechaVence;
+    private String nombreInsumo;
+    
     public DetalleSalida() {
     }
 
-    public DetalleSalida(int idDetalleSalida, int DSidSalidaFK, int DScodigoInsumoFK, int DScantidad, String DSinvima, String DSlote, Date DSfechaVence) {
+    public DetalleSalida(int idDetalleSalida, String DSidSalidaFK, String DScodigoInsumoFK, int DScantidad, String DSinvima, String DSlote, String DSfechaVence) {
         this.idDetalleSalida = idDetalleSalida;
         this.DSidSalidaFK = DSidSalidaFK;
         this.DScodigoInsumoFK = DScodigoInsumoFK;
@@ -41,19 +40,19 @@ public class DetalleSalida {
         this.idDetalleSalida = idDetalleSalida;
     }
 
-    public int getDSidSalidaFK() {
+    public String getDSidSalidaFK() {
         return DSidSalidaFK;
     }
 
-    public void setDSidSalidaFK(int DSidSalidaFK) {
+    public void setDSidSalidaFK(String DSidSalidaFK) {
         this.DSidSalidaFK = DSidSalidaFK;
     }
 
-    public int getDScodigoInsumoFK() {
+    public String getDScodigoInsumoFK() {
         return DScodigoInsumoFK;
     }
 
-    public void setDScodigoInsumoFK(int DScodigoInsumoFK) {
+    public void setDScodigoInsumoFK(String DScodigoInsumoFK) {
         this.DScodigoInsumoFK = DScodigoInsumoFK;
     }
 
@@ -81,12 +80,20 @@ public class DetalleSalida {
         this.DSlote = DSlote;
     }
 
-    public Date getDSfechaVence() {
+    public String getDSfechaVence() {
         return DSfechaVence;
     }
 
-    public void setDSfechaVence(Date DSfechaVence) {
+    public void setDSfechaVence(String DSfechaVence) {
         this.DSfechaVence = DSfechaVence;
+    }
+
+    public String getNombreInsumo() {
+        return nombreInsumo;
+    }
+
+    public void setNombreInsumo(String nombreInsumo) {
+        this.nombreInsumo = nombreInsumo;
     }
 
 }

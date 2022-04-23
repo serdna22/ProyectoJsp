@@ -65,6 +65,7 @@ public class MarcaDao {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                mar.setIdMarca(rs.getInt(1));
                 mar.setMarcaNombre(rs.getString(2));
             }
         } catch (Exception e) {

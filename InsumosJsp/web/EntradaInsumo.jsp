@@ -23,7 +23,6 @@
             <div class="card col-sm-3">
                 <div class="card-body"> 
                     <form action="EntradaInsumoControl?menu=EntradaInsumo" method="POST">
-                        <%  %>
                         <div class="form-group">
                             <label>CODIGO FACTURA</label>
                             <input type="text" value="${factura.getIdFactura()}" name="txtIdFactura" class="form-control" maxlength="11" minlength="3" required>

@@ -6,7 +6,6 @@ package modelo;
 
 import config.Conexion;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -34,13 +33,12 @@ public class DetalleSalidaDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 DetalleSalida DeSa = new DetalleSalida();
-                DeSa.setIdDetalleSalida(rs.getInt(1));
-                DeSa.setDSidSalidaFK(rs.getInt(2));
-                DeSa.setDScodigoInsumoFK(rs.getInt(3));
+                DeSa.setDSidSalidaFK(rs.getString(2));
+                DeSa.setDScodigoInsumoFK(rs.getString(3));
                 DeSa.setDScantidad(rs.getInt(4));
                 DeSa.setDSinvima(rs.getString(5));
                 DeSa.setDSlote(rs.getString(6));
-                DeSa.setDSfechaVence(rs.getDate(7));
+                DeSa.setDSfechaVence(rs.getString(7));
                 lista.add(DeSa);
 
             }
@@ -51,16 +49,17 @@ public class DetalleSalidaDao {
     }
 
     public int agregar(DetalleSalida DeSa) {
-        String sql = "insert into detallesalida (DSidSalidaFK,DScodigoInsumoFK,DScantidad,DSinvima,DSlote,DSfechaVence) values (?,?,?,?,?,?)";
+        String sql = "insert into detallesalida (DSidSalidaFK,DScodigoInsumoFK,DScantidad,DSinvima,"
+                + "DSlote,DSfechaVence) values (?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, DeSa.getDSidSalidaFK());
-            ps.setInt(2, DeSa.getDScodigoInsumoFK());
+            ps.setString(1, DeSa.getDSidSalidaFK());
+            ps.setString(2, DeSa.getDScodigoInsumoFK());
             ps.setInt(3, DeSa.getDScantidad());
             ps.setString(4, DeSa.getDSinvima());
             ps.setString(5, DeSa.getDSlote());
-            ps.setDate(6, (Date) DeSa.getDSfechaVence());
+            ps.setString(6,DeSa.getDSfechaVence());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -76,12 +75,12 @@ public class DetalleSalidaDao {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                DeSa.setDSidSalidaFK(rs.getInt(2));
-                DeSa.setDScodigoInsumoFK(rs.getInt(3));
+                DeSa.setDSidSalidaFK(rs.getString(2));
+                DeSa.setDScodigoInsumoFK(rs.getString(3));
                 DeSa.setDScantidad(rs.getInt(4));
                 DeSa.setDSinvima(rs.getString(5));
                 DeSa.setDSlote(rs.getString(6));
-                DeSa.setDSfechaVence(rs.getDate(7));
+                DeSa.setDSfechaVence(rs.getString(7));
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -94,12 +93,12 @@ public class DetalleSalidaDao {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, DeSa.getDSidSalidaFK());
-            ps.setInt(2, DeSa.getDScodigoInsumoFK());
+            ps.setString(1, DeSa.getDSidSalidaFK());
+            ps.setString(2, DeSa.getDScodigoInsumoFK());
             ps.setInt(3, DeSa.getDScantidad());
             ps.setString(4, DeSa.getDSinvima());
             ps.setString(5, DeSa.getDSlote());
-            ps.setDate(6, (Date) DeSa.getDSfechaVence());
+            ps.setString(6, DeSa.getDSfechaVence());
             ps.setInt(7, DeSa.getIdDetalleSalida());
             ps.executeUpdate();
         } catch (Exception e) {

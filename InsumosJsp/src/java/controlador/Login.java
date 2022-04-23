@@ -18,10 +18,9 @@ import modelo.UsuarioDao;
  * @author serdn
  */
 public class Login extends HttpServlet {
-     
+
     UsuarioDao edao = new UsuarioDao();
     Usuario em = new Usuario();
-    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,27 +55,27 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
-          HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         if (accion.equalsIgnoreCase("Ingresar")) {
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
             em = edao.login(user, pass);
-         
-            if (em.getUsuarioDocumento()!= null) {
-               
+
+            if (em.getUsuarioDocumento() != null) {
+
                 session.setAttribute("usuario", em);
                 request.setAttribute("usuario", em);
                 request.getRequestDispatcher("ControladorA?menu=Principal").forward(request, response);
             } else {
-                request.removeAttribute("usuario");
-                session.removeAttribute("usuario");
+                request.setAttribute("usuario", null);
+                session.setAttribute("usuario", null);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
-            request.removeAttribute("usuario");
-            session.removeAttribute("usuario");
+            request.setAttribute("usuario", null);
+            session.setAttribute("usuario", null);
             request.getRequestDispatcher("index.jsp").forward(request, response);
-            
+
         }
     }
 

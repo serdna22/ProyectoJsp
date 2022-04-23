@@ -21,7 +21,7 @@
                     <form action="RiesgoControl?menu=Riesgo" method="POST">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="number" value="${riesgoEditar.getIdRiesgo()}" name="txtIdRiesgo" class="form-control" min="1" max="999999" pattern="^[1-9]" required>
+                            <input type="number" value="${riesgoEditar.getIdRiesgo()}" name="txtIdRiesgo" class="form-control" min="1" max="999999" pattern="^[1-9]" disabled>
                         </div>
                         <div class="form-group">
                             <label>CLASIFICACION</label>
