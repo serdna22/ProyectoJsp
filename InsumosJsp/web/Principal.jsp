@@ -69,7 +69,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="EntradaInsumoControl?menu=EntradaInsumo&accion=Listar" target="myFrame">Factura de Insumos</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Ver Facturas</a></li>
+                                <li><a class="dropdown-item" href="FacturaControl?menu=Factura&accion=Listar" target="myFrame">Ver Facturas</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

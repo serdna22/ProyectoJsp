@@ -38,11 +38,10 @@ public class FacturaDao {
                 Factura fac = new Factura();
                 fac.setIdFactura(rs.getString(1));
                 fac.setFacturaProveedorFK(rs.getString(2));
-                fac.setFacturaArchivo(rs.getString(3));
-                fac.setFacturaIvaTotal(rs.getDouble(4));
-                fac.setFacturaDescuento(rs.getDouble(5));
-                fac.setFacturaFecha(rs.getString(6));
-                fac.setFacturaUsuario(rs.getString(7));
+                fac.setFacturaIvaTotal(rs.getDouble(3));
+                fac.setFacturaDescuento(rs.getDouble(4));
+                fac.setFacturaFecha(rs.getString(5));
+                fac.setFacturaUsuario(rs.getString(6));
                 lista.add(fac);
             }
         } catch (Exception e) {
@@ -73,8 +72,8 @@ public class FacturaDao {
     }
 
     public String listarId(String idFactura) {
-        String repet="";
-        String sql = "select idFactura from factura where idFactura='" + idFactura+"'";
+        String repet = "";
+        String sql = "select idFactura from factura where idFactura='" + idFactura + "'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -88,23 +87,26 @@ public class FacturaDao {
         return repet;
     }
 
-    public int actualizar(Factura fac) {
-        String sql = "update factura set facturaProveedorFK=?, facturaArchivo=?, facturaIvaTotal=?, facturaDescuento=?, facturaFecha=?, facturaUsuario=?, where idFactura=? ";
+    public Factura listarTabla(String idFactura) {
+        Factura fac = new Factura();
+        String sql = "select * from factura where idFactura='" + idFactura + "'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, fac.getFacturaProveedorFK());
-            ps.setString(2, fac.getFacturaArchivo());
-            ps.setDouble(3, fac.getFacturaIvaTotal());
-            ps.setDouble(4, fac.getFacturaDescuento());
-            ps.setString(5, fac.getFacturaFecha());
-            ps.setString(6, fac.getFacturaUsuario());
-            ps.setString(7, fac.getIdFactura());
-            ps.executeUpdate();
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                
+                fac.setIdFactura(rs.getString(1));
+                fac.setFacturaProveedorFK(rs.getString(2));
+                fac.setFacturaIvaTotal(rs.getDouble(3));
+                fac.setFacturaDescuento(rs.getDouble(4));
+                fac.setFacturaFecha(rs.getString(5));
+                fac.setFacturaUsuario(rs.getString(6));
+            }
         } catch (Exception e) {
             System.err.println(e.toString());
         }
-        return res;
+        return fac;
     }
 
     public void eliminar(int idFactura) {

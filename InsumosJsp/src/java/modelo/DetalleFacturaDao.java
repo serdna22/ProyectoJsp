@@ -22,11 +22,11 @@ public class DetalleFacturaDao {
     PreparedStatement ps;
     ResultSet rs;
     int res;
-
+    List<DetalleFactura> lista = new ArrayList<>();
     // operaciones Crud
     public List listar() {
         String sql = "select * from detallefactura";
-        List<DetalleFactura> lista = new ArrayList<>();
+        
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -73,14 +73,14 @@ public class DetalleFacturaDao {
         return res;
     }
 
-    public DetalleFactura listarId(int idDetalleFactura) {
-        DetalleFactura DeFac = new DetalleFactura();
-        String sql = "select * from detallefactura where idDetalleFactura=" + idDetalleFactura;
+    public List listarId(String id) {
+        String sql = "select * from detallefactura where DFfacturaFK='" + id+"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                DetalleFactura DeFac = new DetalleFactura();
                 DeFac.setDFfacturaFK(rs.getString(2));
                 DeFac.setDFinsumoFK(rs.getString(3));
                 DeFac.setDFcantidadInsumo(rs.getInt(4));
@@ -90,11 +90,12 @@ public class DetalleFacturaDao {
                 DeFac.setDFiva(rs.getFloat(8));
                 DeFac.setDFvalorUnitario(rs.getDouble(9));
                 DeFac.setDFvalorTotal(rs.getDouble(10));
+                lista.add(DeFac);
             }
         } catch (Exception e) {
             System.err.println(e.toString());
         }
-        return DeFac;
+        return lista;
     }
 
     public int actualizar(DetalleFactura Defac) {

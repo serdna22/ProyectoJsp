@@ -60,6 +60,10 @@
         <servlet-name>SalidaInsumoControl</servlet-name>
         <servlet-class>controlador.SalidaInsumoControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FacturaControl</servlet-name>
+        <servlet-class>controlador.FacturaControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>SalidaInsumoControl</servlet-name>
         <url-pattern>/SalidaInsumoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FacturaControl</servlet-name>
+        <url-pattern>/FacturaControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
