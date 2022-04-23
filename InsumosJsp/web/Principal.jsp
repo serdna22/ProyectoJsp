@@ -32,12 +32,12 @@
                                 Insumos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="InsumoControl?menu=Insumo&accion=Listar" target="myFrame">Insumo</a></li>
-                                <li><a class="dropdown-item" href="MarcaControl?menu=Marca&accion=Listar" target="myFrame">Marca</a></li>
-                                <li><a class="dropdown-item" href="RiesgoControl?menu=Riesgo&accion=Listar" target="myFrame">Riesgo</a></li>
-                                <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
-                                <li><a class="dropdown-item" href="TemperaturaControl?menu=Temperatura&accion=Listar" target="myFrame">Temperatura</a></li>
-                                <li><a class="dropdown-item" href="#" target="myFrame">Alerta</a></li>
+                                <li><a class="dropdown-item" href="InsumoControl?menu=Insumo&accion=Listar" target="myFrame">Insumos</a></li>
+                                <li><a class="dropdown-item" href="MarcaControl?menu=Marca&accion=Listar" target="myFrame">Marcas</a></li>
+                                <li><a class="dropdown-item" href="RiesgoControl?menu=Riesgo&accion=Listar" target="myFrame">Riesgos</a></li>
+                                <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentaciones</a></li>
+                                <li><a class="dropdown-item" href="TemperaturaControl?menu=Temperatura&accion=Listar" target="myFrame">Temperaturas</a></li>
+                                <li><a class="dropdown-item" href="#" target="myFrame">Alertas</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">StockExcel</a></li>
                                 <li><a class="dropdown-item" href="#" target="myFrame">StockPdf</a></li>
                             </ul>
@@ -48,7 +48,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="ElementoControl?menu=Elemento&accion=Listar" target="myFrame">Elementos</a></li>
-                                <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentacion</a></li>
+                                <li><a class="dropdown-item" href="PresentacionControl?menu=Presentacion&accion=Listar" target="myFrame">Presentaciones</a></li>
                                 <li><a class="dropdown-item" href="CategoriaControl?menu=Categoria&accion=Listar" target="myFrame">Categorias</a></li>
                             </ul>
                         </li>

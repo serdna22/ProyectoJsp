@@ -14,7 +14,7 @@
         <title>Procedimiento</title>
     </head>
     <body>
-        <h1>Procedimientos</h1>
+        <h1>Procedimiento</h1>
         <div class="d-flex">
             <div class="card col-sm-3">
                 <div class="card-body"> 

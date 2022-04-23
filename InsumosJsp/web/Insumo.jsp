@@ -17,7 +17,7 @@
         <title>Insumo</title>
     </head>
     <body>
-        <h1>Insumos</h1>
+        <h1>Insumo</h1>
         <div class="d-flex">
             <div class="card col-sm-2">
                 <div class="card-body"> 
@@ -93,7 +93,7 @@
                                     <input type="date" value="${Insumo.getInsumoVence()}" name="txtInsumoVence" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>FichaTecnica</label>
+                            <label>Ficha Tecnica</label>
                             <input type="text" value="${Insumo.getInsumoFichaTecnica()}" name="txtInsumoFichaTecnica" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">

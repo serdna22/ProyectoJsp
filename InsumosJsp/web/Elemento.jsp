@@ -68,7 +68,7 @@
                             <th>PRESENTACION</th>
                             <th>CATEGORIA</th>
                             <th>CANTIDAD</th>
-                            <th>IMAGEM</th>
+                            <th>IMAGEN</th>
                             <th></th>
                             <th></th>
 
