@@ -34,9 +34,9 @@ public class TemperaturaControl extends HttpServlet {
                     request.setAttribute("temperaturaLista", lista);
                     break;
                 case "Agregar":
-                    String idTemperatura = request.getParameter("txtIdTemperatura");
+                    //String idTemperatura = request.getParameter("txtIdTemperatura");
                     String temperaturaNombre = request.getParameter("txtTemperaturaNombre");
-                    tem.setIdTemperatura(Integer.parseInt(idTemperatura));
+                    //tem.setIdTemperatura(Integer.parseInt(idTemperatura));
                     tem.setTemperaturaNombre(temperaturaNombre);
                     temdao.agregar(tem);
                     request.getRequestDispatcher("TemperaturaControl?menu=Temperatura&accion=Listar").forward(request, response);
@@ -48,13 +48,11 @@ public class TemperaturaControl extends HttpServlet {
                     request.getRequestDispatcher("TemperaturaControl?menu=Temperatura&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String idTemperatura2 = request.getParameter("txtIdTemperatura");
                     String temperaturaNombre2 = request.getParameter("txtTemperaturaNombre");
-                    tem.setIdTemperatura(Integer.parseInt(idTemperatura2));
                     tem.setTemperaturaNombre(temperaturaNombre2);
                     tem.setIdTemperatura(Integer.parseInt(idTem));
                     temdao.actualizar(tem);
-                    request.getRequestDispatcher("Temperatura?menu=Temperatura&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("TemperaturaControl?menu=Temperatura&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
                     idTem = request.getParameter("idEli");

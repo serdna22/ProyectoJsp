@@ -75,7 +75,7 @@ public class TemperaturaDao {
     }
 
     public int actualizar(Temperatura tem) {
-        String sql = "update temperatura set temperaturaNombre=? where idTemperatura=? ";
+        String sql = "update temperatura set temperaturaNombre=? where idTemperatura=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

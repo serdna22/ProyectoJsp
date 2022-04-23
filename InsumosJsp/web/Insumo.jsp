@@ -93,7 +93,7 @@
                                     <input type="date" value="${Insumo.getInsumoVence()}" name="txtInsumoVence" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>FichaTecnica</label>
+                            <label>Ficha Tecnica</label>
                             <input type="text" value="${Insumo.getInsumoFichaTecnica()}" name="txtInsumoFichaTecnica" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
