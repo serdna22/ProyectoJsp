@@ -139,7 +139,7 @@ public class InsumoDao {
     public int actualizar(Insumo in,String id) {
         String sql = "update insumo set codigoInsumo=?, InsumoNombre=?, InsumoMarcaFK=?, InsumoRiesgoFK=?, InsumoPresentacionFK=?, "
                 + "InsumoObservacion=?, InsumoExistencia=?, InsumoTemperaturaFK=?, InsumoRuta=?, InsumoInvima=?, "
-                + "InsumoLote=?, InsumoVence=?, InsumoFichaTecnica=? porcentaje=? where codigoInsumo='"+id+"'";
+                + "InsumoLote=?, InsumoVence=?, InsumoFichaTecnica=?, porcentaje=? where codigoInsumo='"+id+"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
