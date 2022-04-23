@@ -44,14 +44,14 @@ public class InsumoControl extends HttpServlet {
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        Usuario usu = (Usuario)request.getSession().getAttribute("usuario");
-        
+        Usuario usu = (Usuario) request.getSession().getAttribute("usuario");
+
         if (menu.equals("Insumo")) {
             switch (accion) {
                 case "Listar":
                     List lista = eleDao.listar();
                     List listamar = marDao.listar();
-                    List listarie = rieDao.listar(); 
+                    List listarie = rieDao.listar();
                     List listapre = preDao.listar();
                     List listatem = temDao.listar();
 
@@ -76,6 +76,7 @@ public class InsumoControl extends HttpServlet {
                     String InsumoLote = request.getParameter("txtInsumoLote");
                     String InsumoVence = request.getParameter("txtInsumoVence");
                     String InsumoFichaTecnica = request.getParameter("txtInsumoFichaTecnica");
+                    String porcentaje = request.getParameter("txtPorcentaje");
                     ins.setCodigoInsumo(CodigoInsumo);
                     ins.setInsumoNombre(InsumoNombre);
                     ins.setInsumoMarcaFK(Integer.parseInt(InsumoMarcaFK));
@@ -89,11 +90,10 @@ public class InsumoControl extends HttpServlet {
                     ins.setInsumoLote(InsumoLote);
                     ins.setInsumoVence(InsumoVence);
                     ins.setInsumoFichaTecnica(InsumoFichaTecnica);
+                    ins.setPorcentaje(porcentaje);
                     eleDao.agregar(ins);
                     request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;
-
-
                 case "Editar":
                     idInsu = request.getParameter("idEd");
                     Insumo e = eleDao.listarId(idInsu);
@@ -114,6 +114,7 @@ public class InsumoControl extends HttpServlet {
                     String InsumoLote2 = request.getParameter("txtInsumoLote");
                     String InsumoVence2 = request.getParameter("txtInsumoVence");
                     String InsumoFichaTecnica2 = request.getParameter("txtInsumoFichaTecnica");
+                    String Porcentaje2 = request.getParameter("txtPorcentaje");
                     ins.setCodigoInsumo(CodigoInsumo2);
                     ins.setInsumoNombre(InsumoNombre2);
                     ins.setInsumoMarcaFK(Integer.parseInt(InsumoMarcaFK2));
@@ -127,6 +128,7 @@ public class InsumoControl extends HttpServlet {
                     ins.setInsumoLote(InsumoLote2);
                     ins.setInsumoVence(InsumoVence2);
                     ins.setInsumoFichaTecnica(InsumoFichaTecnica2);
+                    ins.setPorcentaje(Porcentaje2);
                     eleDao.actualizar(ins, idInsu);
                     request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;

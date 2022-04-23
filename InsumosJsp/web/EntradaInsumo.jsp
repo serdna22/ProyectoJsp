@@ -83,6 +83,11 @@
                             <input type="number" value="" name="txtDFvalorUnitario" class="form-control" 
                                    min="1" max="9999999999" pattern="^[1-9]" required>
                         </div>
+                        <div class="form-group">
+                            <label>Porcentaje</label>
+                            <input type="number" value="" name="txtDPorcentaje" class="form-control" 
+                                   min="1" max="9999999999" pattern="^[1-9]" required>
+                        </div>
                         <input type="submit" name="accion" value="Agregar" id="btnAgregar" class="btn btn-primary">
                         <a  class="btn btn-danger" href="EntradaInsumoControl?menu=EntradaInsumo&accion=Vaciar">Vaciar Factura</a>
                     </form>

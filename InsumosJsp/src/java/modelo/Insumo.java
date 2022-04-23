@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
+
 import java.util.Date;
+
 /**
  *
  * @author Pc_Estiven
@@ -27,24 +29,9 @@ public class Insumo {
     private String riesgoClasificacion;
     private String presentacionNombre;
     private String temperaturaNombre;
+    private Float porcentaje;
 
     public Insumo() {
-    }
-
-    public Insumo(String codigoInsumo, String insumoNombre, int insumoMarcaFK, int insumoRiesgoFK, int insumoPresentacionFK, String insumoObservacion, int insumoExistencia, int insumoTemperaturaFK, String insumoRuta, String insumoInvima, String insumoLote, String insumoVence, String insumoFichaTecnica) {
-        this.codigoInsumo = codigoInsumo;
-        this.insumoNombre = insumoNombre;
-        this.insumoMarcaFK = insumoMarcaFK;
-        this.insumoRiesgoFK = insumoRiesgoFK;
-        this.insumoPresentacionFK = insumoPresentacionFK;
-        this.insumoObservacion = insumoObservacion;
-        this.insumoExistencia = insumoExistencia;
-        this.insumoTemperaturaFK = insumoTemperaturaFK;
-        this.insumoRuta = insumoRuta;
-        this.insumoInvima = insumoInvima;
-        this.insumoLote = insumoLote;
-        this.insumoVence = insumoVence;
-        this.insumoFichaTecnica = insumoFichaTecnica;
     }
 
     public String getCodigoInsumo() {
@@ -183,4 +170,15 @@ public class Insumo {
         this.temperaturaNombre = temperaturaNombre;
     }
 
+    public Float getPorcentaje() {
+        return porcentaje;
+    }
+
+    public void setPorcentaje(Float porcentaje) {
+        this.porcentaje = porcentaje;
+    }
+
+    public void setPorcentaje(String porcentaje) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
