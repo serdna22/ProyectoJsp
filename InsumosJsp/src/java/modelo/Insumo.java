@@ -29,7 +29,6 @@ public class Insumo {
     private String riesgoClasificacion;
     private String presentacionNombre;
     private String temperaturaNombre;
-    private Float porcentaje;
 
     public Insumo() {
     }
@@ -168,17 +167,5 @@ public class Insumo {
 
     public void setTemperaturaNombre(String temperaturaNombre) {
         this.temperaturaNombre = temperaturaNombre;
-    }
-
-    public Float getPorcentaje() {
-        return porcentaje;
-    }
-
-    public void setPorcentaje(Float porcentaje) {
-        this.porcentaje = porcentaje;
-    }
-
-    public void setPorcentaje(String porcentaje) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

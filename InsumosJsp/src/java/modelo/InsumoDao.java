@@ -27,7 +27,7 @@ public class InsumoDao {
     public List listar() {
         String sql = "SELECT codigoInsumo,insumoNombre,insumoMarcaFK,insumoRiesgoFK,insumoPresentacionFK,insumoObservacion, "
                 + "insumoExistencia,insumoTemperaturaFK,insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica,marcaNombre, "
-                + "riesgoClasificacion,insumoPresentacionFK,temperaturaNombre,porcentaje "
+                + "riesgoClasificacion,insumoPresentacionFK,temperaturaNombre "
                 + "FROM insumo inner join marca on insumo.insumoMarcaFK=marca.idMarca "
                 + "inner join riesgo on insumo.insumoRiesgoFK=riesgo.idRiesgo "
                 + "inner join presentacion on presentacion.idPresentacion=insumo.insumoPresentacionFK "
@@ -57,7 +57,6 @@ public class InsumoDao {
                 in.setRiesgoClasificacion(rs.getString(15));
                 in.setPresentacionNombre(rs.getString(16));
                 in.setTemperaturaNombre(rs.getString(17));
-                in.setPorcentaje(rs.getFloat(18));
                 lista.add(in);
 
             }
@@ -70,7 +69,7 @@ public class InsumoDao {
     public int agregar(Insumo in) {
         String sql = "insert into insumo (codigoInsumo, insumoNombre,insumoMarcaFK,insumoRiesgoFK,"
                 + "insumoPresentacionFK,insumoObservacion,insumoExistencia,insumoTemperaturaFK,"
-                + "insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica,porcentaje)"
+                + "insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica)"
                 + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
@@ -88,7 +87,6 @@ public class InsumoDao {
             ps.setString(11, in.getInsumoLote());
             ps.setString(12, in.getInsumoVence());
             ps.setString(13, in.getInsumoFichaTecnica());
-            ps.setFloat(14, in.getPorcentaje());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -128,7 +126,6 @@ public class InsumoDao {
                 in.setRiesgoClasificacion(rs.getString(15));
                 in.setPresentacionNombre(rs.getString(16));
                 in.setTemperaturaNombre(rs.getString(17));
-                in.setPorcentaje(rs.getFloat(18));
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -139,7 +136,7 @@ public class InsumoDao {
     public int actualizar(Insumo in,String id) {
         String sql = "update insumo set codigoInsumo=?, InsumoNombre=?, InsumoMarcaFK=?, InsumoRiesgoFK=?, InsumoPresentacionFK=?, "
                 + "InsumoObservacion=?, InsumoExistencia=?, InsumoTemperaturaFK=?, InsumoRuta=?, InsumoInvima=?, "
-                + "InsumoLote=?, InsumoVence=?, InsumoFichaTecnica=?, porcentaje=? where codigoInsumo='"+id+"'";
+                + "InsumoLote=?, InsumoVence=?, InsumoFichaTecnica=? where codigoInsumo='"+id+"'";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -156,7 +153,6 @@ public class InsumoDao {
             ps.setString(11, in.getInsumoLote());
             ps.setString(12, in.getInsumoVence());
             ps.setString(13, in.getInsumoFichaTecnica());
-            ps.setFloat(14, in.getPorcentaje());
             ps.executeUpdate();
         } catch (Exception e) {
             System.err.println(e.toString());

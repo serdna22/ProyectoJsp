@@ -112,7 +112,6 @@ public class InsumoControl extends HttpServlet {
                     String InsumoLote2 = request.getParameter("txtInsumoLote");
                     String InsumoVence2 = request.getParameter("txtInsumoVence");
                     String InsumoFichaTecnica2 = request.getParameter("txtInsumoFichaTecnica");
-                    String Porcentaje2 = request.getParameter("txtPorcentaje");
                     ins.setCodigoInsumo(CodigoInsumo2);
                     ins.setInsumoNombre(InsumoNombre2);
                     ins.setInsumoMarcaFK(Integer.parseInt(InsumoMarcaFK2));
@@ -126,7 +125,6 @@ public class InsumoControl extends HttpServlet {
                     ins.setInsumoLote(InsumoLote2);
                     ins.setInsumoVence(InsumoVence2);
                     ins.setInsumoFichaTecnica(InsumoFichaTecnica2);
-                    ins.setPorcentaje(Porcentaje2);
                     eleDao.actualizar(ins, idInsu);
                     request.getRequestDispatcher("InsumoControl?menu=Insumo&accion=Listar").forward(request, response);
                     break;
