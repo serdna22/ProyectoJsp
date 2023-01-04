@@ -27,7 +27,7 @@ public class InsumoDao {
     public List listar() {
         String sql = "SELECT codigoInsumo,insumoNombre,insumoMarcaFK,insumoRiesgoFK,insumoPresentacionFK,insumoObservacion, "
                 + "insumoExistencia,insumoTemperaturaFK,insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica,marcaNombre, "
-                + "riesgoClasificacion,insumoPresentacionFK,temperaturaNombre "
+                + "riesgoClasificacion,presentacionNombre,temperaturaNombre "
                 + "FROM insumo inner join marca on insumo.insumoMarcaFK=marca.idMarca "
                 + "inner join riesgo on insumo.insumoRiesgoFK=riesgo.idRiesgo "
                 + "inner join presentacion on presentacion.idPresentacion=insumo.insumoPresentacionFK "
@@ -39,7 +39,7 @@ public class InsumoDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 Insumo in = new Insumo();
-                // in.setId(rs.getInt(1));
+               
                 in.setCodigoInsumo(rs.getString(1));
                 in.setInsumoNombre(rs.getString(2));
                 in.setInsumoMarcaFK(rs.getInt(3));
@@ -70,7 +70,7 @@ public class InsumoDao {
         String sql = "insert into insumo (codigoInsumo, insumoNombre,insumoMarcaFK,insumoRiesgoFK,"
                 + "insumoPresentacionFK,insumoObservacion,insumoExistencia,insumoTemperaturaFK,"
                 + "insumoRuta,insumoInvima,insumoLote,insumoVence,insumoFichaTecnica)"
-                + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + " values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

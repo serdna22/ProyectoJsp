@@ -8,9 +8,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <c:if test="${usuario.getUsuarioDocumento()==null}">
-        <% response.sendRedirect("index.jsp"); %>
-    </c:if>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -95,10 +92,6 @@
                         <div class="form-group">
                             <label>Ficha Tecnica</label>
                             <input type="text" value="${Insumo.getInsumoFichaTecnica()}" name="txtInsumoFichaTecnica" class="form-control" maxlength="45" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Porcentaje</label>
-                            <input type="number" value="${Insumo.getPorcentaje()}" name="txtPorcentaje" class="form-control" maxlength="45" required>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
